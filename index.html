@@ -505,6 +505,119 @@ header.site.open .burger i:nth-child(4){transform:translateY(-6px) rotate(-45deg
 }
 
 @media print{ .topbar,header.site,.tiles,.map-tools,.zoom,footer form{display:none} section{break-inside:avoid} }
+
+/* ================= Subscription portal ================= */
+.acct-btn{display:inline-flex;align-items:center;gap:8px;background:none;border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;font:700 .74rem var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);cursor:pointer;white-space:nowrap;flex:none}
+.acct-btn:hover{border-color:var(--ink)}
+.acct-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.acct-btn .dot{width:8px;height:8px;border-radius:50%;background:var(--good);display:none}
+.acct-btn.in .dot{display:inline-block}
+html[lang="ar"] .acct-btn{letter-spacing:0;text-transform:none}
+.demo-strip{background:#fff7e0;border-bottom:1px solid #f0dfaa;color:#6b5414;font-size:.8rem}
+.demo-strip .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-block:7px}
+.demo-strip b{letter-spacing:.08em}
+.demo-strip button{margin-inline-start:auto;background:none;border:1px solid #c9b26a;border-radius:999px;padding:3px 10px;font:600 .72rem var(--sans);color:inherit;cursor:pointer}
+
+/* Pricing */
+#pricing .bill-toggle{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;margin-top:4px}
+#pricing .bill-toggle button{background:none;border:0;padding:8px 16px;font:700 .72rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--ink)}
+#pricing .bill-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
+#pricing .save{font:700 .66rem var(--sans);color:var(--good);letter-spacing:.1em;text-transform:uppercase;margin-inline-start:10px}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.plan{background:#fff;border:1px solid var(--line);padding:26px 22px 22px;display:flex;flex-direction:column;gap:10px;position:relative}
+.plan.feat{border:2px solid var(--accent);box-shadow:0 14px 40px rgba(196,30,58,.12)}
+.plan .badge{position:absolute;top:-12px;inset-inline-start:20px;background:var(--accent);color:#fff;font:700 .6rem var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.plan h3{font-size:1.35rem;text-transform:uppercase;letter-spacing:.01em}
+.plan .tag{font-size:.86rem;color:var(--muted);min-height:2.8em}
+.plan .price{font:600 2.3rem/1 var(--serif);color:var(--ink);margin-top:6px}
+.plan .price small{font:500 .78rem var(--sans);color:var(--muted);margin-inline-start:4px}
+.plan .price .free{color:var(--good)}
+.plan .vat{font-size:.72rem;color:var(--muted)}
+.plan ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:7px;font-size:.88rem}
+.plan li{display:flex;gap:8px;align-items:flex-start}
+.plan li::before{content:"";flex:none;width:14px;height:14px;margin-top:4px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 4px var(--accent)}
+.plan .go{margin-top:auto;padding-top:16px}
+.plan .go .pillbtn{width:100%;justify-content:center}
+.plan .have{font:700 .7rem var(--sans);color:var(--good);letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:11px 0}
+.inst{margin-top:18px;background:var(--deep);color:#fff;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:22px 26px}
+.inst h3{font-size:1.2rem;text-transform:uppercase}
+.inst p{font-size:.88rem;opacity:.85;flex:1;min-width:240px}
+.inst .pillbtn{background:#fff;color:var(--deep)}
+.inst .pillbtn:hover{background:var(--accent);color:#fff}
+.rep-head{margin-top:58px;display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;justify-content:space-between}
+.rep-head h3{font-size:clamp(1.3rem,2.2vw,1.8rem);text-transform:uppercase}
+.rep-head p{color:#4d4944;max-width:60ch;margin-top:6px}
+.reps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px}
+.rep{color:#fff;padding:30px 28px 26px;display:flex;flex-direction:column;gap:10px;min-height:340px;position:relative;overflow:hidden}
+.rep.c0{background:var(--orange)} .rep.c1{background:var(--deep)} .rep.c2{background:var(--olive)}
+.rep .freq{font:700 .66rem var(--sans);letter-spacing:.18em;text-transform:uppercase;opacity:.9}
+.rep h4{font:400 clamp(1.5rem,2.2vw,2rem)/1.05 var(--serif);text-transform:uppercase}
+.rep .price{font:600 2rem/1 var(--serif);margin-top:4px}
+.rep .price small{font:500 .78rem var(--sans);opacity:.85;margin-inline-start:4px}
+.rep ul{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:5px;font-size:.86rem;opacity:.95}
+.rep li::before{content:"— "}
+.rep .go{margin-top:auto;padding-top:14px;position:relative}
+.rep .pillbtn{background:#fff;color:var(--ink)}
+.rep .pillbtn:hover{background:var(--ink);color:#fff}
+.rep .book{position:absolute;inset-inline-end:-18px;bottom:-22px;width:150px;height:150px;stroke:rgba(255,255,255,.18);fill:none;stroke-width:2}
+.price-note{font-size:.76rem;color:var(--muted);margin-top:14px}
+
+/* Paywall on locked sections */
+section.gated{max-height:var(--gate-h,640px);overflow:hidden}
+section.gated .paywall{display:flex}
+.paywall{display:none;position:absolute;inset-inline:0;bottom:0;height:min(430px,78%);z-index:5;align-items:flex-end;justify-content:center;padding:0 16px 34px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,.88) 30%,#fff 52%)}
+section.paper .paywall{background:linear-gradient(to bottom,rgba(246,244,240,0) 0%,rgba(246,244,240,.9) 30%,var(--paper) 52%)}
+.pw-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent);box-shadow:0 16px 50px rgba(40,30,10,.12);max-width:620px;width:100%;padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:start}
+.pw-card .lock{grid-row:span 3;width:46px;height:46px;border-radius:50%;background:var(--paper);display:grid;place-items:center}
+.pw-card .lock svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:2}
+.pw-card h3{font-size:1.15rem;text-transform:uppercase}
+.pw-card p{font-size:.88rem;color:#4d4944}
+.pw-card .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.pw-card .row .pillbtn{font-size:.7rem;padding:10px 16px}
+.pw-card .inc{font-size:.76rem;color:var(--muted)}
+.pw-card .inc b{color:var(--ink)}
+
+/* Portal dialogs */
+dialog.pd{max-width:560px}
+dialog.pd.wide{max-width:880px}
+.pd .dlg-body{max-height:min(74vh,720px);overflow:auto}
+.pd form{display:grid;gap:12px}
+.pd label{display:grid;gap:4px;font:600 .8rem var(--sans)}
+.pd label.chk{grid-template-columns:auto 1fr;align-items:start;font-weight:500;gap:8px}
+.pd input,.pd select,.pd textarea{font:400 .95rem var(--sans);padding:10px 12px;border:1.5px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);width:100%}
+.pd input[type=checkbox]{width:18px;height:18px;margin-top:2px}
+.pd input:focus,.pd select:focus,.pd textarea:focus{border-color:var(--ink);outline:none}
+.pd .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pd .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;flex-wrap:wrap}
+.pd .tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:9px 12px;font:700 .74rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.pd .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+html[lang="ar"] .pd .tabs button,html[lang="ar"] .pd .linkbtn{letter-spacing:0;text-transform:none}
+.pd .linkbtn{background:none;border:0;padding:0;color:var(--accent);font:600 .82rem var(--sans);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pd .msg{font-size:.84rem;padding:10px 12px;border-radius:4px;display:none}
+.pd .msg.err{display:block;background:#fdecee;color:#8a1426}
+.pd .msg.ok{display:block;background:#e9f5ee;color:#1d5a37}
+.pd .fine{font-size:.76rem;color:var(--muted)}
+.pd .sum{background:var(--paper);padding:16px 18px;display:grid;gap:4px}
+.pd .sum b{font:600 1.15rem var(--serif);text-transform:uppercase}
+.pd .sum .amt{font:600 1.6rem var(--serif)}
+.pd table{width:100%;border-collapse:collapse;font-size:.86rem}
+.pd th,.pd td{text-align:start;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.pd th{font:700 .66rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pd .empty{color:var(--muted);font-size:.9rem;padding:14px 0}
+.pd .st{display:inline-block;font:700 .62rem var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--paper);color:var(--ink)}
+.pd .st.active,.pd .st.trialing,.pd .st.delivered,.pd .st.succeeded,.pd .st.published{background:#e3f2e8;color:#1d5a37}
+.pd .st.past_due,.pd .st.on_hold,.pd .st.failed{background:#fdecee;color:#8a1426}
+.pd .st.canceled,.pd .st.expired{background:#eee;color:#555}
+.pd .acct-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+.pd .acct-top .who{font-size:.9rem}
+.pd .acct-top .who b{display:block;font:600 1.1rem var(--serif)}
+.pd .btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.pd .btnrow .pillbtn{font-size:.68rem;padding:9px 14px}
+@media (max-width:1100px){ .plans{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:760px){ .plans,.reps{grid-template-columns:1fr} .rep{min-height:0} .pd .two{grid-template-columns:1fr} .pw-card{grid-template-columns:1fr} .pw-card .lock{grid-row:auto} section.gated{--gate-h:720px} .hcta{display:none} }
+@media (max-width:520px){ .acct-btn .lbl{display:none} .acct-btn{padding:9px} }
+@media print{ .paywall,.acct-btn,.demo-strip,#pricing{display:none} section.gated{max-height:none} }
 </style>
 </head>
 <body>
@@ -541,11 +654,14 @@ header.site.open .burger i:nth-child(4){transform:translateY(-6px) rotate(-45deg
     <li><a href="#toolkit" data-i18n="nToolkit">Toolkit</a></li>
     <li><a href="#opportunities" data-i18n="nOpp">Market gaps</a></li>
     <li><a href="#news" data-i18n="nNews">News</a></li>
+    <li><a href="#pricing" data-i18n="nPlans">Plans</a></li>
     <li class="m-only"><a href="#policy" data-i18n="nPolicy">Foreign policy</a></li>
     <li class="m-only"><a href="#sources" data-i18n="nSources">Data and sources</a></li>
-    <li class="m-only m-cta"><a class="pillbtn" href="#toolkit" data-i18n="ctaInvest">Invest in Egypt</a></li>
+    <li class="m-only"><a href="#account" id="mAcct">Sign in</a></li>
+    <li class="m-only m-cta"><a class="pillbtn" href="#pricing" data-i18n="ctaSub">Subscribe</a></li>
   </ul></nav>
-  <a class="pillbtn hcta" href="#toolkit" data-i18n="ctaInvest">Invest in Egypt</a>
+  <button type="button" class="acct-btn" id="acctBtn" aria-label="Sign in"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="lbl">Sign in</span><span class="dot" aria-hidden="true"></span></button>
+  <a class="pillbtn hcta" href="#pricing" data-i18n="ctaSub">Subscribe</a>
   <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="siteNav"><span class="sr" data-i18n="menu">Menu</span><i></i><i></i><i></i></button>
 </div></header>
 
@@ -595,6 +711,20 @@ header.site.open .burger i:nth-child(4){transform:translateY(-6px) rotate(-45deg
     <div><span class="n" aria-hidden="true">03</span><div class="big">£3.6bn</div><h3 data-i18n="w3h">The UK is already invested</h3><p data-i18n="w3p">UK outward FDI stock in Egypt reached £3.6 billion at the end of 2024, and the UK–Egypt Association Agreement keeps tariff preferences in place for goods trade.</p><a class="src" href="#s1">DBT · Nov 2026</a><div class="rule"></div></div>
   </div>
   <div class="risk"><h3 data-i18n="riskH">Risks to weigh</h3><div><p data-i18n="riskP">Regional conflict in 2026 has affected shipping and the currency. The pound has weakened by about 14% against the US dollar since late February 2026, and Suez Canal traffic remains below pre-2023 levels. Urban headline inflation was 13.9% in September 2026. Check the latest figures before committing capital.</p><a class="src" href="#s8">Ahram Online · 22 Oct 2026</a> · <a class="src" href="#s9">Arab Finance · Oct 2026</a></div></div>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gPlans">Plans</div><div><div class="k" data-i18n="kPlans">Subscriptions</div><h2 data-i18n="hPlans">Choose your access</h2>
+  <p data-i18n="pPlans">Everything above is free. Subscribe to unlock the full map, agreements, sector profiles, toolkit and news, or have the reports printed and posted to you.</p></div>
+  <div class="act"><div class="bill-toggle" role="group" aria-label="Billing period"><button type="button" data-bill="month" aria-pressed="true" data-i18n="billM">Monthly</button><button type="button" data-bill="year" aria-pressed="false" data-i18n="billY">Yearly</button></div><span class="save" data-i18n="save2">2 months free on yearly</span></div></div>
+  <div class="plans" id="accessPlans"></div>
+  <div class="inst"><h3 data-i18n="instH">Institutional</h3><p data-i18n="instP">For government teams, chambers of commerce and funds: up to 25 seats, printed reports for every office and invoiced billing.</p><button type="button" class="pillbtn" data-enquiry data-i18n="instB">Talk to us</button></div>
+
+  <div class="rep-head"><div><div class="k" style="font:700 .72rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px" data-i18n="kReps">Printed reports</div><h3 data-i18n="hReps">Full reports, printed and posted</h3>
+  <p data-i18n="pReps">Choose how often you want the full report. Each edition is printed, posted to your address and added to your account as a PDF.</p></div></div>
+  <div class="reps" id="reportPlans"></div>
+  <p class="price-note" data-i18n="priceNote">Prices in pounds sterling, excluding VAT. You can cancel any time from your account; access continues to the end of the period you have paid for.</p>
 </div></section>
 
 <!-- MAP -->
@@ -804,13 +934,89 @@ header.site.open .burger i:nth-child(4){transform:translateY(-6px) rotate(-45deg
     <div>
       <h4 data-i18n="fReport">Latest statistics</h4>
       <a class="report" href="https://assets.publishing.service.gov.uk/media/6ae9ea1d4bd624c77e5d6891/egypt-trade-and-investment-factsheet-2026-11-06.pdf" rel="noopener" data-i18n="fReportL">View the 2026 trade factsheet ›</a>
-      <p style="margin-top:14px;font-size:.8rem" data-i18n="fComing2">Coming in later phases: internal dashboard, pitch deck, downloadable PDF one-pagers, live currency and news feeds, full Arabic content.</p>
+      <p style="margin-top:14px;font-size:.8rem" data-i18n="fComing2">Coming in later phases: internal dashboard, pitch deck, live currency and news feeds, full Arabic content.</p>
     </div>
   </div>
   <div class="fbottom"><span><a href="#policy" style="color:inherit">Foreign policy</a> · <a href="#sources" style="color:inherit">Data and sources</a> · <span data-i18n="fCredit">Country outlines: jsVectorMap.</span></span><a href="#top" data-i18n="backTop">Back to top ↑</a></div>
 </div></footer>
 
 <dialog id="dlg" aria-labelledby="dlgTitle"><div class="dlg-head"><strong id="dlgTitle">Country one-pager</strong><span><button type="button" id="dlgCopy">Copy text</button> <button type="button" id="dlgClose">Close</button></span></div><div class="dlg-body"><pre id="dlgBody"></pre></div></dialog>
+
+<!-- Portal: sign in / create account -->
+<dialog id="authDlg" class="pd" aria-labelledby="authTitle"><div class="dlg-head"><strong id="authTitle" data-i18n="authT">Your account</strong><span><button type="button" data-close data-i18n="close">Close</button></span></div>
+<div class="dlg-body">
+  <div class="tabs" role="tablist"><button type="button" role="tab" data-atab="in" aria-selected="true" data-i18n="tabIn">Sign in</button><button type="button" role="tab" data-atab="up" aria-selected="false" data-i18n="tabUp">Create account</button></div>
+  <div class="msg" id="authMsg" role="status"></div>
+  <form id="formIn" data-apanel="in" novalidate>
+    <label><span data-i18n="fEmail">Email</span><input type="email" name="email" autocomplete="email" required></label>
+    <label><span data-i18n="fPass">Password</span><input type="password" name="password" autocomplete="current-password" required minlength="8"></label>
+    <button class="pillbtn" type="submit" data-i18n="tabIn">Sign in</button>
+    <div style="display:flex;gap:16px;flex-wrap:wrap"><button type="button" class="linkbtn" id="forgotBtn" data-i18n="forgot">Forgot password?</button><button type="button" class="linkbtn" id="magicBtn" data-i18n="magic">Email me a sign-in link</button></div>
+  </form>
+  <form id="formUp" data-apanel="up" hidden novalidate>
+    <div class="two"><label><span data-i18n="fName">Full name</span><input name="full_name" autocomplete="name" required></label>
+    <label><span data-i18n="fOrg">Organisation</span><input name="organisation" autocomplete="organization"></label></div>
+    <div class="two"><label><span data-i18n="fAud">I am a</span><select name="audience">
+      <option value="uk_investor" data-i18n="aInv">UK investor</option><option value="uk_exporter" data-i18n="aExp">UK exporter</option>
+      <option value="egyptian_business" data-i18n="aEg">Egyptian business</option><option value="policymaker" data-i18n="aPol">Policymaker or official</option>
+      <option value="media" data-i18n="aMedia">Journalist or analyst</option><option value="academic" data-i18n="aAcad">Researcher or student</option><option value="other" data-i18n="aOther">Other</option></select></label>
+    <label><span data-i18n="fCountry">Country</span><select name="country_code"><option value="GB">United Kingdom</option><option value="EG">Egypt</option><option value="AE">United Arab Emirates</option><option value="SA">Saudi Arabia</option><option value="IE">Ireland</option><option value="US">United States</option><option value="FR">France</option><option value="DE">Germany</option><option value="KE">Kenya</option><option value="NG">Nigeria</option><option value="ZA">South Africa</option><option value="MA">Morocco</option><option value="">Other</option></select></label></div>
+    <label><span data-i18n="fEmail">Email</span><input type="email" name="email" autocomplete="email" required></label>
+    <label><span data-i18n="fPassNew">Password (at least 8 characters)</span><input type="password" name="password" autocomplete="new-password" required minlength="8"></label>
+    <label class="chk"><input type="checkbox" name="marketing_opt_in"><span data-i18n="fOpt">Send me the monthly data-update email</span></label>
+    <label class="chk"><input type="checkbox" name="terms" required><span data-i18n="fTerms">I agree to the terms of use and privacy notice</span></label>
+    <button class="pillbtn" type="submit" data-i18n="tabUp">Create account</button>
+  </form>
+  <form id="formReset" data-apanel="reset" hidden novalidate>
+    <p class="fine" data-i18n="resetP">Choose a new password for your account.</p>
+    <label><span data-i18n="fPassNew">Password (at least 8 characters)</span><input type="password" name="password" autocomplete="new-password" required minlength="8"></label>
+    <button class="pillbtn" type="submit" data-i18n="resetB">Save new password</button>
+  </form>
+</div></dialog>
+
+<!-- Portal: checkout -->
+<dialog id="buyDlg" class="pd" aria-labelledby="buyTitle"><div class="dlg-head"><strong id="buyTitle" data-i18n="buyT">Subscribe</strong><span><button type="button" data-close data-i18n="close">Close</button></span></div>
+<div class="dlg-body"><form id="formBuy" novalidate>
+  <div class="sum" id="buySum"></div>
+  <div id="buyShip" hidden>
+    <p class="fine" data-i18n="shipP">Where should we post the printed reports?</p>
+    <div class="two"><label><span data-i18n="fRecip">Recipient</span><input name="recipient_name" autocomplete="name"></label><label><span data-i18n="fOrg">Organisation</span><input name="organisation" autocomplete="organization"></label></div>
+    <label><span data-i18n="fL1">Address</span><input name="line1" autocomplete="address-line1"></label>
+    <label><span class="sr" data-i18n="fL2">Address line 2</span><input name="line2" autocomplete="address-line2"></label>
+    <div class="two"><label><span data-i18n="fCity">Town or city</span><input name="city" autocomplete="address-level2"></label><label><span data-i18n="fPost">Postcode</span><input name="postcode" autocomplete="postal-code"></label></div>
+    <label><span data-i18n="fCountry">Country</span><select name="country_code"><option value="GB">United Kingdom</option><option value="EG">Egypt</option><option value="AE">United Arab Emirates</option><option value="SA">Saudi Arabia</option><option value="IE">Ireland</option><option value="US">United States</option><option value="FR">France</option><option value="DE">Germany</option><option value="KE">Kenya</option><option value="NG">Nigeria</option><option value="ZA">South Africa</option><option value="MA">Morocco</option></select></label>
+  </div>
+  <div class="msg" id="buyMsg" role="status"></div>
+  <button class="pillbtn" type="submit" id="buyGo"></button>
+  <p class="fine" id="buyFine"></p>
+</form></div></dialog>
+
+<!-- Portal: account -->
+<dialog id="acctDlg" class="pd wide" aria-labelledby="acctTitle"><div class="dlg-head"><strong id="acctTitle" data-i18n="acctT">Your account</strong><span><button type="button" data-close data-i18n="close">Close</button></span></div>
+<div class="dlg-body">
+  <div class="acct-top"><div class="who" id="acctWho"></div><div class="btnrow"><button type="button" class="pillbtn outline" id="billingBtn" data-i18n="billing">Billing and invoices</button><button type="button" class="pillbtn outline" id="signOutBtn" data-i18n="signOut">Sign out</button></div></div>
+  <div class="tabs" role="tablist"><button type="button" role="tab" data-xtab="subs" aria-selected="true" data-i18n="xSubs">Subscriptions</button><button type="button" role="tab" data-xtab="reports" aria-selected="false" data-i18n="xReps">Reports</button><button type="button" role="tab" data-xtab="post" aria-selected="false" data-i18n="xPost">Deliveries</button><button type="button" role="tab" data-xtab="profile" aria-selected="false" data-i18n="xProf">Profile</button></div>
+  <div class="msg" id="acctMsg" role="status"></div>
+  <div data-xpanel="subs" id="xSubs"></div>
+  <div data-xpanel="reports" id="xReports" hidden></div>
+  <div data-xpanel="post" id="xPost" hidden></div>
+  <div data-xpanel="profile" hidden><form id="formProfile" novalidate>
+    <div class="two"><label><span data-i18n="fName">Full name</span><input name="full_name"></label><label><span data-i18n="fOrg">Organisation</span><input name="organisation_name"></label></div>
+    <div class="two"><label><span data-i18n="fJob">Job title</span><input name="job_title"></label><label><span data-i18n="fPhone">Phone</span><input name="phone" type="tel"></label></div>
+    <label class="chk"><input type="checkbox" name="marketing_opt_in"><span data-i18n="fOpt">Send me the monthly data-update email</span></label>
+    <button class="pillbtn" type="submit" data-i18n="saveB">Save</button>
+  </form></div>
+</div></dialog>
+
+<!-- Portal: institutional enquiry -->
+<dialog id="enqDlg" class="pd" aria-labelledby="enqTitle"><div class="dlg-head"><strong id="enqTitle" data-i18n="instH">Institutional</strong><span><button type="button" data-close data-i18n="close">Close</button></span></div>
+<div class="dlg-body"><form id="formEnq" novalidate>
+  <div class="two"><label><span data-i18n="fName">Full name</span><input name="name" required autocomplete="name"></label><label><span data-i18n="fOrg">Organisation</span><input name="organisation" autocomplete="organization"></label></div>
+  <div class="two"><label><span data-i18n="fEmail">Email</span><input name="email" type="email" required autocomplete="email"></label><label><span data-i18n="fSeats">Seats needed</span><input name="seats" type="number" min="1" max="500" value="10"></label></div>
+  <label><span data-i18n="fMsg">What do you need?</span><textarea name="message" rows="4"></textarea></label>
+  <div class="msg" id="enqMsg" role="status"></div>
+  <button class="pillbtn" type="submit" data-i18n="send">Send enquiry</button>
+</form></div></dialog>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -832,6 +1038,25 @@ window.NEWAR = {
   fComing2:"في المراحل التالية: لوحة داخلية، عرض تقديمي، ملخصات PDF، تغذية مباشرة للعملة والأخبار، ومحتوى عربي كامل.", fCredit:"المصادر مدرجة في قسم البيانات والمصادر.", backTop:"العودة للأعلى ↑", proto:"نموذج أولي"
 };
 window.jsVectorMap = { addMap: function(name, data){ window.__WORLD = data; } };
+</script>
+<script>
+Object.assign(window.NEWAR = window.NEWAR || {}, {
+  nPlans:"الاشتراكات", ctaSub:"اشترك", signIn:"تسجيل الدخول",
+  gPlans:"الخطط", kPlans:"الاشتراكات", hPlans:"اختر مستوى الوصول",
+  pPlans:"كل ما سبق مجاني. اشترك لفتح الخريطة الكاملة والاتفاقيات وملفات القطاعات وأدوات المستثمر والأخبار، أو اطلب التقارير مطبوعة ومرسلة إليك.",
+  billM:"شهري", billY:"سنوي", save2:"شهران مجانًا مع الاشتراك السنوي",
+  instH:"المؤسسات", instP:"للفرق الحكومية والغرف التجارية والصناديق: حتى 25 مستخدمًا، وتقارير مطبوعة لكل مكتب، وفواتير رسمية.", instB:"تواصل معنا",
+  kReps:"التقارير المطبوعة", hReps:"تقارير كاملة، مطبوعة ومرسلة", pReps:"اختر عدد مرات استلام التقرير الكامل. تُطبع كل نسخة وتُرسل إلى عنوانك وتضاف إلى حسابك بصيغة PDF.",
+  priceNote:"الأسعار بالجنيه الإسترليني ولا تشمل ضريبة القيمة المضافة. يمكنك الإلغاء في أي وقت من حسابك، ويستمر الوصول حتى نهاية الفترة المدفوعة.",
+  authT:"حسابك", close:"إغلاق", tabIn:"تسجيل الدخول", tabUp:"إنشاء حساب", fEmail:"البريد الإلكتروني", fPass:"كلمة المرور",
+  forgot:"نسيت كلمة المرور؟", magic:"أرسل لي رابط الدخول", fName:"الاسم الكامل", fOrg:"المؤسسة", fAud:"أنا", fCountry:"الدولة",
+  aInv:"مستثمر بريطاني", aExp:"مصدّر بريطاني", aEg:"شركة مصرية", aPol:"صانع سياسات أو مسؤول", aMedia:"صحفي أو محلل", aAcad:"باحث أو طالب", aOther:"أخرى",
+  fPassNew:"كلمة المرور (8 أحرف على الأقل)", fOpt:"أرسل لي نشرة تحديث البيانات الشهرية", fTerms:"أوافق على شروط الاستخدام وإشعار الخصوصية",
+  resetP:"اختر كلمة مرور جديدة لحسابك.", resetB:"حفظ كلمة المرور", buyT:"اشتراك", shipP:"إلى أين نرسل التقارير المطبوعة؟",
+  fRecip:"المستلم", fL1:"العنوان", fL2:"سطر العنوان الثاني", fCity:"المدينة", fPost:"الرمز البريدي",
+  acctT:"حسابك", billing:"الفواتير والدفع", signOut:"تسجيل الخروج", xSubs:"الاشتراكات", xReps:"التقارير", xPost:"الشحنات", xProf:"الملف الشخصي",
+  fJob:"المسمى الوظيفي", fPhone:"الهاتف", saveB:"حفظ", fSeats:"عدد المستخدمين", fMsg:"ما الذي تحتاجه؟", send:"إرسال الطلب"
+});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" onerror="window.__MAPFAIL=true"></script>
 
@@ -1370,7 +1595,7 @@ const links=[...document.querySelectorAll(".nav a")];
 if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-40% 0px -55% 0px"}); document.querySelectorAll("main section[id]").forEach(s=>io.observe(s)); }
 
 document.querySelectorAll("[data-bloc-go]").forEach(b=>b.addEventListener("click",()=>{ bloc=b.dataset.blocGo; document.getElementById("blocSel").value=bloc; setView("blocs"); document.getElementById("map").scrollIntoView(); }));
-document.getElementById("newsForm").addEventListener("submit",e=>{ e.preventDefault(); toast(lang==="ar"?"سيتم ربط الاشتراك عند الإطلاق، ولم يُرسل شيء":"Sign-up will be connected at launch. Nothing was sent."); });
+document.getElementById("newsForm").addEventListener("submit",async e=>{ e.preventDefault(); const em=document.getElementById("nlEmail"); const m = window.GatewayPortal ? await window.GatewayPortal.newsletter(em.value.trim()) : (lang==="ar"?"سيتم ربط الاشتراك عند الإطلاق، ولم يُرسل شيء":"Sign-up will be connected at launch. Nothing was sent."); toast(m); if(window.GatewayPortal && window.GatewayPortal.mode==="live") em.value=""; });
 /* Mobile menu, sticky-header offset, responsive helpers */
 function isNarrow(){ return matchMedia("(max-width:980px)").matches; }
 const hdr=document.querySelector("header.site"), burger=document.getElementById("burger");
@@ -1389,6 +1614,526 @@ renderSteps(); renderOpp(); renderSectors(); renderNews(); renderAgreements(); r
 buildMap(); renderPanel(selected);
 const b0=recall("brand"); if(b0) setBrand(b0);
 const l0=recall("lang"); if(l0==="ar") applyLang("ar");
+})();
+</script>
+<script>
+/* Backend connection. The publishable key is safe to ship in a web page: row-level security decides what each visitor can read. */
+window.GATEWAY_CONFIG = {
+  supabaseUrl: "https://sobptlqqazhcfooytqav.supabase.co",
+  supabaseKey: "sb_publishable_un1ijZ1P6eBdwfLI3C2gEg_hJBrBdCq"
+};
+</script>
+<script>
+/* =====================================================================
+   Egypt Gateway — subscription portal
+   Live mode: Supabase auth + database, Stripe checkout (when hosted on your domain).
+   Demo mode: everything simulated in this browser (used on the preview link, where
+   outside connections are blocked). No payment is ever taken in demo mode.
+   ===================================================================== */
+(function(){
+"use strict";
+const CFG = window.GATEWAY_CONFIG || {};
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const isAr = () => document.documentElement.lang === "ar";
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store = { get(k){ try{ return JSON.parse(localStorage.getItem("etg-portal-"+k)); }catch(e){ return null; } },
+                set(k,v){ try{ localStorage.setItem("etg-portal-"+k, JSON.stringify(v)); }catch(e){} } };
+const say = m => (typeof window.toast === "function" ? window.toast(m) : (()=>{ const el=$("#toast"); if(!el) return; el.textContent=m; el.style.opacity=1; clearTimeout(say.t); say.t=setTimeout(()=>el.style.opacity=0,2600); })());
+
+/* ---------- Words ---------- */
+const T = {
+ en:{ signIn:"Sign in", account:"Account", perMonth:"/month", perQuarter:"/quarter", perYear:"/year", free:"Free",
+  vat:"excl. VAT", choose:"Choose", createFree:"Create free account", yourFree:"Your free account", yourPlan:"Your plan",
+  popular:"Most complete", every_month:"Every month", every_quarter:"Every quarter", every_year:"Every year", subscribe:"Subscribe",
+  lockedH:"Subscribers only", lockedP:"You are seeing a preview of {m}. Subscribe to see the full section.", inc:"Included in:",
+  seePlans:"See plans", haveAcct:"I have an account",
+  payLive:"Continue to secure payment", payDemo:"Activate demo subscription",
+  fineLive:"You will be taken to Stripe to pay. Card details never touch this website. Cancel any time.",
+  fineDemo:"Demo mode: no payment is taken. This only unlocks content in this browser so you can see how it works.",
+  trial:"{n}-day free trial, then", billedM:"Billed monthly", billedQ:"Billed every 3 months", billedY:"Billed yearly",
+  needShip:"Please enter a full postal address for the printed reports.",
+  signedIn:"Signed in", signedOut:"Signed out", welcome:"Account created. Check your email to confirm it, then sign in.",
+  welcomeDemo:"Demo account created.", resetSent:"If that email has an account, a reset link is on its way.",
+  magicSent:"Check your email for a sign-in link.", pwSaved:"Password updated.", enterEmail:"Enter your email first.",
+  needTerms:"Please accept the terms to continue.", pwShort:"Passwords need at least 8 characters.", badEmail:"Enter a valid email address.",
+  noSubs:"You have no subscriptions yet.", plan:"Package", status:"Status", renews:"Renews", ends:"Access until", price:"Price",
+  cancel:"Cancel", cancelled:"Will not renew", viaOrg:"Through your organisation",
+  st_active:"Active", st_trialing:"Free trial", st_past_due:"Payment due", st_canceled:"Cancelled", st_expired:"Expired", st_incomplete:"Incomplete", st_paused:"Paused", st_unpaid:"Unpaid",
+  rTitle:"Report", rPeriod:"Edition", rState:"", download:"Download PDF", locked:"Not in your plan", coming:"Due {d}",
+  noReports:"No reports published yet.", noPost:"Nothing posted yet. Printed reports appear here when an edition is published.",
+  d_queued:"Queued for print", d_on_hold:"Needs an address", d_printing:"Printing", d_dispatched:"Posted", d_delivered:"Delivered", d_returned:"Returned", d_cancelled:"Cancelled",
+  addr:"Postal address", noAddr:"No postal address yet.", saveAddr:"Save address", addrSaved:"Address saved.",
+  saved:"Saved.", payments:"Payments", invoice:"Invoice", paid:"Paid", failed:"Failed",
+  billingDemo:"In the live site this opens Stripe, where subscribers update cards, download invoices or cancel.",
+  enqSent:"Thanks. The team will be in touch.", enqDemo:"Demo mode: the enquiry form will be connected when the site is hosted. Nothing was sent.",
+  nlOk:"You're on the list for the monthly data update.", nlDemo:"Sign-up will be connected when the site is hosted. Nothing was sent.",
+  paidOk:"Payment received. Your access is being switched on…", paidReady:"Your subscription is active.", paidCancel:"Checkout cancelled. You have not been charged.",
+  demoStrip:"Sign-in and payments are simulated on this preview. Nothing leaves your browser.", demoReset:"Reset demo", demoTag:"DEMO",
+  err:"Something went wrong. Please try again.", already:"You already have this package." },
+ ar:{ signIn:"تسجيل الدخول", account:"حسابي", perMonth:"/شهريًا", perQuarter:"/ربع سنوي", perYear:"/سنويًا", free:"مجاني",
+  vat:"دون ضريبة القيمة المضافة", choose:"اختر", createFree:"أنشئ حسابًا مجانيًا", yourFree:"حسابك المجاني", yourPlan:"خطتك",
+  popular:"الأشمل", every_month:"كل شهر", every_quarter:"كل ربع سنة", every_year:"كل سنة", subscribe:"اشترك",
+  lockedH:"للمشتركين فقط", lockedP:"تشاهد معاينة من {m}. اشترك لعرض القسم كاملًا.", inc:"متاح ضمن:",
+  seePlans:"عرض الخطط", haveAcct:"لدي حساب",
+  payLive:"المتابعة إلى الدفع الآمن", payDemo:"تفعيل اشتراك تجريبي",
+  fineLive:"ستنتقل إلى Stripe للدفع. لا تمر بيانات البطاقة عبر هذا الموقع. يمكنك الإلغاء في أي وقت.",
+  fineDemo:"وضع تجريبي: لا يتم أي دفع. يفتح المحتوى في هذا المتصفح فقط لتجربة طريقة العمل.",
+  trial:"تجربة مجانية {n} أيام، ثم", billedM:"يُدفع شهريًا", billedQ:"يُدفع كل 3 أشهر", billedY:"يُدفع سنويًا",
+  needShip:"يرجى إدخال عنوان بريدي كامل للتقارير المطبوعة.",
+  signedIn:"تم تسجيل الدخول", signedOut:"تم تسجيل الخروج", welcome:"تم إنشاء الحساب. أكّد بريدك الإلكتروني ثم سجّل الدخول.",
+  welcomeDemo:"تم إنشاء حساب تجريبي.", resetSent:"إذا كان للبريد حساب، فسيصلك رابط إعادة التعيين.",
+  magicSent:"تحقق من بريدك للحصول على رابط الدخول.", pwSaved:"تم تحديث كلمة المرور.", enterEmail:"أدخل بريدك الإلكتروني أولًا.",
+  needTerms:"يرجى الموافقة على الشروط للمتابعة.", pwShort:"يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.", badEmail:"أدخل بريدًا إلكترونيًا صحيحًا.",
+  noSubs:"لا توجد اشتراكات بعد.", plan:"الباقة", status:"الحالة", renews:"التجديد", ends:"الوصول حتى", price:"السعر",
+  cancel:"إلغاء", cancelled:"لن يتجدد", viaOrg:"عبر مؤسستك",
+  st_active:"نشط", st_trialing:"تجربة مجانية", st_past_due:"دفعة مستحقة", st_canceled:"ملغى", st_expired:"منتهٍ", st_incomplete:"غير مكتمل", st_paused:"متوقف", st_unpaid:"غير مدفوع",
+  rTitle:"التقرير", rPeriod:"الإصدار", rState:"", download:"تنزيل PDF", locked:"غير مشمول في خطتك", coming:"موعده {d}",
+  noReports:"لم تُنشر تقارير بعد.", noPost:"لم يُرسل شيء بعد. تظهر التقارير المطبوعة هنا عند نشر كل إصدار.",
+  d_queued:"بانتظار الطباعة", d_on_hold:"يحتاج عنوانًا", d_printing:"قيد الطباعة", d_dispatched:"أُرسل", d_delivered:"تم التسليم", d_returned:"مُرتجع", d_cancelled:"ملغى",
+  addr:"العنوان البريدي", noAddr:"لا يوجد عنوان بريدي بعد.", saveAddr:"حفظ العنوان", addrSaved:"تم حفظ العنوان.",
+  saved:"تم الحفظ.", payments:"المدفوعات", invoice:"فاتورة", paid:"مدفوع", failed:"فشل",
+  billingDemo:"في الموقع الفعلي يفتح هذا صفحة Stripe لتحديث البطاقة وتنزيل الفواتير أو الإلغاء.",
+  enqSent:"شكرًا. سيتواصل معك الفريق.", enqDemo:"وضع تجريبي: سيتم ربط النموذج عند استضافة الموقع. لم يُرسل شيء.",
+  nlOk:"تم تسجيلك في نشرة التحديث الشهرية.", nlDemo:"سيتم ربط الاشتراك عند استضافة الموقع. لم يُرسل شيء.",
+  paidOk:"تم استلام الدفع. جارٍ تفعيل وصولك…", paidReady:"اشتراكك نشط الآن.", paidCancel:"تم إلغاء الدفع ولم يُخصم أي مبلغ.",
+  demoStrip:"تسجيل الدخول والدفع في هذه المعاينة تجريبيان. لا يغادر شيء متصفحك.", demoReset:"إعادة ضبط التجربة", demoTag:"تجريبي",
+  err:"حدث خطأ. حاول مرة أخرى.", already:"لديك هذه الباقة بالفعل." }
+};
+const t = (k, vars) => { let s = (isAr() ? T.ar[k] : null) ?? T.en[k] ?? k; if(vars) for(const v in vars) s = s.replace("{"+v+"}", vars[v]); return s; };
+
+/* ---------- Catalogue (mirrors the database seed; replaced by live data when connected) ---------- */
+const MOD = { map:["the Africa map and country indicators","خريطة أفريقيا ومؤشرات الدول"], agreements:["the trade agreements","الاتفاقيات التجارية"],
+  trade:["UK–Egypt trade data","بيانات التجارة البريطانية المصرية"], sectors:["the sector profiles","ملفات القطاعات"], hubs:["hubs and logistics","المراكز واللوجستيات"],
+  toolkit:["the investor toolkit","أدوات المستثمر"], opportunities:["market gaps and opportunities","الفجوات والفرص"], news:["investment news","أخبار الاستثمار"], policy:["foreign policy","السياسة الخارجية"] };
+const FREE = ["figures","why","sources"];
+const GATED = ["map","agreements","trade","sectors","hubs","toolkit","opportunities","news","policy"];
+const P = (slug,kind,en,ar,ten,tar,feats,featsAr,mods,prices,extra={}) => ({ slug, kind, name_en:en, name_ar:ar, tagline_en:ten, tagline_ar:tar, features:feats, features_ar:featsAr, modules:mods,
+  prices: prices.map(([iv,a]) => ({ id: slug+":"+iv, interval: iv, currency:"GBP", amount_minor:a })), includes_pdf:false, trial_days:0, report_frequency:null, ...extra });
+let CATALOGUE = [
+  P("explorer","access","Explorer","مستكشف","Free account: the headline case for Egypt.","حساب مجاني: الصورة العامة لمصر.",
+    ["Egypt in numbers and the investment case","A preview of every module","Data and sources table","Monthly data-update email"],
+    ["مصر بالأرقام وأسباب الاستثمار","معاينة لكل قسم","جدول البيانات والمصادر","نشرة تحديث البيانات الشهرية"],[],[]),
+  P("trade-access","access","Trade Access","الوصول التجاري","For exporters: agreements, trade data, ports and set-up steps.","للمصدّرين: الاتفاقيات وبيانات التجارة والموانئ وخطوات التأسيس.",
+    ["Free trade and bilateral agreements","UK–Egypt trade data and charts","Industrial hubs, ports and logistics","Investor toolkit and official links"],
+    ["اتفاقيات التجارة الحرة والاتفاقيات الثنائية","بيانات ورسوم التجارة البريطانية المصرية","المراكز الصناعية والموانئ واللوجستيات","أدوات المستثمر والروابط الرسمية"],
+    ["agreements","hubs","toolkit","trade"],[["month",3900],["year",39000]]),
+  P("market-intelligence","access","Market Intelligence","معلومات السوق","For investors: the Africa map, sectors, gaps and news.","للمستثمرين: خريطة أفريقيا والقطاعات والفرص والأخبار.",
+    ["Interactive Africa map and country indicators","Sector profiles","Market gaps and opportunities","Investment and infrastructure news"],
+    ["خريطة أفريقيا التفاعلية ومؤشرات الدول","ملفات القطاعات","الفجوات والفرص","أخبار الاستثمار والبنية التحتية"],
+    ["map","news","opportunities","sectors"],[["month",5900],["year",59000]]),
+  P("full-gateway","access","Full Gateway","البوابة الكاملة","Everything on the platform, for a small team.","كل محتوى المنصة لفريق صغير.",
+    ["All 10 modules, including foreign policy","Every report as a downloadable PDF","Country one-pagers","3 team seats","7-day free trial"],
+    ["جميع الأقسام العشرة بما فيها السياسة الخارجية","كل التقارير بصيغة PDF","ملخصات الدول في صفحة واحدة","3 مستخدمين","تجربة مجانية 7 أيام"],
+    GATED.slice(),[["month",9900],["year",99000]],{includes_pdf:true,trial_days:7}),
+  P("monthly-monitor","report","Monthly Trade Monitor","المرصد التجاري الشهري","A 12-page printed brief, posted every month.","نشرة مطبوعة من 12 صفحة تصلك كل شهر.",
+    ["Printed and posted every month","Trade, FX and investment figures with sources","PDF copy of each issue","Cancel any time"],
+    ["تُطبع وتُرسل كل شهر","أرقام التجارة والصرف والاستثمار مع المصادر","نسخة PDF من كل عدد","إلغاء في أي وقت"],["news"],[["month",4900]],{report_frequency:"month"}),
+  P("quarterly-outlook","report","Quarterly Outlook","التقرير الربع سنوي","A 40-page printed report with sector deep-dives, every quarter.","تقرير مطبوع من 40 صفحة مع تحليل القطاعات كل ربع سنة.",
+    ["Printed and posted every quarter","Two sector deep-dives per issue","Africa regional scorecard","PDF copy of each issue"],
+    ["يُطبع ويُرسل كل ربع سنة","تحليلان معمقان للقطاعات في كل عدد","مؤشر إقليمي لأفريقيا","نسخة PDF من كل عدد"],["news","sectors"],[["quarter",14900]],{report_frequency:"quarter"}),
+  P("annual-yearbook","report","Annual Yearbook","الكتاب السنوي","The full Egypt Gateway Yearbook, printed and bound.","كتاب البوابة السنوي كاملًا، مطبوعًا ومجلدًا.",
+    ["Printed, bound yearbook (about 120 pages)","Every module in one reference volume","Two copies posted","PDF copy included"],
+    ["كتاب سنوي مطبوع ومجلد (نحو 120 صفحة)","كل الأقسام في مجلد مرجعي واحد","إرسال نسختين","نسخة PDF مشمولة"],["agreements","news","sectors"],[["year",34900]],{report_frequency:"year"})
+];
+let REPORTS = [
+  { id:"monitor-2026-12", slug:"monitor-2026-12", frequency:"month", title_en:"Egypt Trade Monitor", title_ar:"المرصد التجاري لمصر", period_label:"December 2026", status:"scheduled", publish_at:"2026-12-05T09:00:00Z", pdf_path:null },
+  { id:"outlook-2026-q4", slug:"outlook-2026-q4", frequency:"quarter", title_en:"Egypt Gateway Quarterly Outlook", title_ar:"التوقعات الربع سنوية", period_label:"Q4 2026", status:"scheduled", publish_at:"2027-01-15T09:00:00Z", pdf_path:null },
+  { id:"yearbook-2026", slug:"yearbook-2026", frequency:"year", title_en:"Egypt Gateway Yearbook", title_ar:"الكتاب السنوي للبوابة", period_label:"2026 Yearbook", status:"scheduled", publish_at:"2027-01-31T09:00:00Z", pdf_path:null }
+];
+const planBy = slug => CATALOGUE.find(p => p.slug === slug);
+const nm = p => (isAr() && p.name_ar) || p.name_en;
+
+/* ---------- State ---------- */
+let MODE = "demo", sb = null, billing = "month", pending = null;
+const S = { user:null, profile:null, access:{ signed_in:false, modules:FREE.slice(), pdf:false, subscriptions:[] }, addresses:[], deliveries:[], payments:[] };
+const hasMod = k => FREE.includes(k) || S.access.modules.includes(k);
+const holds = slug => S.access.subscriptions.some(s => s.plan === slug && ["active","trialing","past_due"].includes(s.status));
+
+const money = (minor, cur="GBP") => { try{ return new Intl.NumberFormat(isAr() ? "ar-EG" : "en-GB", { style:"currency", currency:cur, minimumFractionDigits: minor % 100 ? 2 : 0, maximumFractionDigits:2 }).format(minor/100); }catch(e){ return "£"+(minor/100); } };
+const dfmt = d => d ? new Date(d).toLocaleDateString(isAr() ? "ar-EG" : "en-GB", { day:"numeric", month:"short", year:"numeric" }) : "—";
+const per = iv => ({ month:t("perMonth"), quarter:t("perQuarter"), year:t("perYear") }[iv] || "");
+
+/* ---------- Pricing ---------- */
+function renderPricing(){
+  const access = CATALOGUE.filter(p => p.kind === "access").sort((a,b)=> (a.sort_order??0)-(b.sort_order??0));
+  $("#accessPlans").innerHTML = access.map(p => {
+    const pr = p.prices.find(x => x.interval === billing) || p.prices[0];
+    const feats = (isAr() && p.features_ar) || p.features || [];
+    const isFree = !p.prices.length;
+    let cta;
+    if(isFree) cta = S.user ? `<div class="have">${t("yourFree")}</div>` : `<button type="button" class="pillbtn outline" data-signup>${t("createFree")}</button>`;
+    else if(holds(p.slug)) cta = `<div class="have">✓ ${t("yourPlan")}</div>`;
+    else cta = `<button type="button" class="pillbtn${p.slug==="full-gateway"?"":" outline"}" data-buy="${esc(p.slug)}" data-iv="${esc(pr.interval)}">${t("choose")} ${esc(nm(p))}</button>`;
+    return `<article class="plan${p.slug==="full-gateway"?" feat":""}">${p.slug==="full-gateway"?`<span class="badge">${t("popular")}</span>`:""}
+      <h3>${esc(nm(p))}</h3><p class="tag">${esc((isAr() && p.tagline_ar) || p.tagline_en)}</p>
+      <div class="price num">${isFree ? `<span class="free">${t("free")}</span>` : `${money(pr.amount_minor, pr.currency)}<small>${per(pr.interval)}</small>`}</div>
+      <div class="vat">${isFree ? "&nbsp;" : (p.trial_days ? t("trial",{n:p.trial_days})+" " : "") + t("vat")}</div>
+      <ul>${feats.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><div class="go">${cta}</div></article>`;
+  }).join("");
+  const reps = CATALOGUE.filter(p => p.kind === "report").sort((a,b)=>({month:0,quarter:1,year:2}[a.report_frequency]-({month:0,quarter:1,year:2}[b.report_frequency])));
+  const book = `<svg class="book" viewBox="0 0 100 100" aria-hidden="true"><path d="M15 20h30a10 10 0 0 1 10 10v55a8 8 0 0 0-8-8H15z"/><path d="M85 20H65a10 10 0 0 0-10 10v55a8 8 0 0 1 8-8h22z"/></svg>`;
+  $("#reportPlans").innerHTML = reps.map((p,i) => {
+    const pr = p.prices[0]; if(!pr) return "";
+    const feats = (isAr() && p.features_ar) || p.features || [];
+    const cta = holds(p.slug) ? `<span class="pillbtn" aria-disabled="true">✓ ${t("yourPlan")}</span>` : `<button type="button" class="pillbtn" data-buy="${esc(p.slug)}" data-iv="${esc(pr.interval)}">${t("subscribe")}</button>`;
+    return `<article class="rep c${i%3}">${book}<span class="freq">${t("every_"+p.report_frequency)}</span><h4>${esc(nm(p))}</h4>
+      <div class="price num">${money(pr.amount_minor, pr.currency)}<small>${per(pr.interval)}</small></div>
+      <ul>${feats.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><div class="go">${cta}</div></article>`;
+  }).join("");
+}
+
+/* ---------- Paywalls ---------- */
+const seenPaywall = new Set();
+function applyGates(){
+  GATED.forEach(key => {
+    const sec = document.getElementById(key); if(!sec) return;
+    const locked = !hasMod(key);
+    sec.classList.toggle("gated", locked);
+    const parts = [];
+    [...sec.children].forEach(ch => { if(ch.classList.contains("paywall")) return; if(ch.classList.contains("wrap")) [...ch.children].forEach(c => { if(!c.classList.contains("head")) parts.push(c); }); else parts.push(ch); });
+    parts.forEach(el => { el.inert = locked; if(locked) el.setAttribute("aria-hidden","true"); else el.removeAttribute("aria-hidden"); });
+    let pw = sec.querySelector(":scope > .paywall");
+    if(locked){
+      if(!pw){ pw = document.createElement("div"); pw.className = "paywall"; sec.appendChild(pw); }
+      const plans = CATALOGUE.filter(p => p.kind === "access" && (p.modules||[]).includes(key) && p.prices.length).map(p => `<b>${esc(nm(p))}</b>`);
+      pw.innerHTML = `<div class="pw-card"><div class="lock" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>${t("lockedH")}</h3><p>${t("lockedP",{m: esc(MOD[key] ? MOD[key][isAr()?1:0] : key)})}</p>
+        <div><p class="inc">${t("inc")} ${plans.join(" · ")}</p><div class="row"><a class="pillbtn" href="#pricing" data-plans-from="${key}">${t("seePlans")}</a>${S.user ? "" : `<button type="button" class="pillbtn outline" data-signin>${t("haveAcct")}</button>`}</div></div></div>`;
+      if(!seenPaywall.has(key)){ seenPaywall.add(key); watchPaywall(sec, key); }
+    } else if(pw){ pw.remove(); }
+  });
+}
+const pwObserver = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting && e.target.classList.contains("gated")){ track("paywall_view", e.target.id); pwObserver.unobserve(e.target); } }), { threshold:.4 }) : null;
+function watchPaywall(sec){ if(pwObserver) pwObserver.observe(sec); }
+
+/* ---------- Header ---------- */
+function renderHeader(){
+  const b = $("#acctBtn"); if(!b) return;
+  b.classList.toggle("in", !!S.user);
+  $(".lbl", b).textContent = S.user ? t("account") : t("signIn");
+  b.setAttribute("aria-label", S.user ? t("account") : t("signIn"));
+  const m = $("#mAcct"); if(m) m.textContent = S.user ? t("account") : t("signIn");
+}
+function renderAll(){ renderPricing(); applyGates(); renderHeader(); if($("#acctDlg").open) renderAccount(); }
+
+/* ---------- Dialog helpers ---------- */
+function openDlg(id){ const d = $("#"+id); if(!d.open){ try{ d.showModal(); }catch(e){ d.setAttribute("open",""); } } return d; }
+function closeDlg(d){ if(d.open) d.close(); }
+$$("dialog.pd").forEach(d => {
+  d.addEventListener("click", e => { if(e.target === d || e.target.closest("[data-close]")) closeDlg(d); });
+  d.addEventListener("close", () => { if(d.id === "acctDlg" && location.hash === "#account"){ try{ history.replaceState(null, "", location.pathname + location.search); }catch(e){} } });
+});
+function msg(id, text, ok){ const el = $("#"+id); el.textContent = text || ""; el.className = "msg" + (text ? (ok ? " ok" : " err") : ""); }
+
+/* ---------- Auth ---------- */
+function authTab(tab){
+  $$("[data-atab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.atab === tab)));
+  $$("[data-apanel]").forEach(p => p.hidden = p.dataset.apanel !== tab);
+  $(".tabs", $("#authDlg")).hidden = tab === "reset";
+  msg("authMsg", "");
+}
+function openAuth(tab="in", then=null){ pending = then; authTab(tab); openDlg("authDlg"); setTimeout(()=>{ const f = $("[data-apanel='"+tab+"'] input"); if(f) f.focus(); }, 30); }
+$$("[data-atab]").forEach(b => b.addEventListener("click", () => authTab(b.dataset.atab)));
+const validEmail = e => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+
+$("#formIn").addEventListener("submit", async e => {
+  e.preventDefault(); const f = e.target; const email = f.email.value.trim(), password = f.password.value;
+  if(!validEmail(email)) return msg("authMsg", t("badEmail"));
+  if(password.length < 8) return msg("authMsg", t("pwShort"));
+  if(MODE === "live"){
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if(error) return msg("authMsg", error.message);
+  } else {
+    const users = store.get("users") || {};
+    const u = users[email.toLowerCase()] || { id:"demo-"+Date.now(), email, full_name: email.split("@")[0] };
+    users[email.toLowerCase()] = u; store.set("users", users); demoSignIn(u);
+  }
+  closeDlg($("#authDlg")); say(t("signedIn")); await afterAuth();
+});
+
+$("#formUp").addEventListener("submit", async e => {
+  e.preventDefault(); const f = e.target;
+  const email = f.email.value.trim(), password = f.password.value;
+  if(!f.full_name.value.trim()) return msg("authMsg", isAr() ? "أدخل اسمك." : "Enter your name.");
+  if(!validEmail(email)) return msg("authMsg", t("badEmail"));
+  if(password.length < 8) return msg("authMsg", t("pwShort"));
+  if(!f.terms.checked) return msg("authMsg", t("needTerms"));
+  const meta = { full_name:f.full_name.value.trim(), organisation:f.organisation.value.trim(), audience:f.audience.value, country_code:f.country_code.value, marketing_opt_in:f.marketing_opt_in.checked, lang: isAr() ? "ar" : "en" };
+  if(MODE === "live"){
+    const { data, error } = await sb.auth.signUp({ email, password, options:{ data: meta, emailRedirectTo: location.origin + location.pathname } });
+    if(error) return msg("authMsg", error.message);
+    if(!data.session){ msg("authMsg", t("welcome"), true); return; }
+  } else {
+    const users = store.get("users") || {}; const u = { id:"demo-"+Date.now(), email, ...meta, organisation_name: meta.organisation };
+    users[email.toLowerCase()] = u; store.set("users", users); demoSignIn(u); say(t("welcomeDemo"));
+  }
+  closeDlg($("#authDlg")); await afterAuth();
+});
+
+$("#forgotBtn").addEventListener("click", async () => {
+  const email = $("#formIn").email.value.trim(); if(!validEmail(email)) return msg("authMsg", t("enterEmail"));
+  if(MODE === "live"){ const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname }); if(error) return msg("authMsg", error.message); }
+  msg("authMsg", t("resetSent"), true);
+});
+$("#magicBtn").addEventListener("click", async () => {
+  const email = $("#formIn").email.value.trim(); if(!validEmail(email)) return msg("authMsg", t("enterEmail"));
+  if(MODE === "live"){ const { error } = await sb.auth.signInWithOtp({ email, options:{ emailRedirectTo: location.origin + location.pathname, shouldCreateUser:false } }); if(error) return msg("authMsg", error.message); }
+  msg("authMsg", t("magicSent"), true);
+});
+$("#formReset").addEventListener("submit", async e => {
+  e.preventDefault(); const pw = e.target.password.value; if(pw.length < 8) return msg("authMsg", t("pwShort"));
+  if(MODE === "live"){ const { error } = await sb.auth.updateUser({ password: pw }); if(error) return msg("authMsg", error.message); }
+  msg("authMsg", t("pwSaved"), true); setTimeout(()=>closeDlg($("#authDlg")), 1200);
+});
+
+async function afterAuth(){ await refresh(); if(pending){ const p = pending; pending = null; p(); } }
+
+/* ---------- Data: live ---------- */
+async function refresh(){
+  if(MODE === "live"){
+    const { data: { session } } = await sb.auth.getSession();
+    S.user = session?.user || null;
+    if(S.user){
+      const [acc, prof, addr, del, pay] = await Promise.all([
+        sb.rpc("my_access"),
+        sb.from("profiles").select("*").eq("id", S.user.id).maybeSingle(),
+        sb.from("addresses").select("*").order("is_default", { ascending:false }),
+        sb.from("print_deliveries").select("id,status,copies,carrier,tracking_number,tracking_url,dispatched_at,delivered_at,created_at,report:reports(title_en,title_ar,period_label)").order("created_at", { ascending:false }).limit(50),
+        sb.from("payments").select("amount_minor,currency,status,invoice_number,hosted_invoice_url,paid_at,created_at").order("created_at", { ascending:false }).limit(24)
+      ]);
+      if(acc.data) S.access = acc.data;
+      S.profile = prof.data || null; S.addresses = addr.data || []; S.deliveries = del.data || []; S.payments = pay.data || [];
+    } else { S.profile = null; S.access = { signed_in:false, modules:FREE.slice(), pdf:false, subscriptions:[] }; S.addresses = []; S.deliveries = []; S.payments = []; }
+    const reps = await sb.from("reports").select("id,slug,frequency,title_en,title_ar,period_label,status,publish_at,published_at,pdf_path").order("publish_at", { ascending:false }).limit(40);
+    if(reps.data) REPORTS = reps.data;
+  } else demoLoad();
+  renderAll();
+}
+
+/* ---------- Data: demo ---------- */
+function demoLoad(){
+  const d = store.get("state") || {};
+  S.user = d.user || null; S.profile = d.user || null;
+  S.addresses = d.addresses || []; S.deliveries = d.deliveries || []; S.payments = [];
+  const subs = (d.subs || []).filter(s => s.status !== "expired");
+  const mods = new Set(FREE); let pdf = false;
+  subs.forEach(s => { const p = planBy(s.plan); if(!p) return; (p.modules||[]).forEach(m => mods.add(m)); if(p.includes_pdf || p.kind === "report") pdf = true; });
+  S.access = { signed_in: !!S.user, modules:[...mods], pdf, subscriptions: subs };
+}
+function demoSave(mut){ const d = store.get("state") || {}; mut(d); store.set("state", d); demoLoad(); }
+function demoSignIn(u){ demoSave(d => { if(!d.user || d.user.email !== u.email){ d.subs = []; d.addresses = []; d.deliveries = []; } d.user = u; }); }
+
+/* ---------- Checkout ---------- */
+let buying = null;
+function openBuy(slug, iv){
+  const p = planBy(slug); if(!p) return;
+  if(!S.user){ openAuth("up", () => openBuy(slug, iv)); return; }
+  if(holds(slug)){ say(t("already")); return; }
+  const pr = p.prices.find(x => x.interval === iv) || p.prices[0];
+  buying = { p, pr };
+  const billed = { month:t("billedM"), quarter:t("billedQ"), year:t("billedY") }[pr.interval];
+  $("#buySum").innerHTML = `<b>${esc(nm(p))}</b><span class="amt num">${money(pr.amount_minor, pr.currency)}<small style="font:500 .8rem var(--sans);color:var(--muted)"> ${per(pr.interval)} · ${t("vat")}</small></span><span class="fine">${p.trial_days && !(store.get("trialUsed")||{})[slug] ? t("trial",{n:p.trial_days})+" " : ""}${billed}</span>`;
+  const needShip = p.kind === "report" && MODE === "demo";
+  $("#buyShip").hidden = !needShip;
+  if(needShip){ const f = $("#formBuy"); const a = S.addresses.find(x=>x.is_default); f.recipient_name.value = a?.recipient_name || S.profile?.full_name || ""; f.organisation.value = a?.organisation || S.profile?.organisation_name || ""; f.line1.value = a?.line1 || ""; f.line2.value = a?.line2 || ""; f.city.value = a?.city || ""; f.postcode.value = a?.postcode || ""; if(a) f.country_code.value = a.country_code; }
+  $("#buyGo").textContent = MODE === "live" ? t("payLive") : t("payDemo");
+  $("#buyFine").textContent = MODE === "live" ? t("fineLive") : t("fineDemo");
+  msg("buyMsg", ""); openDlg("buyDlg");
+  track("plan_click", null, slug);
+}
+$("#formBuy").addEventListener("submit", async e => {
+  e.preventDefault(); if(!buying) return; const { p, pr } = buying; const btn = $("#buyGo"); btn.disabled = true;
+  try{
+    if(MODE === "live"){
+      const { data, error } = await sb.functions.invoke("create-checkout", { body:{ price_id: pr.id, return_url: location.origin + location.pathname } });
+      if(error){ let m = t("err"); try{ m = (await error.context.json()).error || m; }catch(_){} throw new Error(m); }
+      if(data?.url){ location.assign(data.url); return; }
+      throw new Error(t("err"));
+    }
+    // Demo
+    const f = e.target; let addr = null;
+    if(p.kind === "report"){
+      if(!f.recipient_name.value.trim() || !f.line1.value.trim() || !f.city.value.trim()) throw new Error(t("needShip"));
+      addr = { id:"addr-"+Date.now(), recipient_name:f.recipient_name.value.trim(), organisation:f.organisation.value.trim(), line1:f.line1.value.trim(), line2:f.line2.value.trim(), city:f.city.value.trim(), postcode:f.postcode.value.trim(), country_code:f.country_code.value, is_default:true };
+    }
+    const months = { month:1, quarter:3, year:12 }[pr.interval] || 1; const end = new Date(); end.setMonth(end.getMonth() + months);
+    const used = store.get("trialUsed") || {}; const trial = p.trial_days && !used[p.slug];
+    if(trial){ used[p.slug] = true; store.set("trialUsed", used); }
+    demoSave(d => {
+      d.subs = (d.subs || []).concat([{ id:"sub-"+Date.now(), plan:p.slug, kind:p.kind, name:p.name_en, name_ar:p.name_ar, status: trial ? "trialing" : "active", interval:pr.interval, amount_minor:pr.amount_minor, currency:pr.currency, current_period_end: trial ? new Date(Date.now()+p.trial_days*864e5).toISOString() : end.toISOString(), cancel_at_period_end:false }]);
+      if(addr){ d.addresses = [addr].concat((d.addresses||[]).map(a => ({...a, is_default:false}))); const next = REPORTS.find(r => r.frequency === p.report_frequency);
+        if(next) d.deliveries = [{ id:"del-"+Date.now(), status:"queued", copies: p.slug==="annual-yearbook"?2:1, report:{ title_en:next.title_en, title_ar:next.title_ar, period_label:next.period_label }, created_at:new Date().toISOString() }].concat(d.deliveries||[]); }
+    });
+    closeDlg($("#buyDlg")); renderAll(); say(t("paidReady"));
+    const first = (p.modules||[]).find(m => GATED.includes(m)); if(first) setTimeout(()=>document.getElementById(first)?.scrollIntoView({ behavior:"smooth" }), 250);
+  }catch(err){ msg("buyMsg", err.message || t("err")); }
+  finally{ btn.disabled = false; }
+});
+
+/* ---------- Account ---------- */
+function xTab(tab){ $$("[data-xtab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.xtab === tab))); $$("[data-xpanel]").forEach(p => p.hidden = p.dataset.xpanel !== tab); }
+$$("[data-xtab]").forEach(b => b.addEventListener("click", () => xTab(b.dataset.xtab)));
+function openAccount(){ if(!S.user){ openAuth("in", openAccount); return; } renderAccount(); xTab("subs"); msg("acctMsg",""); openDlg("acctDlg"); }
+const st = s => `<span class="st ${esc(s)}">${esc(t("st_"+s))}</span>`;
+
+function renderAccount(){
+  const pf = S.profile || {};
+  $("#acctWho").innerHTML = `<b>${esc(pf.full_name || S.user?.email || "")}</b>${esc(S.user?.email || "")}${pf.organisation_name ? " · "+esc(pf.organisation_name) : ""}`;
+  const subs = S.access.subscriptions || [];
+  $("#xSubs").innerHTML = subs.length ? `<table><thead><tr><th>${t("plan")}</th><th>${t("status")}</th><th>${t("renews")}</th><th>${t("price")}</th><th></th></tr></thead><tbody>${subs.map(s => `<tr>
+      <td><b>${esc(isAr() && s.name_ar ? s.name_ar : s.name)}</b>${s.via_organisation ? `<br><span class="fine">${t("viaOrg")}</span>` : ""}</td>
+      <td>${st(s.status)}${s.cancel_at_period_end ? `<br><span class="fine">${t("cancelled")}</span>` : ""}</td>
+      <td class="num">${s.cancel_at_period_end ? t("ends")+" " : ""}${dfmt(s.current_period_end)}</td>
+      <td class="num">${s.amount_minor != null ? money(s.amount_minor, s.currency) + per(s.interval) : "—"}</td>
+      <td>${MODE === "demo" && !s.cancel_at_period_end ? `<button type="button" class="linkbtn" data-dcancel="${esc(s.id)}">${t("cancel")}</button>` : ""}</td></tr>`).join("")}</tbody></table>`
+    : `<p class="empty">${t("noSubs")}</p><a class="pillbtn" href="#pricing" data-close>${t("seePlans")}</a>`;
+  if(S.payments.length) $("#xSubs").insertAdjacentHTML("beforeend", `<h4 style="margin:22px 0 6px;font-family:var(--serif);text-transform:uppercase">${t("payments")}</h4><table><tbody>${S.payments.map(p => `<tr><td class="num">${dfmt(p.paid_at || p.created_at)}</td><td class="num">${money(p.amount_minor, p.currency)}</td><td><span class="st ${esc(p.status)}">${p.status==="succeeded"?t("paid"):t("failed")}</span></td><td>${p.hosted_invoice_url ? `<a href="${esc(p.hosted_invoice_url)}" rel="noopener">${t("invoice")} ${esc(p.invoice_number||"")}</a>` : ""}</td></tr>`).join("")}</tbody></table>`);
+
+  const freqOk = f => S.access.pdf && (S.access.subscriptions||[]).some(s => { const p = planBy(s.plan); return p && (p.includes_pdf || p.report_frequency === f); });
+  $("#xReports").innerHTML = REPORTS.length ? `<table><thead><tr><th>${t("rTitle")}</th><th>${t("rPeriod")}</th><th></th></tr></thead><tbody>${REPORTS.map(r => {
+      let act;
+      if(r.status !== "published") act = `<span class="fine">${t("coming",{d:dfmt(r.publish_at)})}</span>`;
+      else if(freqOk(r.frequency) && r.pdf_path) act = `<button type="button" class="pillbtn outline" style="font-size:.66rem;padding:8px 12px" data-dl="${esc(r.id)}">${t("download")}</button>`;
+      else act = `<span class="fine">${t("locked")}</span>`;
+      return `<tr><td><b>${esc(isAr() && r.title_ar ? r.title_ar : r.title_en)}</b><br><span class="fine">${t("every_"+r.frequency)}</span></td><td>${esc(r.period_label)}</td><td>${act}</td></tr>`; }).join("")}</tbody></table>` : `<p class="empty">${t("noReports")}</p>`;
+
+  const a = S.addresses.find(x => x.is_default) || S.addresses[0];
+  $("#xPost").innerHTML = (S.deliveries.length ? `<table><thead><tr><th>${t("rTitle")}</th><th>${t("status")}</th><th></th></tr></thead><tbody>${S.deliveries.map(d => `<tr><td><b>${esc(d.report ? (isAr() && d.report.title_ar ? d.report.title_ar : d.report.title_en) : "")}</b><br><span class="fine">${esc(d.report?.period_label || "")} · ×${d.copies}</span></td><td><span class="st ${esc(d.status)}">${t("d_"+d.status)}</span></td><td>${d.tracking_url ? `<a href="${esc(d.tracking_url)}" rel="noopener">${esc(d.carrier||"")} ${esc(d.tracking_number||"")}</a>` : esc(d.tracking_number || "")}</td></tr>`).join("")}</tbody></table>` : `<p class="empty">${t("noPost")}</p>`)
+    + `<h4 style="margin:22px 0 8px;font-family:var(--serif);text-transform:uppercase">${t("addr")}</h4>
+      <form id="formAddr" novalidate><div class="two"><label><span>${isAr()?"المستلم":"Recipient"}</span><input name="recipient_name" value="${esc(a?.recipient_name||S.profile?.full_name||"")}"></label><label><span>${isAr()?"المؤسسة":"Organisation"}</span><input name="organisation" value="${esc(a?.organisation||"")}"></label></div>
+      <label><span>${isAr()?"العنوان":"Address"}</span><input name="line1" value="${esc(a?.line1||"")}"></label><input name="line2" aria-label="Address line 2" value="${esc(a?.line2||"")}">
+      <div class="two"><label><span>${isAr()?"المدينة":"Town or city"}</span><input name="city" value="${esc(a?.city||"")}"></label><label><span>${isAr()?"الرمز البريدي":"Postcode"}</span><input name="postcode" value="${esc(a?.postcode||"")}"></label></div>
+      <label><span>${isAr()?"الدولة":"Country"}</span><select name="country_code">${["GB","EG","AE","SA","IE","US","FR","DE","KE","NG","ZA","MA"].map(c=>`<option ${a?.country_code===c?"selected":""}>${c}</option>`).join("")}</select></label>
+      <button class="pillbtn" type="submit">${t("saveAddr")}</button></form>`;
+
+  const fp = $("#formProfile"); fp.full_name.value = pf.full_name || ""; fp.organisation_name.value = pf.organisation_name || pf.organisation || ""; fp.job_title.value = pf.job_title || ""; fp.phone.value = pf.phone || ""; fp.marketing_opt_in.checked = !!pf.marketing_opt_in;
+  $("#billingBtn").hidden = MODE === "live" && !S.payments.length && !(S.access.subscriptions||[]).length;
+}
+
+$("#acctDlg").addEventListener("click", async e => {
+  const c = e.target.closest("[data-dcancel]");
+  if(c){ demoSave(d => { (d.subs||[]).forEach(s => { if(s.id === c.dataset.dcancel) s.cancel_at_period_end = true; }); }); renderAll(); return; }
+  const dl = e.target.closest("[data-dl]");
+  if(dl && MODE === "live"){
+    const r = REPORTS.find(x => String(x.id) === dl.dataset.dl); if(!r) return;
+    const { data, error } = await sb.storage.from("reports").createSignedUrl(r.pdf_path, 300, { download: r.slug + ".pdf" });
+    if(error) return msg("acctMsg", error.message);
+    sb.from("report_downloads").insert({ user_id: S.user.id, report_id: r.id }).then(()=>{});
+    track("download", null, r.slug);
+    const a = document.createElement("a"); a.href = data.signedUrl; a.rel = "noopener"; a.target = "_blank"; document.body.appendChild(a); a.click(); a.remove();
+  }
+});
+$("#acctDlg").addEventListener("submit", async e => {
+  if(e.target.id !== "formAddr") return; e.preventDefault(); const f = e.target;
+  const row = { recipient_name:f.recipient_name.value.trim(), organisation:f.organisation.value.trim(), line1:f.line1.value.trim(), line2:f.line2.value.trim(), city:f.city.value.trim(), postcode:f.postcode.value.trim(), country_code:f.country_code.value, is_default:true };
+  if(!row.recipient_name || !row.line1 || !row.city) return msg("acctMsg", t("needShip"));
+  if(MODE === "live"){
+    await sb.from("addresses").update({ is_default:false }).eq("user_id", S.user.id).eq("is_default", true);
+    const { error } = await sb.from("addresses").insert({ ...row, user_id: S.user.id });
+    if(error) return msg("acctMsg", error.message);
+    await refresh();
+  } else { demoSave(d => { d.addresses = [{ id:"addr-"+Date.now(), ...row }].concat((d.addresses||[]).map(a => ({...a, is_default:false}))); (d.deliveries||[]).forEach(x => { if(x.status === "on_hold") x.status = "queued"; }); }); renderAll(); }
+  msg("acctMsg", t("addrSaved"), true);
+});
+$("#formProfile").addEventListener("submit", async e => {
+  e.preventDefault(); const f = e.target;
+  const row = { full_name:f.full_name.value.trim(), organisation_name:f.organisation_name.value.trim(), job_title:f.job_title.value.trim(), phone:f.phone.value.trim(), marketing_opt_in:f.marketing_opt_in.checked };
+  if(MODE === "live"){ const { error } = await sb.from("profiles").update(row).eq("id", S.user.id); if(error) return msg("acctMsg", error.message); await refresh(); }
+  else { demoSave(d => { d.user = { ...d.user, ...row }; }); renderAll(); }
+  msg("acctMsg", t("saved"), true);
+});
+$("#billingBtn").addEventListener("click", async () => {
+  if(MODE !== "live") return msg("acctMsg", t("billingDemo"), true);
+  const { data, error } = await sb.functions.invoke("billing-portal", { body:{ return_url: location.origin + location.pathname } });
+  if(error){ let m = t("err"); try{ m = (await error.context.json()).error || m; }catch(_){} return msg("acctMsg", m); }
+  if(data?.url) location.assign(data.url);
+});
+$("#signOutBtn").addEventListener("click", async () => {
+  if(MODE === "live") await sb.auth.signOut(); else demoSave(d => { d.user = null; });
+  closeDlg($("#acctDlg")); await refresh(); say(t("signedOut"));
+});
+
+/* ---------- Enquiries, newsletter, analytics ---------- */
+$("#formEnq").addEventListener("submit", async e => {
+  e.preventDefault(); const f = e.target;
+  if(!f.name.value.trim() || !validEmail(f.email.value.trim())) return msg("enqMsg", t("badEmail"));
+  if(MODE !== "live"){ msg("enqMsg", t("enqDemo"), true); return; }
+  const { error } = await sb.from("enquiries").insert({ name:f.name.value.trim(), email:f.email.value.trim(), organisation:f.organisation.value.trim(), seats: parseInt(f.seats.value,10) || null, message:f.message.value.trim(), topic:"enterprise", user_id: S.user?.id || null });
+  if(error) return msg("enqMsg", error.message);
+  msg("enqMsg", t("enqSent"), true); f.reset();
+});
+let anonId = store.get("anon"); if(!anonId){ anonId = Math.random().toString(36).slice(2) + Date.now().toString(36); store.set("anon", anonId); }
+function track(event, module_key, plan_slug){
+  if(MODE !== "live") return;
+  sb.from("content_events").insert({ event, module_key: module_key || null, plan_slug: plan_slug || null, user_id: S.user?.id || null, anon_id: anonId, lang: isAr() ? "ar" : "en", referrer: document.referrer ? document.referrer.slice(0,200) : null }).then(()=>{});
+}
+
+/* ---------- Global clicks & routing ---------- */
+document.addEventListener("click", e => {
+  const buy = e.target.closest("[data-buy]"); if(buy){ openBuy(buy.dataset.buy, buy.dataset.iv); return; }
+  if(e.target.closest("[data-signup]")){ openAuth("up"); return; }
+  if(e.target.closest("[data-signin]")){ openAuth("in"); return; }
+  if(e.target.closest("[data-enquiry]")){ msg("enqMsg",""); openDlg("enqDlg"); return; }
+  const from = e.target.closest("[data-plans-from]"); if(from) track("plan_click", from.dataset.plansFrom);
+  const bt = e.target.closest("[data-bill]"); if(bt){ billing = bt.dataset.bill; $$("[data-bill]").forEach(b => b.setAttribute("aria-pressed", String(b === bt))); renderPricing(); }
+  if(e.target.closest("#acctBtn") || e.target.closest("#mAcct")){ e.preventDefault(); openAccount(); }
+});
+function route(){ if(location.hash === "#account") openAccount(); }
+window.addEventListener("hashchange", route);
+new MutationObserver(() => renderAll()).observe(document.documentElement, { attributes:true, attributeFilter:["lang"] });
+
+/* ---------- Public hooks used by the rest of the page ---------- */
+window.GatewayPortal = {
+  get mode(){ return MODE; },
+  async newsletter(email){
+    if(MODE !== "live") return t("nlDemo");
+    const { error } = await sb.from("newsletter_subscribers").insert({ email, source:"footer", lang: isAr() ? "ar" : "en", user_id: S.user?.id || null });
+    if(error && error.code !== "23505") return t("err");
+    return t("nlOk");
+  },
+  open: openAccount, plans: () => document.getElementById("pricing").scrollIntoView({ behavior:"smooth" })
+};
+
+/* ---------- Boot ---------- */
+function showDemoStrip(){
+  if($(".demo-strip")) return;
+  const s = document.createElement("div"); s.className = "demo-strip"; s.setAttribute("role","note");
+  s.innerHTML = `<div class="wrap"><b>${t("demoTag")}</b><span>${t("demoStrip")}</span><button type="button" id="demoReset">${t("demoReset")}</button></div>`;
+  $(".topbar").after(s);
+  $("#demoReset").addEventListener("click", () => { store.set("state", {}); store.set("users", {}); store.set("trialUsed", {}); refresh(); });
+}
+function loadScript(src){ return new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); }); }
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("timeout")), ms))]);
+
+async function boot(){
+  renderAll(); // demo-safe first paint: free modules open, rest locked
+  if(CFG.supabaseUrl && CFG.supabaseKey && CFG.mode !== "demo"){
+    try{
+      if(!window.supabase) await withTimeout(loadScript("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"), 6000);
+      sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, { auth:{ persistSession:true, detectSessionInUrl:true, flowType:"pkce" } });
+      const cat = await withTimeout(sb.from("pricing_catalogue").select("*").order("sort_order"), 6000);
+      if(cat.error || !cat.data?.length) throw cat.error || new Error("empty catalogue");
+      CATALOGUE = cat.data.map(p => ({ ...p, features: Array.isArray(p.features) ? p.features : [], features_ar: (planBy(p.slug)||{}).features_ar }));
+      MODE = "live";
+      sb.auth.onAuthStateChange((evt) => {
+        if(evt === "PASSWORD_RECOVERY"){ openAuth("reset"); }
+        if(evt === "SIGNED_IN" || evt === "SIGNED_OUT" || evt === "USER_UPDATED") setTimeout(refresh, 0);
+      });
+    }catch(e){ MODE = "demo"; console.info("Gateway portal: running in demo mode (" + (e && e.message) + ")"); }
+  }
+  if(MODE === "demo") showDemoStrip();
+  await refresh();
+  route();
+  const q = new URLSearchParams(location.search);
+  if(q.get("checkout") === "success"){
+    say(t("paidOk")); let n = 0;
+    const poll = async () => { await refresh(); if((S.access.subscriptions||[]).length || ++n > 8){ if(S.access.subscriptions?.length) say(t("paidReady")); return; } setTimeout(poll, 2000); };
+    setTimeout(poll, 1500);
+  } else if(q.get("checkout") === "cancelled") say(t("paidCancel"));
+  if(q.has("checkout")){ try{ history.replaceState(null, "", location.pathname + location.hash); }catch(e){} }
+}
+boot();
 })();
 </script>
 </body>

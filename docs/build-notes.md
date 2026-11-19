@@ -18,6 +18,12 @@
 - Other African country population/GDP: indicative placeholders — replace with World Bank/IMF data before launch.
 - Treaty dates (UK–Egypt BIT 1975, DTC 1977) to verify against gov.uk treaty records.
 
+## Subscriptions (added 19 Nov 2026)
+- Free preview: hero, figures, Why Egypt, sources. The 9 other modules show their top part, then a "Subscribers only" panel naming the packages that unlock them.
+- Header Sign in / Account; Plans section after Why Egypt; sign-in and account dialogs; admin page at /admin/.
+- Backend: Supabase (accounts, data, PDFs, print queue) and Stripe (payments). Details in subscriptions-backend.md.
+
 ## Not yet done
-- PDFs and print; live currency/news feeds; full Arabic body text; newsletter sign-up not connected.
+- Stripe secret key, webhook and customer portal (owner steps); real report PDFs; placeholder prices.
+- Live currency/news feeds; full Arabic body text.
 - Labelled "Prototype, not an official government website"; no crown or GOV.UK marks.
