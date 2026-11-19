@@ -55,7 +55,7 @@ Test purchases use Stripe's test card 4242 4242 4242 4242, any future expiry dat
 
 **https://mirnaaboug.github.io/Invest-In-Egypt/admin/**
 
-Sign in with your website account. It needs the **admin** or **editor** role (step 5). Editors can run the print queue, reports and enquiries. Only admins can grant access, end access or change roles. The database checks every action, so the page can't do anything your role doesn't allow, and anyone else who opens it sees nothing.
+Sign in with your website account. It needs the **admin** or **editor** role (see "Make yourself admin" above). Editors can run the print queue, reports and enquiries. Only admins can grant access, end access or change roles. The database checks every action, so the page can't do anything your role doesn't allow, and anyone else who opens it sees nothing.
 
 | Tab | What you do there |
 |---|---|
