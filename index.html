@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-brand="gov">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Egypt Trade and Investment Gateway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Manrope:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Editorial reference site: warm paper, serif statements in caps, one crimson accent, gold for figures,
+   dot-matrix maps instead of photography, colour-block tiles for sectors, a full-bleed red call-to-action band. */
+:root{
+  --paper:#f6f4f0; --white:#ffffff; --ink:#1c1c1c; --muted:#6d6a65; --line:#e3ded6; --ghost:#e6e1d8;
+  --accent:#c41e3a; --accent-dk:#9d1730; --gold:#b38b3a; --deep:#14213d; --orange:#d9781e; --rose:#d4506f; --olive:#8a7a2e;
+  --good:#2e7d4f; --warn:#c0620f;
+  --serif:"Source Serif 4","Noto Naskh Arabic",Georgia,"Times New Roman",serif;
+  --sans:"Manrope","IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --w:1200px;
+  color-scheme:light;
+}
+html[data-brand="co"]{ --accent:#b5121b; --accent-dk:#8c0e15; --gold:#c49a3c; --deep:#012169; }
+html[data-brand="neutral"]{ --accent:#a8833a; --accent-dk:#7f6229; --gold:#a8833a; --deep:#2a2a2a; --paper:#f4f3f1; --rose:#7c6a55; --orange:#b07a3a; }
+html[lang="ar"]{ --serif:"Noto Naskh Arabic","Source Serif 4",serif; --sans:"IBM Plex Sans Arabic","Manrope",system-ui,sans-serif; }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font:400 16.5px/1.65 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--serif);text-wrap:balance;margin:0;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:-999px;top:0;background:var(--gold);color:#fff;padding:10px 14px;z-index:99}
+.skip:focus{inset-inline-start:0}
+.caps{text-transform:uppercase;letter-spacing:.02em}
+html[lang="ar"] .caps{text-transform:none;letter-spacing:0}
+
+/* Top strip + header */
+.topbar{background:var(--deep);color:#fff;font-size:.78rem}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:38px;flex-wrap:wrap;padding-block:4px}
+.topbar .proto{opacity:.85}
+.topbar .proto b{letter-spacing:.08em;margin-inline-end:6px}
+.tools{margin-inline-start:auto;display:flex;gap:10px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid rgba(255,255,255,.35);border-radius:999px;overflow:hidden}
+.seg button{background:transparent;color:#fff;border:0;padding:4px 11px;font:600 .74rem var(--sans);cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--deep)}
+header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+header.site .wrap{display:flex;align-items:center;gap:22px;min-height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:none}
+.logo svg{width:36px;height:36px}
+.logo .w{font-family:var(--serif);font-weight:700;font-size:1.12rem;line-height:1;letter-spacing:.04em;text-transform:uppercase}
+.logo .w small{display:block;font:600 .58rem var(--sans);letter-spacing:.2em;color:var(--muted);margin-top:5px}
+.co-lock{display:none;font:700 .62rem var(--sans);letter-spacing:.14em;color:var(--accent);border:1px solid var(--accent);padding:3px 7px;border-radius:999px;white-space:nowrap}
+html[data-brand="co"] .co-lock{display:inline-block}
+.nav{flex:1;min-width:0}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.nav li:first-child{margin-inline-start:auto}.nav li:last-child{margin-inline-end:auto}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;padding:8px 8px;color:var(--ink);text-decoration:none;font-weight:600;font-size:.82rem;white-space:nowrap;border-bottom:2px solid transparent}
+.nav a:hover,.nav a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pillbtn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:11px 20px;font:700 .8rem var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap}
+.pillbtn:hover{background:var(--accent-dk);color:#fff}
+.pillbtn.outline{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.pillbtn.outline:hover{background:var(--ink);color:#fff}
+.pillbtn.white{background:#fff;color:var(--accent)}
+.pillbtn.white:hover{background:var(--ink);color:#fff}
+
+/* Hero */
+.hero{background:var(--paper);padding:56px 0 120px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero .kick{font:700 .74rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:.98;font-weight:300;margin-top:18px;color:#b9b2a7;letter-spacing:-.01em}
+.hero h1 strong{font-weight:700;color:var(--ink);display:block}
+.hero h1 em{font-style:normal;color:var(--accent);font-weight:700}
+.statement{margin-top:28px;font-family:var(--serif);font-size:1.32rem;line-height:1.3;font-weight:600;text-transform:uppercase;letter-spacing:.01em;max-width:30ch}
+html[lang="ar"] .statement{text-transform:none}
+.statement b{color:var(--accent);font-weight:700}
+.lede{margin-top:16px;max-width:54ch;color:#45423e;font-size:1.04rem}
+.donate{display:flex;align-items:stretch;margin-top:30px;width:max-content;max-width:100%}
+.donate a{display:flex;align-items:center;background:var(--accent);color:#fff;text-decoration:none;font:600 1.15rem var(--serif);letter-spacing:.04em;text-transform:uppercase;padding:13px 22px}
+.donate a:hover{background:var(--accent-dk)}
+.donate span{display:grid;place-items:center;background:var(--ink);color:#fff;width:52px;font-size:1rem}
+.sofar{margin-top:10px;font:700 .72rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.sofar b{display:block;font:700 1.5rem var(--serif);letter-spacing:0;color:var(--accent);margin-top:2px}
+.src{display:inline-block;font:600 .68rem var(--sans);color:var(--muted);margin-top:6px;border-bottom:1px dotted var(--muted);text-decoration:none;letter-spacing:.02em}
+a.src:hover{color:var(--accent);border-color:var(--accent)}
+.hero-map{position:relative;aspect-ratio:190/272;max-height:620px;justify-self:center;width:100%}
+.hero-map svg{width:100%;height:100%;display:block}
+.hero-map .d-ctx{fill:#d8d2c8}
+.hero-map .d-af{fill:#8f877c}
+.hero-map .d-eg{fill:var(--accent)}
+.hero-map .d-uk{fill:var(--deep)}
+.hero-map .hero-routes path{stroke:var(--ink)!important;opacity:.55;fill:none;vector-effect:non-scaling-stroke;stroke-width:1.3!important}
+.hero-map .hero-routes path:nth-child(n+3){display:none}
+.hero-map .pulse{fill:none;stroke:var(--accent);stroke-width:.4;transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+.hero-map .pin{fill:var(--accent);stroke:#fff;stroke-width:.35}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(3.2);opacity:0}}
+.callout{position:absolute;background:var(--ink);color:#fff;padding:10px 13px;font-size:.78rem;line-height:1.35;width:178px;transform:translate(14px,-50%);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+html[dir="rtl"] .callout{transform:translate(-14px,-50%)}
+.callout b{display:block;font:600 1.05rem var(--serif);color:#fff}
+.callout span{color:#cfc9bf}
+.callout.flip{transform:translate(calc(-100% - 14px),-50%)}
+.callout.flip::before{inset-inline-start:auto;inset-inline-end:-6px;border-inline-end-color:transparent;border-inline-start:6px solid var(--ink);border-inline-end:0}
+.callout::before{content:"";position:absolute;inset-inline-start:-6px;top:50%;margin-top:-6px;border:6px solid transparent;border-inline-end-color:var(--ink);border-inline-start:0}
+
+/* Shortcut tiles (overlap hero) */
+.tiles{margin-top:-78px;position:relative;z-index:2}
+.tiles ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tiles a{display:flex;flex-direction:column;align-items:center;gap:12px;background:#fff;padding:24px 10px 20px;text-decoration:none;color:var(--ink);font:700 .72rem var(--sans);letter-spacing:.12em;text-transform:uppercase;text-align:center;box-shadow:0 14px 40px rgba(40,30,10,.09);transition:transform .2s, box-shadow .2s}
+.tiles a:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(40,30,10,.14);color:var(--accent)}
+.tiles svg{width:40px;height:40px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* Sections */
+section{padding:84px 0;position:relative}
+section.paper{background:var(--paper)}
+.head{display:grid;grid-template-columns:auto 1fr;gap:10px 36px;align-items:center;margin-bottom:40px}
+.ghost{font:300 clamp(3rem,7vw,5.6rem)/.9 var(--serif);color:var(--ghost);letter-spacing:-.02em;white-space:nowrap}
+section.paper .ghost{color:#e3ddd2}
+.head .k{font:700 .72rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.head h2{font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.12;text-transform:uppercase;letter-spacing:.01em}
+html[lang="ar"] .head h2{text-transform:none}
+.head p{margin-top:12px;color:#4d4944;max-width:64ch}
+.head .act{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+
+/* Figures (dashed boxes) */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.fig{border:1.5px dashed #d6cfc3;background:#fff;padding:26px 18px 18px;text-align:center;position:relative;transition:border-color .2s}
+.fig:hover,.fig.hl{border-color:var(--gold)}
+.fig .v{font:600 2.5rem/1 var(--serif);color:#b4aca0;font-variant-numeric:lining-nums}
+.fig.hl .v,.fig:hover .v{color:var(--gold)}
+.fig .l{font-family:var(--serif);font-size:1rem;margin-top:10px;line-height:1.3}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+.why > div{position:relative;padding-top:34px}
+.why .n{position:absolute;top:-44px;inset-inline-start:-6px;font:700 5.2rem/1 var(--serif);color:var(--ghost);z-index:0}
+.why h3{position:relative;font-size:1.3rem;line-height:1.25}
+.why .big{position:relative;font:700 1.9rem/1 var(--serif);color:var(--accent);margin-bottom:10px}
+.why p{position:relative;margin-top:10px;color:#4d4944;font-size:.97rem}
+.why .rule{position:relative;width:34px;height:2px;background:var(--accent);margin-top:16px}
+.risk{margin-top:44px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--paper);padding:22px 26px;border-inline-start:4px solid var(--warn)}
+.risk h3{font-size:1.1rem;text-transform:uppercase;letter-spacing:.02em}
+.risk p{font-size:.94rem;color:#45423e}
+
+/* Map */
+.map-shell{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);background:#fff;box-shadow:0 18px 50px rgba(40,30,10,.08)}
+.map-tools{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;color:var(--ink);padding:6px 14px;font:700 .74rem var(--sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:999px}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+select,input[type="search"],input[type="email"]{font:500 .9rem var(--sans);border:1.5px solid var(--line);padding:8px 12px;background:#fff;color:var(--ink);border-radius:999px;max-width:100%}
+.check{display:inline-flex;gap:7px;align-items:center;font:600 .82rem var(--sans);cursor:pointer}
+.check input{width:16px;height:16px;accent-color:var(--accent)}
+.map-stage{position:relative;background:#fbfaf8;height:680px;overflow:hidden;touch-action:none}
+#mapSvg{display:block;width:100%;height:100%}
+#mapSvg path.land{stroke:#fff;stroke-width:.25;vector-effect:non-scaling-stroke;transition:fill .25s}
+#mapSvg path.ctx{fill:#e1ddd5}
+#mapSvg path.uk{fill:var(--deep)}
+#mapSvg path.af{cursor:pointer}
+#mapSvg path.af:hover,#mapSvg path.af:focus{stroke:var(--ink);stroke-width:1.4;outline:none}
+#mapSvg path.sel{stroke:var(--ink)!important;stroke-width:2!important}
+#mapSvg path.dim{opacity:.28}
+#mapSvg.dotted path.land{stroke:none;fill:transparent!important}
+#mapSvg.dotted path.af:hover,#mapSvg.dotted path.af:focus{stroke:var(--ink);stroke-width:1.2}
+#mapSvg.dotted path.sel{stroke:var(--accent)!important;stroke-width:1.8!important}
+#mapSvg .dots{pointer-events:none}
+#mapSvg .dots g{transition:fill .3s, opacity .3s}
+#mapSvg .d-ctx{fill:#ddd7cd}
+#mapSvg .d-uk{fill:var(--deep)!important}
+#mapSvg .route{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#mapSvg .hub{cursor:pointer}
+#mapSvg .hub circle{stroke:#fff;vector-effect:non-scaling-stroke;stroke-width:2}
+#mapSvg .hub.on circle,#mapSvg .hub:hover circle,#mapSvg .hub:focus circle{stroke:var(--ink);stroke-width:3;outline:none}
+.legend{position:absolute;inset-inline-start:14px;bottom:14px;background:rgba(255,255,255,.96);padding:10px 13px;font-size:.76rem;max-width:calc(100% - 28px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.legend b{display:block;font:700 .66rem var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.legend .items{display:flex;flex-wrap:wrap;gap:4px 12px}
+.legend i{display:inline-block;width:10px;height:10px;vertical-align:-1px;margin-inline-end:5px;border-radius:50%}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;padding:6px 10px;font:600 .8rem var(--serif);transform:translate(-50%,-135%);white-space:nowrap;opacity:0;transition:opacity .12s}
+.zoom{position:absolute;inset-inline-end:14px;top:14px;display:flex;flex-direction:column;gap:6px}
+.zoom button{width:36px;height:36px;border:0;background:#fff;font:700 1.05rem var(--sans);cursor:pointer;border-radius:50%;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.zoom button:hover{background:var(--ink);color:#fff}
+.map-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:30px;text-align:center;color:var(--muted)}
+.panel{border-inline-start:1px solid var(--line);padding:26px 26px 26px;overflow:auto;max-height:680px}
+.panel h3{font-size:2rem;line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
+html[lang="ar"] .panel h3{text-transform:none}
+.panel .reg{display:inline-block;color:#fff;font:700 .64rem var(--sans);padding:3px 10px;margin-bottom:12px;letter-spacing:.14em;text-transform:uppercase;border-radius:999px}
+.kv{display:grid;grid-template-columns:1fr 1fr;margin:16px 0 0;gap:0}
+.kv div{padding:10px 0;border-bottom:1px dashed var(--line)}
+.kv div:nth-child(odd){padding-inline-end:10px}
+.kv dt{font:700 .62rem var(--sans);color:var(--muted);text-transform:uppercase;letter-spacing:.14em}
+.kv dd{margin:3px 0 0;font:600 1.3rem var(--serif);color:var(--gold)}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.pill{border:1px solid var(--line);font:700 .68rem var(--sans);letter-spacing:.06em;padding:3px 9px;border-radius:999px}
+.pill.uk{background:var(--deep);color:#fff;border-color:var(--deep)}
+.panel h4{font:700 .64rem var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--accent);margin:20px 0 6px}
+.panel p{font-size:.93rem;color:#3d3a36}
+.note{font-size:.78rem;color:var(--muted);margin-top:14px;border-inline-start:2px solid var(--line);padding-inline-start:10px}
+.panel-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.panel-actions button{font:700 .72rem var(--sans);letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--ink);background:#fff;padding:8px 14px;cursor:pointer;border-radius:999px}
+.panel-actions button:hover{background:var(--ink);color:#fff}
+.regions{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}
+.rcard{display:flex;flex-direction:column;justify-content:flex-start;padding:18px;background:#fff;cursor:pointer;text-align:start;font:inherit;color:inherit;border:0;border-top:4px solid var(--line);transition:transform .2s, box-shadow .2s}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(40,30,10,.1)}
+.rcard .bar{display:none}
+.rcard h4{font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em}
+.rcard .num{font:600 .8rem var(--sans);margin-top:6px;color:var(--gold)}
+.rcard p{font-size:.82rem;margin-top:8px;color:var(--muted);line-height:1.5}
+
+/* Red band */
+.band{display:grid;grid-template-columns:1fr 1.25fr 64px;background:var(--accent);color:#fff;padding:0}
+.band .pic{background:var(--paper);position:relative;min-height:340px;display:grid;place-items:center;overflow:hidden}
+.band .pic svg{width:86%;max-width:420px;height:auto}
+.band .pic .d-af{fill:#bdb5aa}.band .pic .d-eg{fill:var(--accent)}.band .pic .d-ctx{fill:#e5e0d7}.band .pic .d-uk{fill:var(--deep)}
+.band .pic .bignum{position:absolute;inset-inline-start:28px;bottom:22px;font:700 4.2rem/1 var(--serif);color:var(--ink)}
+.band .pic .bignum small{display:block;font:700 .66rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.band .txt{padding:54px 46px}
+.band h2{font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.08;text-transform:uppercase;font-weight:400}
+html[lang="ar"] .band h2{text-transform:none}
+.band p{margin-top:16px;max-width:52ch;opacity:.92}
+.band .lnk{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.35)}
+.band .lnk a,.band .lnk button{color:#fff;font:700 .72rem var(--sans);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.band .lnk a:hover,.band .lnk button:hover{text-decoration:underline}
+.band .vert{background:var(--accent-dk);display:grid;place-items:center;text-decoration:none}
+.band .vert span{writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font:600 1.15rem var(--serif);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+html[lang="ar"] .band .vert span{transform:none;letter-spacing:0}
+.band .vert:hover{background:var(--ink)}
+
+/* Cards */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:#fff;padding:26px 24px 22px;display:flex;flex-direction:column;gap:10px;border-top:3px solid var(--accent);box-shadow:0 10px 30px rgba(40,30,10,.06)}
+section.paper .card{box-shadow:none}
+.card .meta{font:700 .64rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.card h3{font-size:1.25rem;line-height:1.25}
+.card p{font-size:.93rem;color:#45423e}
+.card .foot{margin-top:auto;padding-top:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.linkbtn{background:none;border:0;padding:0 0 2px;color:var(--accent);font:700 .7rem var(--sans);letter-spacing:.12em;text-transform:uppercase;border-bottom:1.5px solid var(--accent);cursor:pointer}
+.linkbtn:hover{color:var(--ink);border-color:var(--ink)}
+.status{display:inline-block;font:700 .62rem var(--sans);padding:3px 9px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px}
+.s-force{background:#e3efe7;color:#1f5e39}
+.s-part{background:#fbf0d9;color:#7a5410}
+.s-pend{background:#e5e9f2;color:#22335a}
+.tablewrap{overflow-x:auto;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+th{font:700 .64rem var(--sans);text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+td:first-child{font-family:var(--serif);font-weight:600;font-size:1rem}
+td.num{white-space:nowrap;font-size:.84rem;color:var(--muted)}
+.subh{font-size:1.4rem;text-transform:uppercase;letter-spacing:.01em;margin:56px 0 16px}
+html[lang="ar"] .subh{text-transform:none}
+
+/* Trade strip (big figures over faint map) */
+.strip{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:34px 0 40px;margin-bottom:34px}
+.strip .bg{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.strip .bg svg{width:100%;height:100%}
+.strip .bg .d-af,.strip .bg .d-ctx,.strip .bg .d-uk{fill:#e7e1d6}.strip .bg .d-eg{fill:#e9b9c1}
+.strip > div:not(.bg){position:relative}
+.strip .lbl{font:700 .7rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);padding-bottom:4px;border-bottom:2px solid var(--accent);display:inline-block}
+.strip .t{font:600 1rem var(--serif);margin-top:16px}
+.strip .v{font:700 2.6rem/1 var(--serif);margin-top:4px;color:var(--orange)}
+.strip > div:nth-child(3) .v{color:var(--ink)}
+.strip > div:nth-child(4) .v{color:var(--rose)}
+.chart{background:#fff;padding:26px}
+.chart h3{font-size:1.15rem;text-transform:uppercase;letter-spacing:.01em}
+.chart .sub{font-size:.84rem;color:var(--muted);margin-top:4px}
+.chart svg{width:100%;height:auto;display:block;margin-top:14px}
+.chart svg text{font-family:var(--sans);fill:var(--muted);font-size:11px}
+.chart svg .lbl{fill:var(--ink);font-family:var(--serif);font-weight:700;font-size:12px}
+.hbar{display:grid;grid-template-columns:minmax(120px,1.2fr) 2fr auto;gap:8px 12px;align-items:center;font-size:.86rem;margin-top:12px}
+.hbar .b{height:10px;background:var(--accent);border-radius:999px}
+.hbar .b.imp{background:var(--gold)}
+.hbar .v{font:700 .9rem var(--serif)}
+.chart h4{font-size:.95rem;text-transform:uppercase;letter-spacing:.02em;margin-top:24px}
+
+/* Sector colour tiles */
+.ctiles{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.ctile{position:relative;color:#fff;padding:38px 36px 34px;min-height:360px;display:flex;flex-direction:column;overflow:hidden}
+.ctile.c0{background:var(--orange)}
+.ctile.c1{background:var(--deep)}
+.ctile.c2{background:var(--rose)}
+.ctile.c3{background:var(--olive)}
+.ctile .ill{position:absolute;inset-inline-end:-14px;bottom:-14px;width:190px;height:190px;stroke:rgba(255,255,255,.18);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ctile .tagc{position:absolute;top:18px;inset-inline-end:18px;font:700 .6rem var(--sans);letter-spacing:.14em;text-transform:uppercase;background:rgba(0,0,0,.2);padding:5px 9px}
+.ctile .grp{font:700 .66rem var(--sans);letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.ctile h3{font:400 clamp(1.7rem,2.6vw,2.3rem)/1.05 var(--serif);text-transform:uppercase;margin-top:10px;max-width:15ch}
+html[lang="ar"] .ctile h3{text-transform:none}
+.ctile p{font-size:.92rem;margin-top:14px;max-width:46ch;opacity:.95;position:relative}
+.ctile .uk{font-size:.86rem;margin-top:10px;max-width:46ch;opacity:.85;position:relative}
+.ctile .uk b{font-weight:800}
+.ctile .bot{margin-top:auto;padding-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:relative}
+.ctile .loc{font:600 .74rem var(--sans);opacity:.85}
+.ctile .pillbtn{background:#fff;color:var(--ink);font-size:.68rem;padding:10px 16px}
+.ctile .pillbtn:hover{background:var(--ink);color:#fff}
+
+/* SCZone facts */
+.kv.zone dd{font-size:1.8rem}
+.kv.zone{grid-template-columns:1fr 1fr 1fr}
+
+/* Toolkit */
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:start;padding:18px 0;border-bottom:1px dashed var(--line);counter-increment:s}
+.steps{counter-reset:s}
+.steps li::before{content:counter(s,decimal-leading-zero);font:700 1.7rem/1 var(--serif);color:var(--ghost)}
+.steps li.done::before{color:var(--good);content:"✓"}
+.steps h3{font-size:1.08rem}
+.steps p{font-size:.9rem;color:#4d4944;margin-top:3px}
+.steps label{font:700 .68rem var(--sans);letter-spacing:.1em;text-transform:uppercase;display:flex;gap:6px;align-items:center;cursor:pointer;white-space:nowrap}
+.steps input{width:16px;height:16px;accent-color:var(--good)}
+.progress{height:4px;background:var(--line);margin:4px 0 6px;border-radius:999px;overflow:hidden}
+.progress div{height:100%;background:var(--good);width:0;transition:width .3s}
+.links{list-style:none;margin:0;padding:0}
+.links li{border-bottom:1px dashed var(--line);padding:12px 0}
+.links a{font:600 1.02rem var(--serif);color:var(--ink);text-decoration:none}
+.links a:hover{color:var(--accent)}
+.links a::after{content:" ›";color:var(--accent)}
+.links span{display:block;font-size:.82rem;color:var(--muted)}
+.side{background:var(--paper);padding:26px}
+.side h3{font-size:1.1rem;text-transform:uppercase;letter-spacing:.02em}
+
+/* Opportunities */
+.opp{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.opp > div{background:#fff;padding:22px 20px}
+.meter{display:flex;gap:4px;margin-top:10px}
+.meter span{height:4px;flex:1;background:var(--line);border-radius:999px}
+.meter span.on{background:var(--gold)}
+.opp h3{font-size:1.08rem;line-height:1.25}
+.opp p{font-size:.86rem;margin-top:8px;color:#4d4944}
+.opp .ml{font:700 .62rem var(--sans);color:var(--gold);margin-top:6px;letter-spacing:.14em;text-transform:uppercase}
+
+/* News */
+.news{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px 26px}
+.news li{display:flex;flex-direction:column;gap:6px}
+.news time{font:700 2rem/1 var(--serif);color:var(--accent)}
+.news time small{display:block;font:700 .64rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.news a{font:600 1rem/1.35 var(--serif);color:var(--ink);text-decoration:none}
+.news a:hover{color:var(--accent)}
+.news .t{font:700 .6rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.news .s{font-size:.78rem;color:var(--muted)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Footer */
+footer{background:#e9e6e1;color:var(--ink);padding:54px 0 40px;font-size:.88rem}
+.fgrid{display:grid;grid-template-columns:1fr 1.3fr 1.3fr;gap:40px;align-items:start}
+.flogo{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.flogo .w{font:700 1.5rem/1 var(--serif);text-transform:uppercase;letter-spacing:.06em;color:#6d6a65}
+.flogo small{font-size:.74rem;color:var(--muted)}
+footer h4{font:700 .66rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+footer p{color:#4d4944}
+footer form{display:flex;gap:6px;margin-top:8px}
+footer form input{flex:1;min-width:0}
+footer form button{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:0 16px;font:700 .7rem var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.report{display:block;font:400 clamp(1.6rem,3vw,2.4rem)/1.05 var(--serif);text-transform:uppercase;color:var(--accent);text-decoration:none}
+html[lang="ar"] .report{text-transform:none}
+.report:hover{color:var(--ink)}
+.fbottom{margin-top:36px;padding-top:18px;border-top:1px solid #d6d1c9;font-size:.78rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+
+/* Dialog + toast */
+dialog{border:0;padding:0;max-width:720px;width:calc(100% - 32px);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(20,20,20,.55)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--accent);color:#fff;padding:14px 20px}
+.dlg-head strong{font:600 1.1rem var(--serif);text-transform:uppercase}
+.dlg-head button{background:none;border:1px solid rgba(255,255,255,.6);color:#fff;font:700 .68rem var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border-radius:999px}
+.dlg-body{padding:24px 26px}
+.dlg-body pre{white-space:pre-wrap;font:400 .9rem/1.6 var(--sans);margin:0}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;font-weight:600;font-size:.86rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50;border-radius:999px}
+
+@media (max-width:1080px){
+  .nav{display:none}
+  .tiles ul{grid-template-columns:repeat(3,1fr)}
+  .figs{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:980px){
+  .hero-grid,.map-shell,.grid2,.ctiles{grid-template-columns:1fr}
+  .hero-map{max-height:520px}
+  .panel{border-inline-start:0;border-top:1px solid var(--line);max-height:none}
+  .grid3,.why,.news{grid-template-columns:1fr 1fr}
+  .regions{grid-template-columns:repeat(2,1fr)}
+  .opp{grid-template-columns:1fr 1fr}
+  .band{grid-template-columns:1fr 56px}
+  .band .pic{grid-column:1/-1}
+  .fgrid{grid-template-columns:1fr}
+  .head{grid-template-columns:1fr}
+  .ghost{font-size:3.2rem}
+}
+@media (max-width:600px){
+  body{font-size:15.5px}
+  section{padding:60px 0}
+  .wrap{padding:0 18px}
+  .grid3,.why,.opp,.regions,.news,.figs,.strip{grid-template-columns:1fr}
+  .tiles ul{grid-template-columns:repeat(2,1fr)}
+  .map-stage{height:460px}
+  .steps li{grid-template-columns:40px 1fr}
+  .steps label{grid-column:2}
+  .band .txt{padding:36px 24px}
+  .kv.zone{grid-template-columns:1fr 1fr}
+  .ctile{padding:30px 24px;min-height:320px}
+  .callout{display:none}
+}
+
+/* ===== Responsive layer ===== */
+main{overflow-x:clip}
+section[id],#figures{scroll-margin-top:84px}
+.burger{display:none;margin-inline-start:auto;width:44px;height:44px;border:1.5px solid var(--line);background:#fff;border-radius:50%;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.burger i{display:block;width:18px;height:2px;background:var(--ink);transition:transform .2s, opacity .2s}
+header.site.open .burger i:nth-child(2){transform:translateY(6px) rotate(45deg)}
+header.site.open .burger i:nth-child(3){opacity:0}
+header.site.open .burger i:nth-child(4){transform:translateY(-6px) rotate(-45deg)}
+.m-only{display:none}
+.legend-m{display:none}
+.hub circle.hit{fill:transparent;stroke:none!important}
+.panel .backmap{display:none}
+@media (hover:none){
+  .tiles a:hover,.rcard:hover{transform:none}
+}
+@media (max-width:1180px){
+  .burger{display:inline-flex}
+  .hcta{display:none}
+  .nav{display:block;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.12);max-height:calc(100dvh - var(--hh,76px));overflow:auto;visibility:hidden;opacity:0;transform:translateY(-8px);transition:opacity .2s, transform .2s, visibility 0s .2s}
+  header.site.open .nav{visibility:visible;opacity:1;transform:none;transition:opacity .2s, transform .2s}
+  .nav ul{flex-direction:column;padding:8px 24px 20px;gap:0;overflow:visible}
+  .nav li:first-child,.nav li:last-child{margin:0}
+  .nav li{border-bottom:1px solid var(--line)}
+  .nav a{padding:14px 2px;font-size:1rem;border-bottom:0}
+  .nav a.on{border:0}
+  .m-only{display:block}
+  .nav li.m-cta{border:0;padding-top:16px}
+  .nav li.m-cta a{display:inline-flex;padding:13px 22px;font-size:.8rem;color:#fff}
+}
+@media (max-width:980px){
+  .hero{padding:40px 0 100px}
+  .hero-map{max-width:440px;margin:0 auto}
+  .risk{grid-template-columns:1fr;gap:8px}
+  .legend{display:none}
+  .legend-m{display:block;padding:12px 16px;border-top:1px solid var(--line);font-size:.78rem;background:#fff}
+  .legend-m b{display:block;font:700 .64rem var(--sans);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  .legend-m .items{display:flex;flex-wrap:wrap;gap:4px 12px}
+  .legend-m i{display:inline-block;width:10px;height:10px;vertical-align:-1px;margin-inline-end:5px;border-radius:50%}
+  .map-shell{grid-template-columns:1fr}
+  .map-stage{height:min(120vw,600px);touch-action:pan-y}
+  .panel .backmap{display:inline-flex}
+  .band{grid-template-columns:1fr}
+  .band .vert{padding:18px}
+  .band .vert span{writing-mode:horizontal-tb;transform:none}
+  .ctiles{grid-template-columns:1fr 1fr}
+  .tablewrap.stack table,.tablewrap.stack thead,.tablewrap.stack tbody,.tablewrap.stack tr,.tablewrap.stack td{display:block;width:100%}
+  .tablewrap.stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tablewrap.stack tr{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .tablewrap.stack td{border:0;padding:4px 0}
+  .tablewrap.stack td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font:700 .6rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .tablewrap.stack td.num{white-space:normal}
+  .strip{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .topbar .proto span{display:none}
+  .topbar .wrap{gap:8px;justify-content:space-between}
+  .tools{margin-inline-start:0;gap:6px}
+  .seg button{padding:5px 9px}
+  header.site .wrap{min-height:64px;gap:12px}
+  .logo .w{font-size:1rem}
+  .co-lock{display:none!important}
+  .ctiles{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr;gap:26px;padding:10px 0 20px}
+  .fig .v{font-size:2.2rem}
+  select,input[type="search"],input[type="email"]{font-size:16px}
+  .map-tools{padding:12px 14px;gap:10px}
+  .map-tools > span[style]{margin-inline-start:0!important;width:100%}
+  #ctySel,#blocSel{width:100%}
+  #blocWrap{width:100%}
+  .chip{padding:9px 14px}
+  .zoom button{width:42px;height:42px}
+  .panel{padding:22px 18px}
+  .panel h3{font-size:1.6rem}
+  .kv dd{font-size:1.15rem}
+  .hbar{grid-template-columns:minmax(96px,1fr) 1.3fr auto;font-size:.8rem;gap:8px 8px}
+  .chart{padding:20px 16px}
+  .ghost{font-size:2.6rem}
+  .head{margin-bottom:28px}
+  .why{gap:44px}
+  .why > div{padding-top:28px}
+  .steps li{grid-template-columns:38px 1fr}
+  .steps li::before{font-size:1.3rem}
+  .opp{grid-template-columns:1fr}
+  .news{grid-template-columns:1fr}
+  .band .pic{min-height:260px}
+  .band .pic .bignum{font-size:3.2rem}
+  .ctile .ill{width:140px;height:140px;opacity:.7}
+  .kv.zone{grid-template-columns:1fr 1fr}
+  .fbottom{flex-direction:column}
+  .donate a{font-size:1rem;padding:12px 18px}
+  .statement{font-size:1.15rem}
+  dialog{width:calc(100% - 20px)}
+  .dlg-body{padding:18px}
+}
+@media (max-width:400px){
+  .tiles ul{gap:10px}
+  .tiles a{padding:18px 6px 14px;font-size:.64rem}
+  .seg button{padding:5px 7px;font-size:.68rem}
+  .figs{grid-template-columns:1fr}
+}
+
+@media print{ .topbar,header.site,.tiles,.map-tools,.zoom,footer form{display:none} section{break-inside:avoid} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+
+<div class="topbar"><div class="wrap">
+  <span class="proto"><b data-i18n="proto">PROTOTYPE</b><span data-i18n="protoShort">Not an official government website. Figures are a launch snapshot.</span></span>
+  <div class="tools">
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ar" aria-pressed="false" lang="ar">عربي</button>
+    </div>
+    <div class="seg" role="group" aria-label="Branding">
+      <button type="button" data-brand="gov" aria-pressed="true" data-i18n="bGov">UK Gov style</button>
+      <button type="button" data-brand="co" aria-pressed="false" data-i18n="bCo">Co-branded</button>
+      <button type="button" data-brand="neutral" aria-pressed="false" data-i18n="bNeutral">Neutral</button>
+    </div>
+  </div>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="logo" href="#top" id="top" aria-label="Egypt Trade and Investment Gateway, home">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16.5" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M9 24 L18 9 L27 24 Z" fill="var(--accent)"/><path d="M5 27.5 H31" stroke="var(--ink)" stroke-width="1.5"/></svg>
+    <span class="w">Egypt Gateway<small data-i18n="logoSub">TRADE &amp; INVESTMENT</small></span>
+  </a>
+  <span class="co-lock" data-i18n="coLock">UK × EGYPT</span>
+  <nav class="nav" id="siteNav" aria-label="Sections"><ul>
+    <li><a href="#why" data-i18n="nWhy">Why Egypt</a></li>
+    <li><a href="#map" data-i18n="nMap">Africa map</a></li>
+    <li><a href="#agreements" data-i18n="nAgree">Agreements</a></li>
+    <li><a href="#trade" data-i18n="nTrade">UK–Egypt trade</a></li>
+    <li><a href="#sectors" data-i18n="nSectors">Sectors</a></li>
+    <li><a href="#hubs" data-i18n="nHubs">Hubs</a></li>
+    <li><a href="#toolkit" data-i18n="nToolkit">Toolkit</a></li>
+    <li><a href="#opportunities" data-i18n="nOpp">Market gaps</a></li>
+    <li><a href="#news" data-i18n="nNews">News</a></li>
+    <li class="m-only"><a href="#policy" data-i18n="nPolicy">Foreign policy</a></li>
+    <li class="m-only"><a href="#sources" data-i18n="nSources">Data and sources</a></li>
+    <li class="m-only m-cta"><a class="pillbtn" href="#toolkit" data-i18n="ctaInvest">Invest in Egypt</a></li>
+  </ul></nav>
+  <a class="pillbtn hcta" href="#toolkit" data-i18n="ctaInvest">Invest in Egypt</a>
+  <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="siteNav"><span class="sr" data-i18n="menu">Menu</span><i></i><i></i><i></i></button>
+</div></header>
+
+<main id="main">
+<!-- HERO -->
+<div class="hero"><div class="wrap hero-grid">
+  <div>
+    <div class="kick" data-i18n="heroKick">Trade &amp; investment platform</div>
+    <h1 data-i18n-html="heroTitle2">The gateway <strong>Egypt: one base,</strong><em>three markets.</em></h1>
+    <p class="statement" data-i18n-html="heroStatement">In 2025, Egypt attracted <b>$15.5 billion</b> of foreign direct investment, more than any other country in Africa.</p>
+    <a class="src" href="#s3">UNCTAD World Investment Report 2026</a>
+    <p class="lede" data-i18n="heroLede">Egypt combines the Suez Canal, preferential trade access across Africa and the Arab world, and a large domestic market. Use this platform to decide whether Egypt is the right base for your expansion, and what to do next.</p>
+    <div class="donate"><a href="#map" data-i18n="ctaMap2">Explore the map</a><span aria-hidden="true">▼</span></div>
+    <div class="sofar"><span data-i18n="sofar">UK–Egypt trade, latest 12 months</span><b>£5.6 billion</b><a class="src" href="#s1">DBT factsheet · 4Q to Q2 2026</a></div>
+  </div>
+  <div class="hero-map" id="heroWrap" aria-hidden="true"><svg id="heroMap" viewBox="372 108 190 272" preserveAspectRatio="xMidYMid meet"></svg></div>
+</div></div>
+
+<!-- SHORTCUT TILES -->
+<nav class="tiles" aria-label="Quick links"><div class="wrap"><ul>
+  <li><a href="#agreements"><svg viewBox="0 0 40 40"><path d="M8 6h18l6 6v22H8z"/><path d="M26 6v6h6"/><path d="M13 19h14M13 24h14M13 29h8"/></svg><span data-i18n="tAgreements">Agreements</span></a></li>
+  <li><a href="#map"><svg viewBox="0 0 40 40"><path d="M4 9l10-4 12 4 10-4v26l-10 4-12-4-10 4z"/><path d="M14 5v26M26 9v26"/></svg><span data-i18n="tMap">Africa map</span></a></li>
+  <li><a href="#sectors"><svg viewBox="0 0 40 40"><path d="M5 34h30"/><path d="M8 34V20l7 4v-4l7 4v-4l7 4V8h4v26"/></svg><span data-i18n="tSectors">Sectors</span></a></li>
+  <li><a href="#hubs"><svg viewBox="0 0 40 40"><path d="M4 27h32l-4 7H8z"/><path d="M10 27V17h12v10M22 21h8v6"/><path d="M14 17v-5h4v5"/></svg><span data-i18n="tHubs">Ports &amp; hubs</span></a></li>
+  <li><a href="#toolkit"><svg viewBox="0 0 40 40"><rect x="5" y="12" width="30" height="21" rx="2"/><path d="M15 12V8h10v4M5 20h30M18 20v4h4v-4"/></svg><span data-i18n="tToolkit">Investor toolkit</span></a></li>
+  <li><a href="#news"><svg viewBox="0 0 40 40"><rect x="5" y="7" width="24" height="27" rx="1"/><path d="M29 13h6v18a3 3 0 0 1-6 0"/><path d="M10 13h14M10 19h14M10 25h9"/></svg><span data-i18n="tNews">Latest news</span></a></li>
+</ul></div></nav>
+
+<!-- FIGURES -->
+<section id="figures"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gFig">Figures</div><div><div class="k" data-i18n="kFig">Egypt in numbers</div><h2 data-i18n="hFig">A large, growing market</h2></div></div>
+  <div class="figs">
+    <div class="fig hl"><div class="v">5.1%</div><div class="l" data-i18n="f1">Real GDP growth projected for 2026</div><a class="src" href="#s4">IMF WEO · Oct 2026</a></div>
+    <div class="fig"><div class="v">109.5m</div><div class="l" data-i18n="f2">People, the largest population in the Arab world</div><a class="src" href="#s5">CAPMAS · 19 Sep 2026</a></div>
+    <div class="fig"><div class="v">$7.26bn</div><div class="l" data-i18n="f3">New contracted investment in the Suez Canal Economic Zone, FY2025/26</div><a class="src" href="#s7">SCZone · Jul 2026</a></div>
+    <div class="fig"><div class="v">≈ 53.7</div><div class="l" data-i18n="f4">Egyptian pounds per US dollar at banks</div><a class="src" href="#s8">Bank rates · 15 Nov 2026</a></div>
+  </div>
+</div></section>
+
+<!-- WHY EGYPT -->
+<section id="why" class="paper"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gWhy">Why</div><div><div class="k" data-i18n="kWhy">The investment case</div><h2 data-i18n="hWhy">Why Egypt as a regional base</h2>
+  <p data-i18n="pWhy">Three structural advantages make Egypt a practical hub for firms targeting more than one region.</p></div></div>
+  <div class="why">
+    <div><span class="n" aria-hidden="true">01</span><div class="big">1.3bn+</div><h3 data-i18n="w1h">Preferential access across Africa</h3><p data-i18n="w1p">Egypt is a member of COMESA and a party to the African Continental Free Trade Area, which together reach a market of more than 1.3 billion people as AfCFTA tariff schedules phase in.</p><div class="rule"></div></div>
+    <div><span class="n" aria-hidden="true">02</span><div class="big">$4.67bn</div><h3 data-i18n="w2h">A canal that is recovering</h3><p data-i18n="w2p">Suez Canal revenue rose 23% in fiscal 2025/26 as shipping lines returned. The canal sits beside the SCZone ports and industrial zones built for export manufacturing.</p><a class="src" href="#s6">SCA · FY2025/26</a><div class="rule"></div></div>
+    <div><span class="n" aria-hidden="true">03</span><div class="big">£3.6bn</div><h3 data-i18n="w3h">The UK is already invested</h3><p data-i18n="w3p">UK outward FDI stock in Egypt reached £3.6 billion at the end of 2024, and the UK–Egypt Association Agreement keeps tariff preferences in place for goods trade.</p><a class="src" href="#s1">DBT · Nov 2026</a><div class="rule"></div></div>
+  </div>
+  <div class="risk"><h3 data-i18n="riskH">Risks to weigh</h3><div><p data-i18n="riskP">Regional conflict in 2026 has affected shipping and the currency. The pound has weakened by about 14% against the US dollar since late February 2026, and Suez Canal traffic remains below pre-2023 levels. Urban headline inflation was 13.9% in September 2026. Check the latest figures before committing capital.</p><a class="src" href="#s8">Ahram Online · 22 Oct 2026</a> · <a class="src" href="#s9">Arab Finance · Oct 2026</a></div></div>
+</div></section>
+
+<!-- MAP -->
+<section id="map"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gMap">Africa</div><div><div class="k" data-i18n="kMap">Interactive map</div><h2 data-i18n="hMap">Africa from Egypt: regions, agreements and routes</h2>
+  <p data-i18n="pMap">Select a country to see its indicators, trade terms with the UK and how to reach it from Egypt. Switch views to colour the map by region, trade bloc or market size, or zoom into Egypt's industrial hubs.</p></div></div>
+  <div class="map-shell">
+    <div class="map-tools">
+      <div class="chips" role="group" aria-label="Map view">
+        <button class="chip" type="button" data-view="regions" aria-pressed="true" data-i18n="vRegions">Regions</button>
+        <button class="chip" type="button" data-view="blocs" aria-pressed="false" data-i18n="vBlocs">Trade blocs</button>
+        <button class="chip" type="button" data-view="size" aria-pressed="false" data-i18n="vSize">Market size</button>
+        <button class="chip" type="button" data-view="hubs" aria-pressed="false" data-i18n="vHubs">Egypt hubs</button>
+      </div>
+      <span id="blocWrap" hidden><label for="blocSel" class="sr">Trade bloc</label>
+        <select id="blocSel">
+          <option value="AfCFTA">AfCFTA</option><option value="COMESA">COMESA</option><option value="GAFTA">GAFTA (Arab FTA)</option>
+          <option value="Agadir">Agadir Agreement</option><option value="UK">UK trade agreement</option><option value="SADC">SADC</option>
+          <option value="EAC">EAC</option><option value="ECOWAS">ECOWAS</option>
+        </select></span>
+      <label class="check"><input type="checkbox" id="routesTgl" checked> <span data-i18n="routes">Show trade routes</span></label>
+      <span style="margin-inline-start:auto"><label for="ctySel" class="sr">Find a country</label>
+        <select id="ctySel"><option value="" data-i18n="findCty">Find a country…</option></select></span>
+    </div>
+    <div class="map-stage" id="mapStage">
+      <svg id="mapSvg" role="group" aria-label="Dotted map of Africa, Europe and the Middle East. Use the Find a country list for keyboard access." viewBox="365 105 200 280" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tip" id="tip"></div>
+      <div class="zoom"><button type="button" id="zIn" aria-label="Zoom in">+</button><button type="button" id="zOut" aria-label="Zoom out">−</button><button type="button" id="zReset" aria-label="Reset view" style="font-size:.85rem">⟲</button></div>
+      <div class="legend" id="legend"></div>
+      <div class="map-fallback" id="mapFail"><p>The map outline could not load in this browser. Use the country list above to see every country's profile.</p></div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite" tabindex="-1"></aside>
+    <div class="legend-m" id="legendM" aria-hidden="true"></div>
+  </div>
+  <div class="regions" id="regionCards"></div>
+</div></section>
+
+<!-- RED BAND -->
+<div class="band" role="region" aria-labelledby="bandH">
+  <div class="pic"><svg id="bandMap" viewBox="455 185 70 70" aria-hidden="true"></svg><div class="bignum">54<small data-i18n="bandNum">African markets in reach</small></div></div>
+  <div class="txt">
+    <h2 id="bandH" data-i18n="bandH">Planning to export into Africa from Egypt?</h2>
+    <p data-i18n="bandP">Goods that meet Egypt's rules of origin can reach COMESA and Arab markets duty-free today, with AfCFTA preferences phasing in across the continent. Start with the toolkit, then check which agreement covers your product.</p>
+    <div class="lnk"><button type="button" data-bloc-go="COMESA">COMESA</button><button type="button" data-bloc-go="AfCFTA">AfCFTA</button><button type="button" data-bloc-go="GAFTA">GAFTA</button><button type="button" data-bloc-go="Agadir">Agadir</button><a href="#agreements" data-i18n="allAgree">All agreements</a></div>
+  </div>
+  <a class="vert" href="#toolkit"><span data-i18n="startHere">Start here</span></a>
+</div>
+
+<!-- AGREEMENTS -->
+<section id="agreements" class="paper"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gAgree">Access</div><div><div class="k" data-i18n="kAgree">Free trade and bilateral agreements</div><h2 data-i18n="hAgree">Where goods made in Egypt can go</h2>
+  <p data-i18n="pAgree">The agreements that let goods made in Egypt reach other markets on preferential terms. Select "Show on map" to see member countries.</p></div></div>
+  <div class="grid3" id="agreeCards"></div>
+  <h3 class="subh" data-i18n="hBilat">UK–Egypt bilateral framework</h3>
+  <div class="tablewrap stack"><table>
+    <thead><tr><th data-i18n="tAgreement">Agreement</th><th data-i18n="tSigned">Date</th><th data-i18n="tWhat">What it does for investors</th><th data-i18n="tStatus">Status</th></tr></thead>
+    <tbody>
+      <tr><td>UK–Egypt Association Agreement</td><td class="num">Signed Dec 2020 · in force 1 Jan 2021</td><td>Keeps the tariff preferences of the former EU–Egypt deal for UK–Egypt goods trade, with a joint committee for trade issues.</td><td><span class="status s-force">In force</span></td></tr>
+      <tr><td>UK–Egypt Bilateral Investment Treaty</td><td class="num">1975</td><td>Protects UK investments in Egypt against unlawful expropriation and gives access to international arbitration.</td><td><span class="status s-force">In force</span></td></tr>
+      <tr><td>UK–Egypt Double Taxation Convention</td><td class="num">1977</td><td>Prevents the same income being taxed in both countries and sets withholding rates on dividends, interest and royalties.</td><td><span class="status s-force">In force</span></td></tr>
+      <tr><td>UK–Egypt strategic partnership</td><td class="num">2026</td><td>Upgrade of bilateral relations signalled by the UK Ambassador in June 2026, covering trade, investment and green growth.</td><td><span class="status s-pend">Expected</span></td></tr>
+      <tr><td>Food security partnership MoU</td><td class="num">Signed</td><td>Memorandum on a strategic partnership for sustainable food security, agreed during a ministerial visit.</td><td><span class="status s-force">Signed</span></td></tr>
+    </tbody></table></div>
+  <p class="note" data-i18n="verifyNote">Treaty dates and terms to be confirmed against gov.uk treaty records and GAFI before launch.</p>
+</div></section>
+
+<!-- TRADE -->
+<section id="trade"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gTrade">Trade</div><div><div class="k" data-i18n="kTrade">Trade in numbers</div><h2 data-i18n="hTrade">UK–Egypt trade</h2>
+  <p data-i18n="pTrade">Total trade reached £5.6 billion in the four quarters to the end of Q2 2026, making Egypt the UK's 46th largest trading partner. Around 2,900 UK VAT-registered businesses exported goods to Egypt in 2025.</p></div></div>
+  <div class="strip">
+    <div class="bg" aria-hidden="true"><svg id="stripMap" viewBox="340 100 260 140" preserveAspectRatio="xMidYMid slice"></svg></div>
+    <div><span class="lbl" data-i18n="sTotal">Total trade</span><div class="t" data-i18n="sTotalT">Four quarters to Q2 2026, up 9.2%</div><div class="v">£5.6bn</div></div>
+    <div><span class="lbl" data-i18n="sExp">UK exports</span><div class="t" data-i18n="sExpT">To Egypt, up 6.0%</div><div class="v">£3.1bn</div></div>
+    <div><span class="lbl" data-i18n="sImp">UK imports</span><div class="t" data-i18n="sImpT">From Egypt, up 13.4%</div><div class="v">£2.5bn</div></div>
+  </div>
+  <div class="grid2">
+    <div class="chart"><h3 data-i18n="cTotal">Total UK–Egypt trade, £ billion</h3><p class="sub">Calendar years 2016–2024, then the latest four quarters to Q2 2026</p><div id="chartTrade"></div><a class="src" href="#s2">ONS via business.gov.uk</a> · <a class="src" href="#s1">DBT factsheet · 6 Nov 2026</a></div>
+    <div class="chart"><h3 data-i18n="cSplit">Exports and imports</h3><p class="sub">Four quarters to Q2 2026 · goods are 67% of total trade</p>
+      <div class="hbar" id="splitBars"></div>
+      <h4 data-i18n="cTopX">Top UK goods exports to Egypt</h4><div class="hbar" id="topX"></div>
+      <h4 data-i18n="cTopM">Top UK goods imports from Egypt</h4><div class="hbar" id="topM"></div>
+      <a class="src" href="#s1">DBT factsheet · 6 Nov 2026</a></div>
+  </div>
+</div></section>
+
+<!-- SECTORS -->
+<section id="sectors" class="paper" style="padding-bottom:0"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gSec">Sectors</div><div><div class="k" data-i18n="kSec">Sector profiles</div><h2 data-i18n="hSec">Where demand meets UK strengths</h2>
+  <p data-i18n="pSec">Where demand, policy support and UK capability meet. Each profile names the main locations and the UK angle.</p></div>
+  <div class="act filters" role="group" aria-label="Filter sectors" id="secFilter"></div></div>
+</div>
+  <div class="ctiles" id="sectorCards"></div>
+</section>
+
+<!-- HUBS -->
+<section id="hubs"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gHubs">Suez</div><div><div class="k" data-i18n="kHubs">Industrial hubs and logistics</div><h2 data-i18n="hHubs">The Suez Canal and its economic zone</h2>
+  <p data-i18n="pHubs">The Suez Canal Economic Zone links six ports with four industrial areas along the canal. Revenue from the canal fell sharply in 2024 as ships avoided the Red Sea and is now recovering.</p></div>
+  <div class="act"><button class="pillbtn outline" type="button" id="toHubs" data-i18n="seeHubs">See hubs on the map</button></div></div>
+  <div class="grid2">
+    <div class="chart" style="background:var(--paper)"><h3 data-i18n="cSuez">Suez Canal revenue, US$ billion</h3><p class="sub">Calendar years; 2026 is the Suez Canal Authority's own projection</p><div id="chartSuez"></div><a class="src" href="#s6">Suez Canal Authority</a></div>
+    <div class="chart" style="background:var(--paper)"><h3 data-i18n="cZone">SCZone at a glance</h3>
+      <dl class="kv zone">
+        <div><dt>New projects</dt><dd>117</dd></div>
+        <div><dt>Contracted</dt><dd>$7.26bn</dd></div>
+        <div><dt>Revenue growth</dt><dd>+37%</dd></div>
+        <div><dt>Factories operating</dt><dd>212</dd></div>
+        <div><dt>Under construction</dt><dd>176</dd></div>
+        <div><dt>Direct jobs</dt><dd>≈73.5k</dd></div>
+      </dl>
+      <p class="note">FY2025/26. Industrial areas: Ain Sokhna, East Port Said, Qantara West and East Ismailia. Ports include East and West Port Said, Sokhna, Adabiya, El Tor and Arish.</p>
+      <a class="src" href="#s7">SCZone · Jul–Sep 2026</a></div>
+  </div>
+  <div class="grid3" style="margin-top:22px">
+    <div class="card"><span class="meta">Shipping</span><h3>Port Said to Felixstowe</h3><p>About 3,250 nautical miles via Gibraltar, roughly 11–12 days at 12 knots. Ships rounding the Cape of Good Hope instead add about 10–14 days on Asia–Europe routes.</p><p class="note">Indicative distances and speeds for planning only.</p></div>
+    <div class="card"><span class="meta">Corridors into Africa</span><h3>Red Sea and overland</h3><p>From Sokhna and Safaga, the Red Sea route reaches Djibouti and Mombasa for East African markets. Overland, the Cairo–Cape Town road corridor runs through Sudan, Ethiopia and Kenya to Southern Africa.</p></div>
+    <div class="card"><span class="meta">New cities and rail</span><h3>Infrastructure pipeline</h3><p>Priority projects include the New Administrative Capital, a high-speed rail network linking the Red Sea at Ain Sokhna with the Mediterranean, and expanded dry ports and logistics zones around Cairo.</p></div>
+  </div>
+</div></section>
+
+<!-- TOOLKIT -->
+<section id="toolkit" class="paper"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gTool">Set up</div><div><div class="k" data-i18n="kTool">Investor toolkit</div><h2 data-i18n="hTool">Setting up in Egypt, step by step</h2>
+  <p data-i18n="pTool">The usual sequence for a foreign company establishing in Egypt. Tick off steps as you go; your progress stays in this browser.</p></div></div>
+  <div class="grid2" style="grid-template-columns:1.5fr 1fr;align-items:start">
+    <div>
+      <div class="progress" aria-hidden="true"><div id="prog"></div></div><p class="note" style="margin:0 0 6px;border:0;padding:0" id="progTxt">0 of 7 steps complete</p>
+      <ol class="steps" id="steps"></ol>
+    </div>
+    <div class="side" style="background:#fff">
+      <h3 data-i18n="hLinks">Official links</h3>
+      <ul class="links">
+        <li><a href="https://www.gafi.gov.eg" rel="noopener">GAFI, General Authority for Investment</a><span>Company registration, Investor Service Centres, Golden License</span></li>
+        <li><a href="https://sczone.eg" rel="noopener">SCZone</a><span>Land, ports and incentives in the Suez Canal Economic Zone</span></li>
+        <li><a href="https://www.business.gov.uk/export-from-uk/markets/egypt" rel="noopener">Business.gov.uk: Egypt market guide</a><span>UK government export guidance and support</span></li>
+        <li><a href="https://www.gov.uk/government/collections/trade-and-investment-factsheets" rel="noopener">Trade and investment factsheets</a><span>Latest UK–Egypt statistics, updated monthly</span></li>
+        <li><a href="https://www.gov.uk/government/organisations/uk-export-finance" rel="noopener">UK Export Finance</a><span>Finance and insurance for UK exporters</span></li>
+        <li><a href="https://www.bii.co.uk" rel="noopener">British International Investment</a><span>Egypt is its largest African market by portfolio value</span></li>
+        <li><a href="https://au-afcfta.org" rel="noopener">AfCFTA Secretariat</a><span>Tariff schedules and rules of origin</span></li>
+        <li><a href="https://www.comesa.int" rel="noopener">COMESA</a><span>Free trade area rules and member states</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- OPPORTUNITIES -->
+<section id="opportunities"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gOpp">Gaps</div><div><div class="k" data-i18n="kOpp">Market gaps and opportunities</div><h2 data-i18n="hOpp">Openings for UK firms</h2>
+  <p data-i18n="pOpp">Areas where Egyptian demand or regional supply gaps line up with UK strengths. Ratings show the strength of the case for a UK firm and will be validated with sector teams.</p></div></div>
+  <div class="opp" id="oppGrid" style="background:transparent"></div>
+</div></section>
+
+<!-- NEWS -->
+<section id="news" class="paper"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gNews">News</div><div><div class="k" data-i18n="kNews">Investment and infrastructure news</div><h2 data-i18n="hNews">Latest developments</h2>
+  <p data-i18n="pNews">Launch snapshot of recent developments. A live feed will replace this list after launch.</p></div>
+  <div class="act filters" role="group" aria-label="Filter news" id="newsFilter"></div></div>
+  <ul class="news" id="newsList"></ul>
+</div></section>
+
+<!-- POLICY -->
+<section id="policy"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gPol">Relations</div><div><div class="k" data-i18n="kPol">Foreign policy and trade relations</div><h2 data-i18n="hPol">Egypt's partnerships</h2>
+  <p data-i18n="pPol">Egypt's diplomatic position shapes its trade access. A neutral summary of the relationships that matter most to investors.</p></div></div>
+  <div class="grid3">
+    <div class="card"><span class="meta">United Kingdom</span><h3>Moving to a strategic partnership</h3><p>Ministers and the UK Ambassador have discussed expanding trade, green finance and export industries through 2026. The UK's Trade Commissioner for Africa visited Egypt in November 2026, highlighting renewable energy, tourism and infrastructure.</p><div class="foot"><a class="src" href="#s10">BII · Jun 2026</a></div></div>
+    <div class="card"><span class="meta">Africa</span><h3>Bridge into the continent</h3><p>Egypt is an African Union member, a founding COMESA member and an AfCFTA state party. It positions the SCZone as a manufacturing base for exporters targeting African markets.</p></div>
+    <div class="card"><span class="meta">Arab world and Gulf</span><h3>Gulf capital, Arab market access</h3><p>Egypt hosts the Arab League headquarters and trades duty-free across GAFTA. Gulf sovereign investors have been among the largest sources of recent FDI, including the 2024 Ras El Hekma development.</p></div>
+    <div class="card"><span class="meta">European Union</span><h3>Largest trading bloc partner</h3><p>The EU–Egypt Association Agreement gives duty-free access for industrial goods. EU–Egypt relations were upgraded to a strategic and comprehensive partnership in 2024.</p></div>
+    <div class="card"><span class="meta">Multilateral</span><h3>IMF programme and reform</h3><p>Egypt's reform programme with the IMF covers exchange-rate flexibility, subsidy reform and a larger role for the private sector. The IMF said in October 2026 that energy subsidy reform has reduced economic vulnerabilities.</p></div>
+    <div class="card"><span class="meta">Other partners</span><h3>Diversified relationships</h3><p>Egypt joined BRICS in 2024 and works with China on the TEDA Suez zone within the SCZone, alongside long-standing ties with the United States, including the QIZ trade arrangement.</p></div>
+  </div>
+</div></section>
+
+<!-- SOURCES -->
+<section id="sources" class="paper"><div class="wrap">
+  <div class="head"><div class="ghost" aria-hidden="true" data-i18n="gSrc">Sources</div><div><div class="k" data-i18n="kSrc">Data rules</div><h2 data-i18n="hSrc">Data and sources</h2>
+  <p data-i18n="pSrc">Every figure on this site shows its source and date. Egypt and UK–Egypt figures below are the launch snapshot. They will be updated monthly, with live feeds for currency and news where possible.</p></div></div>
+  <div class="tablewrap stack"><table class="srcs">
+    <thead><tr><th>Ref</th><th>Figure</th><th>Source</th><th>Date</th></tr></thead>
+    <tbody>
+      <tr id="s1"><td>S1</td><td>UK–Egypt trade £5.6bn (+9.2%); exports £3.1bn; imports £2.5bn; 46th partner; top goods; UK FDI stock £3.6bn (end 2024); ≈2,900 UK exporters; Egypt GDP $364.6bn (IMF, 2025)</td><td><a href="https://assets.publishing.service.gov.uk/media/6ae9ea1d4bd624c77e5d6891/egypt-trade-and-investment-factsheet-2026-11-06.pdf">DBT Trade and Investment Factsheet: Egypt</a></td><td class="num">6 Nov 2026</td></tr>
+      <tr id="s2"><td>S2</td><td>Annual UK–Egypt total trade 2016–2024</td><td><a href="https://www.business.gov.uk/export-from-uk/markets/egypt">ONS, via business.gov.uk Egypt market page</a></td><td class="num">2025</td></tr>
+      <tr id="s3"><td>S3</td><td>Egypt FDI inflows $15.5bn in 2025 (2024: $46.6bn); Africa total ≈$70bn; Guinea $7.8bn, Mozambique $5.7bn, Nigeria $4.0bn, Ethiopia $3.8bn</td><td><a href="https://unctad.org/press-material/africa-attracting-investment-strategic-industries-challenge-turning-it-broader">UNCTAD World Investment Report 2026</a></td><td class="num">7 Jul 2026</td></tr>
+      <tr id="s4"><td>S4</td><td>Real GDP growth 5.1% (2026), 4.7% (2027)</td><td><a href="https://english.ahram.org.eg/News/578798.aspx">IMF World Economic Outlook, reported by Ahram Online</a></td><td class="num">13 Oct 2026</td></tr>
+      <tr id="s5"><td>S5</td><td>Population 109,540,965</td><td><a href="https://www.egypttoday.com/Article/1/149579/Egypt%E2%80%99s-domestic-population-reaches-109-5-Million-CAPMAS">CAPMAS population clock, via Egypt Today</a></td><td class="num">19 Sep 2026</td></tr>
+      <tr id="s6"><td>S6</td><td>Suez Canal revenue: 2023 $10.25bn; 2024 $3.99bn; 2025 $4.1bn; FY2025/26 $4.67bn (+23%); 2026 projection $5.8–6.0bn</td><td><a href="https://www.ttnews.com/articles/suez-canal-revenue-rises">Suez Canal Authority, via Transport Topics</a>; <a href="https://english.ahram.org.eg/News/580907.aspx">Ahram Online</a>; <a href="https://egyptianstreets.com/2026/09/21/why-the-suez-canals-recovery-matters-for-egypts-economy/">Egyptian Streets</a></td><td class="num">Sep–Oct 2026</td></tr>
+      <tr id="s7"><td>S7</td><td>SCZone FY2025/26: 117 projects, $7.26bn, ≈73,500 jobs, revenue +37%; 212 factories operating, 176 under construction</td><td><a href="https://english.ahram.org.eg/News/572953.aspx">SCZone, via Ahram Online</a>; <a href="https://meobserver.news/?p=189834">ME Observer</a></td><td class="num">Jul–Sep 2026</td></tr>
+      <tr id="s8"><td>S8</td><td>USD/EGP ≈53.7–53.9 at banks; ≈14% depreciation since late Feb 2026</td><td><a href="https://www.arabfinance.com/en/news/newdetails/usd-egp-exchange-rate-on-november-15-2026">Arab Finance</a>; <a href="https://english.ahram.org.eg/News/580643.aspx">Ahram Online</a></td><td class="num">15 Nov 2026</td></tr>
+      <tr id="s9"><td>S9</td><td>Urban headline inflation 13.9% (September 2026)</td><td><a href="https://www.zawya.com/en/economy/imf-lifts-egypts-growth-outlook-for-fy202627-to-4.7-1610116">Arab Finance, via Zawya</a></td><td class="num">Oct 2026</td></tr>
+      <tr id="s10"><td>S10</td><td>BII commitments in Egypt ≈$1.3bn since 2012</td><td><a href="https://www.bii.co.uk/en/news-insight/news/bii-launches-new-strategy-in-egypt-with-nearly-1-3-billion-committed-since-2012/">British International Investment</a></td><td class="num">11 Jun 2026</td></tr>
+      <tr id="s11"><td>S11</td><td>Other African country population and GDP on the map</td><td>Indicative values rounded from IMF World Economic Outlook estimates for 2024. To be replaced with World Bank and IMF data at launch.</td><td class="num">Indicative</td></tr>
+    </tbody></table></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="flogo"><svg width="44" height="44" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#9a948b" stroke-width="1.5"/><path d="M9 24 L18 9 L27 24 Z" fill="#9a948b"/><path d="M5 27.5 H31" stroke="#9a948b" stroke-width="1.5"/></svg><span class="w">Egypt<br>Gateway</span><small>© 2026 · <span data-i18n="protoWord">Prototype</span></small></div>
+    <div>
+      <h4 data-i18n="fAbout">About this platform</h4>
+      <p data-i18n="footP">Prototype prepared for review by UK Government trade and investment teams and partners. Not an official government website. Figures are a snapshot; check sources before making decisions.</p>
+      <h4 style="margin-top:18px" data-i18n="fNews">Monthly data update</h4>
+      <form id="newsForm"><label for="nlEmail" class="sr">Email address</label><input type="email" id="nlEmail" placeholder="Enter your email" required><button type="submit" data-i18n="fJoin">Notify me</button></form>
+    </div>
+    <div>
+      <h4 data-i18n="fReport">Latest statistics</h4>
+      <a class="report" href="https://assets.publishing.service.gov.uk/media/6ae9ea1d4bd624c77e5d6891/egypt-trade-and-investment-factsheet-2026-11-06.pdf" rel="noopener" data-i18n="fReportL">View the 2026 trade factsheet ›</a>
+      <p style="margin-top:14px;font-size:.8rem" data-i18n="fComing2">Coming in later phases: internal dashboard, pitch deck, downloadable PDF one-pagers, live currency and news feeds, full Arabic content.</p>
+    </div>
+  </div>
+  <div class="fbottom"><span><a href="#policy" style="color:inherit">Foreign policy</a> · <a href="#sources" style="color:inherit">Data and sources</a> · <span data-i18n="fCredit">Country outlines: jsVectorMap.</span></span><a href="#top" data-i18n="backTop">Back to top ↑</a></div>
+</div></footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle"><div class="dlg-head"><strong id="dlgTitle">Country one-pager</strong><span><button type="button" id="dlgCopy">Copy text</button> <button type="button" id="dlgClose">Close</button></span></div><div class="dlg-body"><pre id="dlgBody"></pre></div></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+window.NEWAR = {
+  menu:"القائمة", nPolicy:"السياسة الخارجية", nSources:"البيانات والمصادر", protoShort:"ليس موقعًا حكوميًا رسميًا. الأرقام لقطة عند الإطلاق.", logoSub:"التجارة والاستثمار", ctaInvest:"استثمر في مصر",
+  heroKick:"منصة التجارة والاستثمار", heroTitle2:"البوابة <strong>مصر: قاعدة واحدة،</strong><em>ثلاثة أسواق.</em>",
+  heroStatement:"في 2025، جذبت مصر <b>15.5 مليار دولار</b> من الاستثمار الأجنبي المباشر، أكثر من أي دولة أفريقية أخرى.",
+  ctaMap2:"استكشف الخريطة", sofar:"التجارة البريطانية المصرية، آخر 12 شهرًا",
+  tAgreements:"الاتفاقيات", tMap:"خريطة أفريقيا", tSectors:"القطاعات", tHubs:"الموانئ والمراكز", tToolkit:"أدوات المستثمر", tNews:"آخر الأخبار",
+  gFig:"أرقام", kFig:"مصر بالأرقام", hFig:"سوق كبيرة ومتنامية", f1:"النمو الحقيقي المتوقع للناتج المحلي في 2026", f2:"نسمة، أكبر عدد سكان في العالم العربي", f3:"استثمارات جديدة متعاقد عليها في المنطقة الاقتصادية لقناة السويس، 2025/26", f4:"جنيه مصري لكل دولار أمريكي في البنوك",
+  gWhy:"لماذا", gMap:"أفريقيا", bandNum:"سوقًا أفريقية في المتناول", bandH:"هل تخطط للتصدير إلى أفريقيا من مصر؟",
+  bandP:"يمكن للسلع المستوفية لقواعد المنشأ المصرية دخول أسواق الكوميسا والأسواق العربية دون رسوم جمركية، مع تطبيق تفضيلات منطقة التجارة الحرة القارية تدريجيًا. ابدأ بأدوات المستثمر ثم تحقق من الاتفاقية التي تغطي منتجك.",
+  allAgree:"كل الاتفاقيات", startHere:"ابدأ هنا", gAgree:"النفاذ", hAgree:"إلى أين تصل السلع المصنوعة في مصر", kAgree:"اتفاقيات التجارة الحرة والثنائية",
+  gTrade:"التجارة", sTotal:"إجمالي التجارة", sTotalT:"الأرباع الأربعة حتى الربع الثاني 2026، بزيادة 9.2%", sExp:"الصادرات البريطانية", sExpT:"إلى مصر، بزيادة 6.0%", sImp:"الواردات البريطانية", sImpT:"من مصر، بزيادة 13.4%",
+  gSec:"القطاعات", kSec:"ملفات القطاعات", hSec:"حيث يلتقي الطلب بنقاط القوة البريطانية", gHubs:"السويس", kHubs:"المراكز الصناعية واللوجستيات", hHubs:"قناة السويس ومنطقتها الاقتصادية",
+  gTool:"التأسيس", kTool:"أدوات المستثمر", hTool:"التأسيس في مصر خطوة بخطوة", gOpp:"الفجوات", kOpp:"فجوات السوق والفرص", hOpp:"فرص للشركات البريطانية",
+  gNews:"أخبار", kNews:"أخبار الاستثمار والبنية التحتية", hNews:"أحدث التطورات", gPol:"العلاقات", kPol:"السياسة الخارجية والعلاقات التجارية", hPol:"شراكات مصر",
+  gSrc:"المصادر", protoWord:"نموذج أولي", fAbout:"عن المنصة", fNews:"التحديث الشهري للبيانات", fJoin:"أبلغني", fReport:"أحدث الإحصاءات", fReportL:"اطلع على نشرة التجارة 2026 ›",
+  fComing2:"في المراحل التالية: لوحة داخلية، عرض تقديمي، ملخصات PDF، تغذية مباشرة للعملة والأخبار، ومحتوى عربي كامل.", fCredit:"المصادر مدرجة في قسم البيانات والمصادر.", backTop:"العودة للأعلى ↑", proto:"نموذج أولي"
+};
+window.jsVectorMap = { addMap: function(name, data){ window.__WORLD = data; } };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" onerror="window.__MAPFAIL=true"></script>
+
+<script>
+(function(){
+"use strict";
+/* ---------------- i18n ---------------- */
+const AR = {
+  skip:"انتقل إلى المحتوى الرئيسي", siteName:"بوابة التجارة والاستثمار في مصر", siteSub:"أفريقيا · الشرق الأوسط · أوروبا", coLock:"شراكة المملكة المتحدة × مصر",
+  bGov:"نمط الحكومة البريطانية", bCo:"علامة مشتركة", bNeutral:"محايد", proto:"نموذج أولي",
+  protoText:"هذا نموذج أولي للمراجعة وليس موقعًا حكوميًا رسميًا. أرقام مصر والمملكة المتحدة لقطة عند الإطلاق مع مصادرها وتواريخها، وأرقام الدول الأفريقية الأخرى تقديرية وسيتم تحديثها عند الإطلاق.",
+  nWhy:"لماذا مصر", nMap:"خريطة أفريقيا", nAgree:"اتفاقيات التجارة", nTrade:"التجارة البريطانية المصرية", nSectors:"القطاعات", nHubs:"المراكز واللوجستيات", nToolkit:"أدوات المستثمر", nOpp:"فجوات السوق", nNews:"الأخبار", nPolicy:"السياسة الخارجية", nSources:"البيانات والمصادر",
+  heroEyebrow:"للمستثمرين والمصدرين البريطانيين والشركات المصرية وصناع القرار",
+  heroTitle:"مصر: قاعدة واحدة، <em>ثلاثة أسواق</em>. أفريقيا والشرق الأوسط وأوروبا.",
+  heroLede:"تجمع مصر بين قناة السويس، والنفاذ التفضيلي إلى أسواق أفريقيا والعالم العربي، وسوق محلية كبيرة. استخدم هذه المنصة لتقرر ما إذا كانت مصر القاعدة المناسبة لتوسعك، وما الخطوة التالية.",
+  ctaMap:"استكشف خريطة أفريقيا", ctaToolkit:"ابدأ أدوات المستثمر",
+  st1:"إجمالي التجارة بين المملكة المتحدة ومصر، بزيادة 9.2%", st2:"تدفقات الاستثمار الأجنبي المباشر في 2025، الأكبر في أفريقيا للعام الرابع", st3:"النمو الحقيقي المتوقع للناتج المحلي في 2026", st4:"نسمة، أكبر عدد سكان في العالم العربي", st5:"استثمارات جديدة متعاقد عليها في المنطقة الاقتصادية لقناة السويس، 2025/26", st6:"جنيه مصري لكل دولار أمريكي في البنوك",
+  kWhy:"دوافع الاستثمار", hWhy:"لماذا مصر قاعدة إقليمية", pWhy:"ثلاث مزايا هيكلية تجعل مصر مركزًا عمليًا للشركات التي تستهدف أكثر من منطقة.",
+  w1h:"نفاذ تفضيلي عبر أفريقيا", w1p:"مصر عضو في الكوميسا وطرف في منطقة التجارة الحرة القارية الأفريقية، اللتين تصلان معًا إلى سوق يزيد على 1.3 مليار نسمة مع التطبيق التدريجي للجداول الجمركية.",
+  w2h:"قناة تتعافى", w2p:"ارتفعت إيرادات قناة السويس 23% في العام المالي 2025/26 مع عودة خطوط الملاحة، وتقع القناة بجوار موانئ ومناطق صناعية مخصصة للتصنيع التصديري.",
+  w3h:"المملكة المتحدة مستثمر قائم", w3p:"بلغ رصيد الاستثمار البريطاني المباشر في مصر 3.6 مليار جنيه إسترليني بنهاية 2024، وتحافظ اتفاقية المشاركة على التفضيلات الجمركية لتجارة السلع.",
+  riskH:"مخاطر يجب أخذها في الاعتبار", riskP:"أثّر الصراع الإقليمي في 2026 على الملاحة والعملة؛ فقد تراجع الجنيه نحو 14% أمام الدولار منذ أواخر فبراير 2026، وما زالت حركة القناة دون مستويات ما قبل 2023. بلغ التضخم الحضري 13.9% في سبتمبر 2026. راجع أحدث الأرقام قبل الالتزام برأس المال.",
+  kMap:"خريطة تفاعلية", hMap:"أفريقيا من مصر: المناطق والاتفاقيات والطرق", pMap:"اختر دولة لعرض مؤشراتها وشروط تجارتها مع المملكة المتحدة وكيفية الوصول إليها من مصر. بدّل العرض لتلوين الخريطة حسب المنطقة أو التكتل التجاري أو حجم السوق، أو كبّر على المراكز الصناعية في مصر.",
+  vRegions:"المناطق", vBlocs:"التكتلات التجارية", vSize:"حجم السوق", vHubs:"مراكز مصر", routes:"إظهار الطرق التجارية", findCty:"ابحث عن دولة…",
+  kAgree:"الوحدتان 1–2", hAgree:"اتفاقيات التجارة الحرة والاتفاقيات الثنائية", pAgree:"الاتفاقيات التي تتيح للسلع المصنوعة في مصر الوصول إلى أسواق أخرى بشروط تفضيلية.", hBilat:"الإطار الثنائي بين المملكة المتحدة ومصر",
+  tAgreement:"الاتفاقية", tSigned:"التاريخ", tWhat:"الفائدة للمستثمر", tStatus:"الحالة", verifyNote:"يتم تأكيد تواريخ وشروط المعاهدات قبل الإطلاق.",
+  kTrade:"التجارة بالأرقام", hTrade:"التجارة بين المملكة المتحدة ومصر", pTrade:"بلغ إجمالي التجارة 5.6 مليار جنيه إسترليني في الأرباع الأربعة حتى نهاية الربع الثاني 2026، لتصبح مصر الشريك التجاري رقم 46 للمملكة المتحدة.",
+  cTotal:"إجمالي التجارة، مليار جنيه إسترليني", cSplit:"الصادرات والواردات", cTopX:"أهم الصادرات البريطانية إلى مصر", cTopM:"أهم الواردات البريطانية من مصر",
+  kSec:"الوحدة 3", hSec:"ملفات القطاعات", pSec:"حيث يلتقي الطلب ودعم السياسات والقدرات البريطانية.",
+  kHubs:"الوحدتان 4–5", hHubs:"المراكز الصناعية والبنية التحتية وقناة السويس", pHubs:"تربط المنطقة الاقتصادية لقناة السويس ستة موانئ بأربع مناطق صناعية على طول القناة.", seeHubs:"اعرض المراكز على الخريطة", cSuez:"إيرادات قناة السويس، مليار دولار", cZone:"المنطقة الاقتصادية في لمحة",
+  kTool:"الوحدة 6", hTool:"أدوات المستثمر: التأسيس في مصر", pTool:"التسلسل المعتاد لتأسيس شركة أجنبية في مصر. ضع علامة على الخطوات المكتملة.", hLinks:"روابط رسمية",
+  kOpp:"الوحدة 7", hOpp:"فجوات السوق والفرص", pOpp:"مجالات يلتقي فيها الطلب المصري أو فجوات الإمداد الإقليمية مع نقاط القوة البريطانية.",
+  kNews:"الوحدة 8", hNews:"أخبار الاستثمار والبنية التحتية", pNews:"لقطة عند الإطلاق لأحدث التطورات. ستحل محلها تغذية مباشرة بعد الإطلاق.",
+  kPol:"الوحدة 9", hPol:"السياسة الخارجية والعلاقات التجارية", pPol:"ملخص محايد للعلاقات الأكثر أهمية للمستثمرين.",
+  kSrc:"قواعد البيانات", hSrc:"البيانات والمصادر", pSrc:"كل رقم في هذا الموقع يظهر مصدره وتاريخه، وسيتم تحديثه شهريًا.",
+  footP:"نموذج أولي للمراجعة من قبل فرق التجارة والاستثمار. ليس موقعًا حكوميًا رسميًا.", fExplore:"استكشف", fComing:"في المراحل التالية",
+  region:"المنطقة", capital:"العاصمة", pop:"السكان", gdp:"الناتج المحلي", currency:"العملة", fdi:"الاستثمار الأجنبي 2025", blocs:"عضوية التكتلات", ukTerms:"شروط التجارة مع المملكة المتحدة", sectors:"القطاعات الرئيسية", fromEgypt:"الوصول من مصر", onePager:"ملخص من صفحة واحدة", copy:"نسخ الملخص", showMap:"اعرض على الخريطة", all:"الكل"
+};
+const EN = {region:"Region",capital:"Capital",pop:"Population",gdp:"GDP",currency:"Currency",fdi:"FDI inflows 2025",blocs:"Bloc membership",ukTerms:"Trade terms with the UK",sectors:"Key sectors",fromEgypt:"Reaching it from Egypt",onePager:"One-page summary",copy:"Copy summary",showMap:"Show on map",all:"All"};
+Object.assign(AR, window.NEWAR||{}); let lang = "en";
+const enCache = {};
+document.querySelectorAll("[data-i18n],[data-i18n-html]").forEach(el=>{ const k = el.dataset.i18n||el.dataset.i18nHtml; enCache[k] = el.dataset.i18nHtml ? el.innerHTML : el.textContent; });
+function t(k){ return lang==="ar" ? (AR[k] ?? EN[k] ?? enCache[k] ?? k) : (EN[k] ?? enCache[k] ?? k); }
+function applyLang(l){
+  lang = l; document.documentElement.lang = l; document.documentElement.dir = l==="ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ const v = l==="ar" ? AR[el.dataset.i18n] : enCache[el.dataset.i18n]; if(v) el.textContent = v; });
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>{ const v = l==="ar" ? AR[el.dataset.i18nHtml] : enCache[el.dataset.i18nHtml]; if(v) el.innerHTML = v; });
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===l));
+  fillCountrySelect(); renderPanel(selected); renderRegions(); renderLegend(); renderAgreements(); renderSecFilters(); renderNewsFilters(); renderSectors(); renderNews();
+  store("lang", l);
+}
+function store(k,v){ try{ localStorage.setItem("etg-"+k, v); }catch(e){} }
+function recall(k){ try{ return localStorage.getItem("etg-"+k); }catch(e){ return null; } }
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>applyLang(b.dataset.lang)));
+document.querySelectorAll("[data-brand]").forEach(b=>{ if(b.tagName==="BUTTON") b.addEventListener("click",()=>setBrand(b.dataset.brand)); });
+function setBrand(v){ document.documentElement.dataset.brand = v; document.querySelectorAll("button[data-brand]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.brand===v)); store("brand", v); }
+
+/* ---------------- Data ---------------- */
+const REG = {
+  north:{en:"North Africa",ar:"شمال أفريقيا",c:"var(--r-north)",hex:"#3f5f80",route:"Short-sea Mediterranean shipping and land links to Libya; duty-free trade under GAFTA and, for Morocco and Tunisia, the Agadir Agreement."},
+  west:{en:"West Africa",ar:"غرب أفريقيا",c:"var(--r-west)",hex:"#c46a2d",route:"Mediterranean–Atlantic shipping from Alexandria and Port Said to Abidjan, Tema, Lagos and Dakar, with AfCFTA preferences as schedules phase in."},
+  central:{en:"Central Africa",ar:"وسط أفريقيا",c:"var(--r-central)",hex:"#6f7f3a",route:"Reached through Atlantic ports such as Douala and Pointe-Noire, or overland from East African corridors; DR Congo and Burundi are fellow COMESA members."},
+  east:{en:"East Africa",ar:"شرق أفريقيا",c:"var(--r-east)",hex:"#8a4d6e",route:"Red Sea shipping from Sokhna and Safaga to Djibouti, Berbera and Mombasa; most of the region shares COMESA preferences with Egypt."},
+  south:{en:"Southern Africa",ar:"الجنوب الأفريقي",c:"var(--r-south)",hex:"#2f7f78",route:"Via the Suez Canal and Indian Ocean ports such as Dar es Salaam, Maputo and Durban; Zambia, Zimbabwe, Malawi and Eswatini share COMESA preferences."}
+};
+const UKT = {
+  AA:"UK–Egypt Association Agreement (in force 2021)", MA:"UK–Morocco Association Agreement", TN:"UK–Tunisia Association Agreement",
+  SACUM:"UK–SACUM Economic Partnership Agreement", ESA:"UK–Eastern and Southern Africa EPA", KE:"UK–Kenya Economic Partnership Agreement",
+  GH:"UK–Ghana Trade Partnership Agreement", CI:"UK–Côte d'Ivoire Economic Partnership Agreement", CM:"UK–Cameroon Economic Partnership Agreement",
+  DCTS:"UK Developing Countries Trading Scheme (unilateral preferences)", MFN:"No preferential UK agreement (standard MFN tariffs)"
+};
+// code: [en, ar, region, capital, pop(m), gdp($bn), currency, sectors, blocs, ukTermKey, fdi2025($bn or null)]
+const C = {
+ EG:["Egypt","مصر","north","Cairo",109.5,364.6,"EGP","Manufacturing, logistics, energy, tourism, ICT, agrifood",["AfCFTA","COMESA","GAFTA","Agadir"],"AA",15.5],
+ DZ:["Algeria","الجزائر","north","Algiers",46.8,264,"DZD","Hydrocarbons, construction, agriculture",["AfCFTA","GAFTA"],"MFN"],
+ LY:["Libya","ليبيا","north","Tripoli",7.4,46,"LYD","Oil and gas, reconstruction",["AfCFTA","COMESA","GAFTA"],"MFN"],
+ MA:["Morocco","المغرب","north","Rabat",37.8,154,"MAD","Automotive, aerospace, phosphates, renewables",["AfCFTA","GAFTA","Agadir"],"MA"],
+ TN:["Tunisia","تونس","north","Tunis",12.3,53,"TND","Components, agrifood, ICT outsourcing",["AfCFTA","COMESA","GAFTA","Agadir"],"TN"],
+ MR:["Mauritania","موريتانيا","north","Nouakchott",5.0,10.7,"MRU","Mining, fisheries, gas, green hydrogen",["AfCFTA"],"DCTS"],
+ EH:["Western Sahara","الصحراء الغربية","north","—",null,null,"—","—",[],"—"],
+ SD:["Sudan","السودان","east","Khartoum",50,null,"SDG","Agriculture, gold, livestock",["AfCFTA","COMESA","GAFTA"],"DCTS"],
+ SS:["South Sudan","جنوب السودان","east","Juba",11.9,null,"SSP","Oil, agriculture",["AfCFTA","EAC"],"DCTS"],
+ ET:["Ethiopia","إثيوبيا","east","Addis Ababa",129,120,"ETB","Manufacturing, agriculture, aviation, energy",["AfCFTA","COMESA"],"DCTS",3.8],
+ ER:["Eritrea","إريتريا","east","Asmara",3.7,null,"ERN","Mining",["COMESA"],"DCTS"],
+ DJ:["Djibouti","جيبوتي","east","Djibouti",1.2,4.1,"DJF","Ports, logistics, telecoms",["AfCFTA","COMESA"],"DCTS"],
+ SO:["Somalia","الصومال","east","Mogadishu",18.7,11.7,"SOS","Livestock, telecoms, remittance services",["AfCFTA","COMESA","EAC"],"DCTS"],
+ KE:["Kenya","كينيا","east","Nairobi",56.4,124,"KES","Technology, finance, agriculture, logistics",["AfCFTA","COMESA","EAC"],"KE"],
+ UG:["Uganda","أوغندا","east","Kampala",49.3,53,"UGX","Oil, agriculture, minerals",["AfCFTA","COMESA","EAC"],"DCTS"],
+ RW:["Rwanda","رواندا","east","Kigali",14.3,14,"RWF","Services, ICT, tourism",["AfCFTA","COMESA","EAC"],"DCTS"],
+ TZ:["Tanzania","تنزانيا","east","Dodoma",68.6,79,"TZS","Mining, gas, tourism, ports",["AfCFTA","EAC","SADC"],"DCTS"],
+ MG:["Madagascar","مدغشقر","east","Antananarivo",31.9,17,"MGA","Mining, vanilla, textiles",["AfCFTA","COMESA","SADC"],"ESA"],
+ MU:["Mauritius","موريشيوس","east","Port Louis",1.3,15.5,"MUR","Financial services, tourism",["AfCFTA","COMESA","SADC"],"ESA"],
+ SC:["Seychelles","سيشل","east","Victoria",0.13,2.1,"SCR","Tourism, fisheries",["AfCFTA","COMESA","SADC"],"ESA"],
+ KM:["Comoros","جزر القمر","east","Moroni",0.87,1.4,"KMF","Agriculture, remittances",["AfCFTA","COMESA","SADC"],"DCTS"],
+ NG:["Nigeria","نيجيريا","west","Abuja",227,240,"NGN","Oil and gas, fintech, creative industries, agriculture",["AfCFTA","ECOWAS"],"DCTS",4.0],
+ GH:["Ghana","غانا","west","Accra",34.4,76,"GHS","Gold, cocoa, oil, services",["AfCFTA","ECOWAS"],"GH"],
+ CI:["Côte d'Ivoire","كوت ديفوار","west","Yamoussoukro",31.9,87,"XOF","Cocoa, agrifood, ports, energy",["AfCFTA","ECOWAS"],"CI"],
+ SN:["Senegal","السنغال","west","Dakar",18.5,32,"XOF","Oil and gas, fisheries, services",["AfCFTA","ECOWAS"],"DCTS"],
+ ML:["Mali","مالي","west","Bamako",23.8,27,"XOF","Gold, cotton",["AfCFTA"],"DCTS"],
+ BF:["Burkina Faso","بوركينا فاسو","west","Ouagadougou",23.5,23,"XOF","Gold, cotton",["AfCFTA"],"DCTS"],
+ NE:["Niger","النيجر","west","Niamey",27.9,19.9,"XOF","Uranium, oil, agriculture",["AfCFTA"],"DCTS"],
+ GN:["Guinea","غينيا","west","Conakry",14.5,24.6,"GNF","Bauxite, iron ore",["AfCFTA","ECOWAS"],"DCTS",7.8],
+ SL:["Sierra Leone","سيراليون","west","Freetown",8.8,7.4,"SLE","Mining, agriculture",["AfCFTA","ECOWAS"],"DCTS"],
+ LR:["Liberia","ليبيريا","west","Monrovia",5.6,4.8,"LRD","Iron ore, rubber, ship registry",["AfCFTA","ECOWAS"],"DCTS"],
+ GM:["The Gambia","غامبيا","west","Banjul",2.8,2.6,"GMD","Tourism, agriculture",["AfCFTA","ECOWAS"],"DCTS"],
+ GW:["Guinea-Bissau","غينيا بيساو","west","Bissau",2.2,2.2,"XOF","Cashew, fisheries",["AfCFTA","ECOWAS"],"DCTS"],
+ TG:["Togo","توغو","west","Lomé",9.5,9.8,"XOF","Port of Lomé, phosphates",["AfCFTA","ECOWAS"],"DCTS"],
+ BJ:["Benin","بنين","west","Porto-Novo",14.1,21.5,"XOF","Cotton, Port of Cotonou",["AfCFTA","ECOWAS"],"DCTS"],
+ CV:["Cabo Verde","الرأس الأخضر","west","Praia",0.6,2.7,"CVE","Tourism, transshipment",["AfCFTA","ECOWAS"],"DCTS"],
+ CM:["Cameroon","الكاميرون","central","Yaoundé",29.1,53,"XAF","Oil, timber, cocoa, Port of Douala",["AfCFTA"],"CM"],
+ TD:["Chad","تشاد","central","N'Djamena",19.3,19,"XAF","Oil, livestock",["AfCFTA"],"DCTS"],
+ CF:["Central African Republic","جمهورية أفريقيا الوسطى","central","Bangui",5.9,2.8,"XAF","Timber, diamonds",["AfCFTA"],"DCTS"],
+ CG:["Republic of the Congo","جمهورية الكونغو","central","Brazzaville",6.3,15.7,"XAF","Oil, timber",["AfCFTA"],"DCTS"],
+ CD:["DR Congo","الكونغو الديمقراطية","central","Kinshasa",109,70,"CDF","Copper, cobalt, hydropower",["AfCFTA","COMESA","SADC","EAC"],"DCTS"],
+ GA:["Gabon","الغابون","central","Libreville",2.5,21,"XAF","Oil, manganese, timber",["AfCFTA"],"DCTS"],
+ GQ:["Equatorial Guinea","غينيا الاستوائية","central","Malabo",1.9,12.9,"XAF","Oil and gas",["AfCFTA"],"DCTS"],
+ ST:["São Tomé and Príncipe","ساو تومي وبرينسيب","central","São Tomé",0.23,0.7,"STN","Cocoa, tourism",["AfCFTA"],"DCTS"],
+ BI:["Burundi","بوروندي","central","Gitega",13.7,3,"BIF","Agriculture, coffee",["AfCFTA","COMESA","EAC"],"DCTS"],
+ AO:["Angola","أنغولا","south","Luanda",37.9,85,"AOA","Oil, diamonds, agriculture",["AfCFTA","SADC"],"DCTS"],
+ ZM:["Zambia","زامبيا","south","Lusaka",21.3,26,"ZMW","Copper, agriculture, energy",["AfCFTA","COMESA","SADC"],"DCTS"],
+ ZW:["Zimbabwe","زيمبابوي","south","Harare",16.6,40,"ZWG","Mining, tobacco, agriculture",["AfCFTA","COMESA","SADC"],"ESA"],
+ MW:["Malawi","ملاوي","south","Lilongwe",21.7,11,"MWK","Tobacco, agriculture",["AfCFTA","COMESA","SADC"],"DCTS"],
+ MZ:["Mozambique","موزمبيق","south","Maputo",34.6,22.5,"MZN","LNG, coal, aluminium, ports",["AfCFTA","SADC"],"SACUM",5.7],
+ BW:["Botswana","بوتسوانا","south","Gaborone",2.5,19.4,"BWP","Diamonds, services",["AfCFTA","SADC"],"SACUM"],
+ NA:["Namibia","ناميبيا","south","Windhoek",3.0,13.4,"NAD","Mining, green hydrogen, offshore oil",["AfCFTA","SADC"],"SACUM"],
+ ZA:["South Africa","جنوب أفريقيا","south","Pretoria",63.2,400,"ZAR","Finance, mining, automotive, agrifood",["AfCFTA","SADC"],"SACUM"],
+ LS:["Lesotho","ليسوتو","south","Maseru",2.3,2.1,"LSL","Textiles, water, diamonds",["AfCFTA","SADC"],"SACUM"],
+ SZ:["Eswatini","إسواتيني","south","Mbabane",1.2,4.8,"SZL","Sugar, manufacturing",["AfCFTA","COMESA","SADC"],"SACUM"]
+};
+const ALIAS = {"_2":"SO"}; // Somaliland outline shown with Somalia
+const BLOC_UK = c => C[c] && C[c][9] && !["DCTS","MFN","—"].includes(C[c][9]);
+function inBloc(code,b){ const d=C[code]; if(!d) return false; return b==="UK" ? BLOC_UK(code) : d[8].includes(b); }
+function cName(code){ const d=C[code]; return d ? (lang==="ar"?d[1]:d[0]) : code; }
+function fmt(n,d=1){ return n==null ? "—" : (n>=1000? Math.round(n).toLocaleString("en-GB") : n.toLocaleString("en-GB",{maximumFractionDigits:d})); }
+
+/* ---------------- Map ---------------- */
+const svg = document.getElementById("mapSvg"), NS="http://www.w3.org/2000/svg";
+const tip = document.getElementById("tip"), stage = document.getElementById("mapStage");
+let view = "regions", bloc = "AfCFTA", selected = "EG";
+const HOME = [365,105,200,280]; let vb = HOME.slice();
+const R=6378137, CM=11.5*Math.PI/180, X0=-20004297.151525836, X1=20026572.39474939, YT=12671671.123330014, YB=-6930392.025135122, MW=900, MH=440.70631074413296;
+let dx=0, dy=0;
+function proj(lat,lon){ const x=R*(lon*Math.PI/180-CM), y=1.25*R*Math.log(Math.tan(Math.PI/4+0.4*lat*Math.PI/180)); return [(x-X0)/(X1-X0)*MW+dx, (YT-y)/(YT-YB)*MH+dy]; }
+const gLand = document.createElementNS(NS,"g"), gRoutes = document.createElementNS(NS,"g"), gHubs = document.createElementNS(NS,"g");
+svg.append(gLand,gRoutes,gHubs);
+const paths = {};
+
+function buildMap(){
+  const W = window.__WORLD;
+  if(!W || !W.paths){ document.getElementById("mapFail").style.display="flex"; return; }
+  Object.entries(W.paths).forEach(([code,p])=>{
+    const c = ALIAS[code]||code, af = !!C[c];
+    const el = document.createElementNS(NS,"path");
+    el.setAttribute("d",p.path);
+    el.setAttribute("class","land " + (af ? "af" : (c==="GB" ? "ctx uk" : "ctx")));
+    if(af){
+      el.dataset.code = c; el.setAttribute("tabindex","0"); el.setAttribute("role","button"); el.setAttribute("aria-label", C[c][0]);
+      (paths[c] = paths[c]||[]).push(el);
+      el.addEventListener("click",()=>select(c,true));
+      el.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(c,true);} });
+      el.addEventListener("mousemove",e=>showTip(e,cName(c)));
+      el.addEventListener("mouseleave",hideTip);
+      el.addEventListener("focus",()=>{});
+    } else if(c==="GB"){
+      el.addEventListener("mousemove",e=>showTip(e,lang==="ar"?"المملكة المتحدة":"United Kingdom")); el.addEventListener("mouseleave",hideTip);
+    }
+    gLand.appendChild(el);
+  });
+  // Calibrate projection offset against Egypt's outline (west 24.70°E, north 31.67°N).
+  const eg = paths.EG && paths.EG[0];
+  if(eg){ const bb = eg.getBBox(); const p = proj(31.67,24.70); dx = bb.x - p[0]; dy = bb.y - p[1]; }
+  drawRoutes(); drawHubs(); drawDots(); paint(); buildMinis();
+}
+function showTip(e,txt){ const r=stage.getBoundingClientRect(); tip.textContent=txt; tip.style.left=(e.clientX-r.left)+"px"; tip.style.top=(e.clientY-r.top)+"px"; tip.style.opacity=1; }
+function hideTip(){ tip.style.opacity=0; }
+
+const SIZE_BINS=[5,20,50,100,250], SIZE_COL=["#efe3cf","#e2c79b","#d3a466","#c07d3a","#a3561f","#7a3512"];
+function sizeColor(g){ if(g==null) return "#e3e3e3"; let i=0; while(i<SIZE_BINS.length && g>=SIZE_BINS[i]) i++; return SIZE_COL[i]; }
+function paint(){
+  Object.entries(paths).forEach(([c,els])=>{
+    const d=C[c]; let fill="#cfcfcf", dim=false;
+    if(c==="EH"){ fill="url(#hatch)"; }
+    else if(view==="regions"||view==="hubs"){ fill = REG[d[2]].hex; }
+    else if(view==="blocs"){ const on=inBloc(c,bloc); fill = on ? (bloc==="UK" ? "var(--deep)" : "var(--accent)") : "#ddd7cd"; }
+    else if(view==="size"){ fill = sizeColor(d[5]); }
+    if(c==="EG" && view!=="size") fill = "var(--accent)";
+    if(view==="hubs" && c!=="EG") dim=true;
+    els.forEach(el=>{ el.style.fill = DOTS ? "transparent" : fill; el.classList.toggle("dim",dim && !DOTS); el.classList.toggle("sel", c===selected); }); const dg=dotG[c]; if(dg){ dg.style.fill = c==="EH" ? "#c9c2b6" : fill; dg.style.opacity = dim ? .2 : 1; }
+  });
+  if(!svg.querySelector("#hatch")){
+    const defs=document.createElementNS(NS,"defs");
+    defs.innerHTML='<pattern id="hatch" width="1.2" height="1.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.2" height="1.2" fill="#e6e6e6"/><line x1="0" y1="0" x2="0" y2="1.2" stroke="#9a9a9a" stroke-width=".5"/></pattern>';
+    svg.prepend(defs);
+  }
+  gHubs.style.display = view==="hubs" ? "" : "none";
+  renderLegend();
+}
+function renderLegend(){
+  const L=document.getElementById("legend"); if(!L) return;
+  let h="";
+  if(view==="regions"){ h="<b>"+(lang==="ar"?"مناطق الاتحاد الأفريقي":"African Union regions")+"</b><div class='items'>"+Object.values(REG).map(r=>`<span><i style="background:${r.hex}"></i>${lang==="ar"?r.ar:r.en}</span>`).join("")+`<span><i style="background:var(--accent)"></i>${lang==="ar"?"مصر":"Egypt"}</span></div>`; }
+  else if(view==="blocs"){ const n=Object.keys(C).filter(c=>inBloc(c,bloc)).length; h=`<b>${document.querySelector('#blocSel option[value="'+bloc+'"]').textContent}: ${n} ${lang==="ar"?"دولة":"countries shown"}</b><div class='items'><span><i style="background:${bloc==="UK"?"var(--deep)":"var(--accent)"}"></i>${lang==="ar"?"عضو":"Member / covered"}</span><span><i style="background:#ddd7cd"></i>${lang==="ar"?"غير عضو":"Not a member"}</span></div>`; }
+  else if(view==="size"){ h="<b>"+(lang==="ar"?"الناتج المحلي (مليار دولار، تقديري)":"GDP, US$ bn (indicative)")+"</b><div class='items'>"+["<5","5–20","20–50","50–100","100–250","250+"].map((l,i)=>`<span><i style="background:${SIZE_COL[i]}"></i>${l}</span>`).join("")+`<span><i style="background:#e3e3e3"></i>n/a</span></div>`; }
+  else { h="<b>"+(lang==="ar"?"مراكز مصر":"Egypt's hubs")+"</b><div class='items'>"+HUBTYPES.map(([k,c,l,la])=>`<span><i style="background:${c};border-radius:50%"></i>${lang==="ar"?la:l}</span>`).join("")+"</div>"; }
+  if(document.getElementById("routesTgl").checked && view!=="hubs") h+=`<div class='items' style="margin-top:6px"><span><i style="background:#1c1c1c;height:3px;border:0;vertical-align:3px"></i>${lang==="ar"?"طرق بحرية عبر السويس":"Sea routes via Suez"}</span><span><i style="background:repeating-linear-gradient(90deg,#c41e3a 0 4px,transparent 4px 7px);height:3px;border:0;vertical-align:3px"></i>${lang==="ar"?"تحويل رأس الرجاء الصالح":"Cape diversion"}</span><span><i style="background:repeating-linear-gradient(90deg,#b38b3a 0 2px,transparent 2px 4px);height:3px;border:0;vertical-align:3px"></i>${lang==="ar"?"ممر القاهرة–كيب تاون":"Cairo–Cape Town road"}</span></div>`;
+  L.innerHTML=h; const LM=document.getElementById("legendM"); if(LM) LM.innerHTML=h;
+}
+
+const ROUTES = [
+  {pts:[[29.95,32.56],[31.26,32.30],[33.4,27],[36.2,16],[37.3,10],[37.4,1],[36.0,-5.6],[37,-10.2],[43.6,-10.4],[48.4,-5.8],[50.3,-0.5],[51.95,1.35]], col:"#1c1c1c", dash:"", w:2.2, name:"Port Said to Felixstowe via Gibraltar, about 3,250 nautical miles"},
+  {pts:[[29.95,32.56],[27.6,33.9],[23,36.6],[18,39.6],[14.5,42.2],[12.6,43.35],[11.6,43.3],[12.2,46],[9,50.6],[3,48.5],[-1.5,43.5],[-4.05,39.7]], col:"#1c1c1c", dash:"", w:2.2, name:"Suez to Djibouti and Mombasa via the Red Sea"},
+  {pts:[[51.95,1.35],[48.4,-5.8],[43.6,-10.4],[36.5,-12.5],[28,-17],[20,-19],[10,-17.5],[2,-10],[-8,-1],[-20,7],[-30,13],[-35,18.4],[-35.6,23],[-33.5,30],[-28,36],[-20,41],[-12,45],[-4,52]], col:"#c41e3a", dash:"2 2", w:1.8, name:"Europe–Asia shipping diverted round the Cape of Good Hope"},
+  {pts:[[30.04,31.24],[24.09,32.9],[19.6,33.1],[15.5,32.56],[12.6,37.5],[9.03,38.74],[3.5,38.9],[-1.29,36.82],[-6.8,39.28],[-11,34.5],[-15.4,28.3],[-17.8,31.05],[-22,29.5],[-24.6,25.9],[-25.75,28.2],[-29.1,26.2],[-33.9,18.4]], col:"#b38b3a", dash:"1 1.2", w:1.6, name:"Cairo–Cape Town road corridor"}
+];
+function drawRoutes(){
+  gRoutes.innerHTML="";
+  ROUTES.forEach(r=>{
+    const p=document.createElementNS(NS,"path");
+    const pts=r.pts.map(([a,b])=>proj(a,b));
+    let d="M"+pts[0].join(",");
+    for(let i=1;i<pts.length;i++){ const [x0,y0]=pts[i-1],[x1,y1]=pts[i]; d+=` Q${x0},${y0} ${(x0+x1)/2},${(y0+y1)/2}`; }
+    d+=" L"+pts[pts.length-1].join(",");
+    p.setAttribute("d",d); p.setAttribute("class","route"); p.setAttribute("stroke",r.col); p.setAttribute("stroke-width",r.w); if(r.dash) p.setAttribute("stroke-dasharray",r.dash.split(" ").map(n=>n*3).join(" "));
+    const ti=document.createElementNS(NS,"title"); ti.textContent=r.name; p.appendChild(ti);
+    p.style.pointerEvents="stroke";
+    gRoutes.appendChild(p);
+  });
+  gRoutes.style.display = document.getElementById("routesTgl").checked && view!=="hubs" ? "" : "none";
+}
+const HUBTYPES=[["port","#3f5f80","Port","ميناء"],["zone","#c41e3a","Economic or industrial zone","منطقة اقتصادية أو صناعية"],["city","#1c1c1c","City or new city","مدينة"],["energy","#b38b3a","Energy","طاقة"]];
+const HUBS=[
+  {n:"Cairo",ar:"القاهرة",lat:30.04,lon:31.24,t:"city",d:"Capital and main business centre. Home to GAFI's Investor Service Centre and most ministries."},
+  {n:"New Administrative Capital",ar:"العاصمة الإدارية الجديدة",lat:30.02,lon:31.76,t:"city",d:"New seat of government east of Cairo, with a business district and international university campuses."},
+  {n:"Alexandria",ar:"الإسكندرية",lat:31.2,lon:29.92,t:"port",d:"Egypt's oldest and busiest Mediterranean port, with a large industrial base at Borg El Arab."},
+  {n:"Damietta Port",ar:"ميناء دمياط",lat:31.47,lon:31.76,t:"port",d:"Mediterranean container and LNG port on the Nile delta."},
+  {n:"East Port Said (SCZone)",ar:"شرق بورسعيد",lat:31.23,lon:32.36,t:"zone",d:"SCZone industrial area and container port at the northern entrance of the Suez Canal."},
+  {n:"East Ismailia (SCZone)",ar:"شرق الإسماعيلية",lat:30.6,lon:32.33,t:"zone",d:"SCZone industrial area on the canal's east bank; new metal industry projects approved in 2026."},
+  {n:"Qantara West (SCZone)",ar:"القنطرة غرب",lat:30.85,lon:32.25,t:"zone",d:"Light manufacturing and textiles area of the SCZone, with Turkish and Chinese investors."},
+  {n:"Ain Sokhna (SCZone)",ar:"العين السخنة",lat:29.6,lon:32.33,t:"zone",d:"The SCZone's largest industrial area and Red Sea port, including the China–Egypt TEDA zone. 212 SCZone factories were operating by September 2026."},
+  {n:"Safaga Port",ar:"ميناء سفاجا",lat:26.73,lon:33.94,t:"port",d:"Red Sea port serving Upper Egypt, with links toward East Africa and the Gulf."},
+  {n:"Ras El Hekma",ar:"رأس الحكمة",lat:31.2,lon:27.9,t:"city",d:"New city on the Mediterranean coast; a $35 billion development deal with the UAE's ADQ was signed in 2024."},
+  {n:"Benban Solar Park",ar:"مجمع بنبان للطاقة الشمسية",lat:24.45,lon:32.73,t:"energy",d:"One of the world's largest solar installations, near Aswan, with about 1.6 GW of capacity."},
+  {n:"Gulf of Suez wind",ar:"رياح خليج السويس",lat:28.4,lon:32.9,t:"energy",d:"Egypt's main wind corridor, with multi-gigawatt projects in development."}
+];
+function drawHubs(){
+  gHubs.innerHTML="";
+  HUBS.forEach(h=>{
+    const [x,y]=proj(h.lat,h.lon), col=HUBTYPES.find(t=>t[0]===h.t)[1];
+    const g=document.createElementNS(NS,"g"); g.setAttribute("class","hub"); g.setAttribute("tabindex","0"); g.setAttribute("role","button"); g.setAttribute("aria-label",h.n);
+    const c=document.createElementNS(NS,"circle"); c.setAttribute("cx",x); c.setAttribute("cy",y); c.setAttribute("r",.55); c.setAttribute("fill",col);
+    const hit=document.createElementNS(NS,"circle"); hit.setAttribute("class","hit"); hit.setAttribute("cx",x); hit.setAttribute("cy",y); hit.setAttribute("r",1.6);
+    g.append(hit,c);
+    g.addEventListener("click",()=>{ hubPanel(h); if(isNarrow()) document.getElementById("panel").scrollIntoView({behavior:"smooth",block:"start"}); }); g.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();hubPanel(h);} });
+    g.addEventListener("mousemove",e=>showTip(e,lang==="ar"?h.ar:h.n)); g.addEventListener("mouseleave",hideTip);
+    gHubs.appendChild(g);
+  });
+}
+function hubPanel(h,fromTap){
+  gHubs.querySelectorAll(".hub").forEach((g,i)=>g.classList.toggle("on", HUBS[i]===h));
+  const P=document.getElementById("panel"), type=HUBTYPES.find(t=>t[0]===h.t);
+  P.innerHTML=`<span class="reg" style="background:${type[1]}">${lang==="ar"?type[3]:type[2]}</span><h3>${lang==="ar"?h.ar:h.n}</h3><p style="margin-top:10px">${h.d}</p>
+  <p class="note">${lang==="ar"?"اختر مركزًا آخر على الخريطة، أو عد إلى عرض المناطق.":"Select another hub, or switch back to Regions to explore other countries."}</p>
+  <div class="panel-actions"><button type="button" class="backmap" data-backmap>${lang==="ar"?"العودة للخريطة ↑":"Back to map ↑"}</button><button type="button" id="backEg">${lang==="ar"?"ملف مصر":"Egypt profile"}</button></div>`;
+  document.getElementById("backEg").onclick=()=>select("EG",false);
+}
+
+/* Dot-matrix rendering */
+let DOTS = !!(window.SVGGeometryElement && SVGGeometryElement.prototype.isPointInFill && svg.createSVGPoint);
+const dotG = {}; const gDots = document.createElementNS(NS,"g"); gDots.setAttribute("class","dots");
+function drawDots(){
+  if(!DOTS) return;
+  try{
+    svg.insertBefore(gDots, gRoutes);
+    const VX=[345,95,240,300], step=1.15, rad=+(step*.37).toFixed(3), pt=svg.createSVGPoint();
+    const ctxG=document.createElementNS(NS,"g"); ctxG.setAttribute("class","d-ctx"); gDots.appendChild(ctxG);
+    gLand.querySelectorAll("path").forEach(el=>{
+      const c=el.dataset.code||null, isUK=el.classList.contains("uk"); let bb; try{ bb=el.getBBox(); }catch(e){ return; }
+      const x0=Math.max(bb.x,VX[0]), x1=Math.min(bb.x+bb.width,VX[0]+VX[2]), y0=Math.max(bb.y,VX[1]), y1=Math.min(bb.y+bb.height,VX[1]+VX[3]);
+      if(x0>=x1||y0>=y1) return;
+      let tg;
+      if(c){ tg=dotG[c]; if(!tg){ tg=dotG[c]=document.createElementNS(NS,"g"); tg.setAttribute("class", c==="EG"?"d-af d-eg":"d-af"); gDots.appendChild(tg);} }
+      else if(isUK){ tg=document.createElementNS(NS,"g"); tg.setAttribute("class","d-uk"); gDots.appendChild(tg); }
+      else tg=ctxG;
+      let s="";
+      for(let x=Math.ceil(x0/step)*step; x<=x1; x+=step) for(let y=Math.ceil(y0/step)*step; y<=y1; y+=step){
+        pt.x=x; pt.y=y; if(el.isPointInFill(pt)) s+="M"+(x-rad).toFixed(2)+","+y.toFixed(2)+"a"+rad+","+rad+" 0 1,0 "+(2*rad)+",0a"+rad+","+rad+" 0 1,0 "+(-2*rad)+",0";
+      }
+      if(s){ const p=document.createElementNS(NS,"path"); p.setAttribute("d",s); tg.appendChild(p); }
+    });
+    svg.classList.add("dotted");
+  }catch(e){ DOTS=false; gDots.remove(); }
+}
+function cloneDots(target){ const c=gDots.cloneNode(true); c.removeAttribute("style"); c.querySelectorAll("g").forEach(g=>g.removeAttribute("style")); target.appendChild(c); }
+function buildMinis(){
+  if(!DOTS) return;
+  const H=document.getElementById("heroMap"), B=document.getElementById("bandMap"), S=document.getElementById("stripMap");
+  if(H){ cloneDots(H); const r=gRoutes.cloneNode(true); r.style.display=""; r.setAttribute("class","hero-routes"); r.querySelectorAll("title").forEach(t=>t.remove()); H.appendChild(r);
+    const [x,y]=proj(30.6,32.33);
+    H.insertAdjacentHTML("beforeend",'<circle class="pulse" cx="'+x+'" cy="'+y+'" r="2.4"/><circle class="pulse" style="animation-delay:1.2s" cx="'+x+'" cy="'+y+'" r="2.4"/><circle class="pin" cx="'+x+'" cy="'+y+'" r="1.15"/>');
+    const co=document.createElement("div"); co.className="callout";
+    co.style.left=((x-372)/190*100)+"%"; if((x-372)/190>.8) co.classList.add("flip"); co.style.top=((y-108)/272*100)+"%";
+    co.innerHTML = lang==="ar" ? '<span>قناة السويس</span><b>4.67 مليار دولار</b><span>إيرادات 2025/26، بزيادة 23%</span>' : '<span>Suez Canal</span><b>$4.67bn revenue</b><span>FY2025/26, up 23% as ships return</span>';
+    document.getElementById("heroWrap").appendChild(co); }
+  if(B) cloneDots(B);
+  if(S) cloneDots(S);
+}
+/* View box animation */
+function setVB(target,anim=true){
+  const from=vb.slice(), t0=performance.now(), dur= (anim && !matchMedia("(prefers-reduced-motion: reduce)").matches) ? 450 : 0;
+  function step(now){ const k=dur?Math.min(1,(now-t0)/dur):1, e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    vb=from.map((v,i)=>v+(target[i]-v)*e); svg.setAttribute("viewBox",vb.join(" "));
+    const r=Math.max(.35,vb[2]/(isNarrow()?70:95)); gHubs.querySelectorAll("circle").forEach(c=>c.setAttribute("r", c.classList.contains("hit") ? r*2.8 : r));
+    if(k<1) requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+function zoomBy(f){ const cx=vb[0]+vb[2]/2, cy=vb[1]+vb[3]/2, w=Math.min(260,Math.max(18,vb[2]*f)), h=w*HOME[3]/HOME[2]; setVB([cx-w/2,cy-h/2,w,h]); }
+document.getElementById("zIn").onclick=()=>zoomBy(.7);
+document.getElementById("zOut").onclick=()=>zoomBy(1.4);
+document.getElementById("zReset").onclick=()=>setVB(view==="hubs"?egyptBox():HOME);
+function egyptBox(){ const eg=paths.EG&&paths.EG[0]; if(!eg) return HOME; const b=eg.getBBox(); const pad=4, w=b.width+pad*2, h=w*HOME[3]/HOME[2]; return [b.x-pad, b.y+b.height/2-h/2, w, h]; }
+// Drag to pan
+(function(){ let drag=null; svg.addEventListener("pointerdown",e=>{ if(e.target.closest(".hub")) return; if(e.pointerType==="touch" && vb[2]>=HOME[2]-1) return; drag={x:e.clientX,y:e.clientY,vb:vb.slice()}; });
+  window.addEventListener("pointercancel",()=>drag=null);
+  window.addEventListener("pointermove",e=>{ if(!drag) return; const r=svg.getBoundingClientRect(), s=Math.max(drag.vb[2]/r.width, drag.vb[3]/r.height);
+    const mx=(e.clientX-drag.x)*s, my=(e.clientY-drag.y)*s; if(Math.abs(mx)+Math.abs(my)<.5) return; vb=[drag.vb[0]-mx,drag.vb[1]-my,drag.vb[2],drag.vb[3]]; svg.setAttribute("viewBox",vb.join(" ")); });
+  window.addEventListener("pointerup",()=>drag=null); })();
+
+function setView(v){
+  view=v; document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.view===v));
+  document.getElementById("blocWrap").hidden = v!=="blocs";
+  paint(); drawRoutes();
+  if(v==="hubs"){ setVB(egyptBox()); hubPanel(HUBS[7]); } else if(vb[2]<60) setVB(HOME);
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>setView(b.dataset.view)));
+document.getElementById("blocSel").addEventListener("change",e=>{ bloc=e.target.value; paint(); });
+document.getElementById("routesTgl").addEventListener("change",()=>{ drawRoutes(); renderLegend(); });
+document.getElementById("toHubs").addEventListener("click",()=>{ document.getElementById("map").scrollIntoView(); setView("hubs"); });
+
+/* Country panel */
+function select(code,fromMap){
+  if(!C[code]) return; selected=code; if(view==="hubs"){ setView("regions"); }
+  paint(); renderPanel(code); document.getElementById("ctySel").value=code;
+  if(fromMap && isNarrow()) document.getElementById("panel").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+  if(!fromMap) document.getElementById("panel").focus?.();
+}
+function renderPanel(code){
+  const P=document.getElementById("panel"); if(!P) return;
+  const d=C[code]; if(!d) return; const r=REG[d[2]];
+  if(code==="EH"){ P.innerHTML=`<span class="reg" style="background:#6b6b6b">${lang==="ar"?r.ar:r.en}</span><h3>${cName(code)}</h3><p style="margin-top:10px">A non-self-governing territory whose status is disputed. It is shown separately on this map and no market data is presented.</p>`; return; }
+  const egypt = code==="EG";
+  const blocs = d[8].map(b=>`<span class="pill">${b}</span>`).join("") + (BLOC_UK(code)?`<span class="pill uk">UK agreement</span>`:"");
+  P.innerHTML=`<span class="reg" style="background:${egypt?"var(--accent)":r.hex}">${lang==="ar"?r.ar:r.en}</span>
+  <h3>${cName(code)}</h3>
+  <dl class="kv">
+    <div><dt>${t("capital")}</dt><dd style="font-size:1.05rem;color:var(--ink)">${d[3]}</dd></div>
+    <div><dt>${t("currency")}</dt><dd>${d[6]}</dd></div>
+    <div><dt>${t("pop")}</dt><dd>${d[4]==null?"—":fmt(d[4])+"m"}</dd></div>
+    <div><dt>${t("gdp")}</dt><dd>${d[5]==null?"n/a":"$"+fmt(d[5])+"bn"}</dd></div>
+    ${d[10]!=null?`<div style="grid-column:1/-1"><dt>${t("fdi")}</dt><dd>$${d[10]}bn <a class="src" href="#s3" style="margin:0 0 0 6px">UNCTAD WIR 2026</a></dd></div>`:""}
+  </dl>
+  <h4>${t("blocs")}</h4><div class="pills">${blocs||"—"}</div>
+  <h4>${t("ukTerms")}</h4><p>${UKT[d[9]]||"—"}</p>
+  <h4>${t("sectors")}</h4><p>${d[7]}</p>
+  <h4>${egypt?(lang==="ar"?"دور مصر":"Egypt's role"):t("fromEgypt")}</h4><p>${egypt?"Gateway base: Suez Canal ports and the SCZone for export manufacturing, with preferential access to COMESA, GAFTA, Agadir and AfCFTA markets and to the UK and EU through association agreements. Switch to Egypt hubs to see locations.":r.route}</p>
+  <p class="note">${egypt?"Population: CAPMAS, Sep 2026. GDP: IMF 2025 via DBT, Nov 2026.":"Population and GDP are indicative values (IMF estimates for 2024) pending the launch data refresh."} ${d[5]==null&&!egypt?"GDP not shown where conflict makes estimates unreliable.":""}</p>
+  <div class="panel-actions"><button type="button" class="backmap" data-backmap>${lang==="ar"?"العودة للخريطة ↑":"Back to map ↑"}</button><button type="button" id="opBtn">${t("onePager")}</button>${egypt?`<button type="button" id="hubBtn">${lang==="ar"?"مراكز مصر":"Egypt hubs"}</button>`:""}</div>`;
+  document.getElementById("opBtn").onclick=()=>openOnePager(code);
+  const hb=document.getElementById("hubBtn"); if(hb) hb.onclick=()=>setView("hubs");
+}
+function onePagerText(code){
+  const d=C[code], r=REG[d[2]];
+  return `${d[0].toUpperCase()} — COUNTRY SUMMARY
+Egypt Trade & Investment Gateway · prototype · ${new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}
+
+Region: ${r.en}
+Capital: ${d[3]}    Currency: ${d[6]}
+Population: ${d[4]==null?"n/a":fmt(d[4])+" million"}    GDP: ${d[5]==null?"n/a":"US$"+fmt(d[5])+" billion"}${d[10]!=null?`
+FDI inflows 2025: US$${d[10]} billion (UNCTAD World Investment Report 2026)`:""}
+
+Trade bloc membership: ${d[8].join(", ")||"—"}
+Trade terms with the UK: ${UKT[d[9]]||"—"}
+Key sectors: ${d[7]}
+
+${code==="EG"?"Egypt's role":"Reaching it from Egypt"}:
+${code==="EG"?"Suez Canal ports and the SCZone for export manufacturing, with preferential access to COMESA, GAFTA, Agadir and AfCFTA markets and to the UK and EU through association agreements.":r.route}
+
+Sources: ${code==="EG"?"CAPMAS (Sep 2026); IMF via DBT factsheet (Nov 2026); UNCTAD WIR 2026.":"Indicative IMF estimates for 2024, to be refreshed at launch."}`;
+}
+const dlg=document.getElementById("dlg");
+function openOnePager(code){ document.getElementById("dlgTitle").textContent=cName(code)+" · "+t("onePager"); document.getElementById("dlgBody").textContent=onePagerText(code); dlg.dataset.code=code; if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); }
+document.getElementById("dlgClose").onclick=()=>dlg.close?dlg.close():dlg.removeAttribute("open");
+document.getElementById("dlgCopy").onclick=async()=>{ try{ await navigator.clipboard.writeText(document.getElementById("dlgBody").textContent); toast(lang==="ar"?"تم النسخ":"Summary copied"); }catch(e){ toast(lang==="ar"?"تعذّر النسخ؛ حدد النص وانسخه يدويًا":"Copy was blocked. Select the text and copy it manually."); } };
+function toast(m){ const el=document.getElementById("toast"); el.textContent=m; el.style.opacity=1; clearTimeout(toast.t); toast.t=setTimeout(()=>el.style.opacity=0,2200); }
+
+function fillCountrySelect(){
+  const s=document.getElementById("ctySel"); const cur=s.value;
+  const opts=Object.keys(C).filter(c=>c!=="EH").sort((a,b)=>cName(a).localeCompare(cName(b), lang));
+  s.innerHTML=`<option value="">${t("findCty")}</option>`+Object.entries(REG).map(([k,r])=>`<optgroup label="${lang==="ar"?r.ar:r.en}">`+opts.filter(c=>C[c][2]===k).map(c=>`<option value="${c}">${cName(c)}</option>`).join("")+"</optgroup>").join("");
+  s.value=cur||selected;
+}
+document.getElementById("ctySel").addEventListener("change",e=>{ if(e.target.value) select(e.target.value,false); });
+
+function renderRegions(){
+  const W=document.getElementById("regionCards"); if(!W) return;
+  W.innerHTML=Object.entries(REG).map(([k,r])=>{
+    const cs=Object.keys(C).filter(c=>C[c][2]===k && c!=="EH");
+    const pop=cs.reduce((s,c)=>s+(C[c][4]||0),0), gdp=cs.reduce((s,c)=>s+(C[c][5]||0),0);
+    return `<button class="rcard" type="button" data-reg="${k}" style="border-top-color:${r.hex}"><div class="bar" style="background:${r.hex}"></div><h4>${lang==="ar"?r.ar:r.en}</h4>
+    <div class="num">${cs.length} ${lang==="ar"?"دولة":"countries"} · ${fmt(pop,0)}m · $${fmt(gdp,0)}bn</div><p>${r.route.split(";")[0]}.</p></button>`;
+  }).join("");
+  W.querySelectorAll(".rcard").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.reg; setView("regions");
+    Object.entries(paths).forEach(([c,els])=>{ const dm=C[c][2]!==k && c!=="EG"; els.forEach(el=>el.classList.toggle("dim", dm && !DOTS)); if(dotG[c]) dotG[c].style.opacity = dm ? .2 : 1; });
+    const first={north:"MA",west:"NG",central:"CD",east:"KE",south:"ZA"}[k]; selected=first; renderPanel(first); document.getElementById("ctySel").value=first;
+    Object.values(paths).flat().forEach(el=>el.classList.toggle("sel", el.dataset.code===first));
+    document.getElementById("map").scrollIntoView();
+  });
+}
+
+/* ---------------- Agreements ---------------- */
+const AGREE=[
+  {k:"UK",n:"UK–Egypt Association Agreement",y:"In force 1 January 2021",s:"force",p:"Continues tariff-free trade in most industrial goods and preferential quotas for agricultural goods between the UK and Egypt.",m:"Parties: UK, Egypt"},
+  {k:"AfCFTA",n:"African Continental Free Trade Area",y:"Trading began 2021",s:"part",p:"Single market across the African Union. Tariffs on most goods are being phased out under national schedules, with rules of origin still being finalised for some products.",m:"54 signatories"},
+  {k:"COMESA",n:"COMESA Free Trade Area",y:"FTA since 2000",s:"force",p:"Duty-free trade for goods meeting COMESA rules of origin among participating members across Eastern and Southern Africa.",m:"21 member states"},
+  {k:"EU",n:"EU–Egypt Association Agreement",y:"In force 2004",s:"force",p:"Duty-free access to the EU for Egyptian industrial goods. Goods made in Egypt by UK firms can reach the EU when origin rules are met.",m:"Parties: EU, Egypt"},
+  {k:"GAFTA",n:"Greater Arab Free Trade Area",y:"Full tariff removal 2005",s:"force",p:"Duty-free trade in goods of Arab origin among Arab League members, including the Gulf states.",m:"Arab League members"},
+  {k:"Agadir",n:"Agadir Agreement",y:"In force 2007",s:"force",p:"Free trade between Egypt, Jordan, Morocco and Tunisia, with diagonal cumulation of origin for access to the EU.",m:"4 members"},
+  {k:"QIZ",n:"Qualifying Industrial Zones",y:"Since 2004",s:"force",p:"Goods from designated Egyptian zones enter the United States duty-free when they meet a minimum Israeli input requirement. Widely used by garment makers.",m:"Egypt, Israel, United States"},
+  {k:"MERCOSUR",n:"Egypt–Mercosur FTA",y:"In force 2017",s:"force",p:"Phased tariff reductions with Argentina, Brazil, Paraguay and Uruguay.",m:"Egypt + 4 Mercosur states"},
+  {k:"EFTA",n:"Egypt–EFTA and Egypt–Turkey FTAs",y:"In force 2007",s:"force",p:"Preferential access to Switzerland, Norway, Iceland and Liechtenstein, and to Turkey for industrial goods.",m:"Bilateral FTAs"}
+];
+const MAPPABLE={UK:"UK",AfCFTA:"AfCFTA",COMESA:"COMESA",GAFTA:"GAFTA",Agadir:"Agadir"};
+function renderAgreements(){
+  const W=document.getElementById("agreeCards"); if(!W) return;
+  const st={force:["s-force","In force","سارية"],part:["s-part","Phasing in","تطبيق تدريجي"]};
+  W.innerHTML=AGREE.map(a=>`<article class="card"><span class="meta">${a.y}</span><h3>${a.n}</h3><p>${a.p}</p>
+    <div class="foot"><span class="status ${st[a.s][0]}">${lang==="ar"?st[a.s][2]:st[a.s][1]}</span><span class="meta">${a.m}</span>${MAPPABLE[a.k]?`<button class="linkbtn" type="button" data-bloc="${MAPPABLE[a.k]}">${t("showMap")}</button>`:""}</div></article>`).join("");
+  W.querySelectorAll("[data-bloc]").forEach(b=>b.onclick=()=>{ bloc=b.dataset.bloc; document.getElementById("blocSel").value=bloc; setView("blocs"); document.getElementById("map").scrollIntoView(); });
+}
+
+/* ---------------- Charts ---------------- */
+function barChart(el,data,opts){
+  el._chart=[data,opts]; const cw=el.clientWidth||520, W=Math.max(300,Math.min(620,cw)), H=W<420?250:230,pl=34,pr=8,pt=22,pb=28, max=opts.max, iw=W-pl-pr, ih=H-pt-pb, bw=iw/data.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${opts.label}">`;
+  opts.ticks.forEach(v=>{ const y=pt+ih-(v/max)*ih; s+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="#dcdcdc"/><text x="${pl-6}" y="${y+4}" text-anchor="end">${v}</text>`; });
+  data.forEach((d,i)=>{ const x=pl+i*bw+bw*.18, w=bw*.64;
+    if(d.range){ const y1=pt+ih-(d.range[1]/max)*ih, y0=pt+ih-(d.range[0]/max)*ih;
+      s+=`<rect x="${x}" y="${y0}" width="${w}" height="${pt+ih-y0}" fill="var(--accent)" opacity=".35"/><rect x="${x}" y="${y1}" width="${w}" height="${y0-y1}" fill="none" stroke="var(--accent)" stroke-dasharray="3 2" stroke-width="1.5"/><text class="lbl" x="${x+w/2}" y="${y1-6}" text-anchor="middle">${d.range[0]}–${d.range[1]}</text>`; }
+    else { const h=(d.v/max)*ih, y=pt+ih-h; s+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${d.hl?"var(--gold)":"var(--accent)"}"/>`; if(opts.labelAll||d.hl||i===0) s+=`<text class="lbl" x="${x+w/2}" y="${y-6}" text-anchor="middle">${d.v}</text>`; }
+    s+=`<text x="${x+w/2}" y="${H-10}" text-anchor="middle">${d.l}</text>`; });
+  s+=`<line x1="${pl}" x2="${W-pr}" y1="${pt+ih}" y2="${pt+ih}" stroke="#1c1c1c"/></svg>`;
+  el.innerHTML=s;
+}
+barChart(document.getElementById("chartTrade"),[
+  {l:"2016",v:2.8},{l:"2017",v:3.1},{l:"2018",v:3.2},{l:"2019",v:3.6},{l:"2020",v:2.9},{l:"2021",v:3.5},{l:"2022",v:4.9},{l:"2023",v:4.5},{l:"2024",v:4.8},{l:"Q2 '26",v:5.6,hl:true}
+],{max:6,ticks:[0,2,4,6],labelAll:true,label:"UK–Egypt total trade rising from £2.8bn in 2016 to £5.6bn in the four quarters to Q2 2026"});
+barChart(document.getElementById("chartSuez"),[
+  {l:"2023",v:10.25},{l:"2024",v:3.99},{l:"2025",v:4.1},{l:"2026 proj.",range:[5.8,6.0]}
+],{max:12,ticks:[0,4,8,12],labelAll:true,label:"Suez Canal revenue fell from $10.25bn in 2023 to $3.99bn in 2024, $4.1bn in 2025, with $5.8–6.0bn projected for 2026"});
+function hbars(el,rows,max,cls){ el.innerHTML=rows.map(([l,v,s])=>`<span>${l}</span><div><div class="b ${cls||""}" style="width:${v/max*100}%"></div></div><span class="v">${s}</span>`).join(""); }
+hbars(document.getElementById("splitBars"),[["UK exports to Egypt",3.1,"£3.1bn"],["UK imports from Egypt",2.5,"£2.5bn"]],3.1);
+document.querySelector("#splitBars").children[4].firstElementChild.classList.add("imp");
+hbars(document.getElementById("topX"),[["Metal ores & scrap",400.1,"£400m"],["Pharmaceuticals",305.7,"£306m"],["Power generators",247.1,"£247m"],["Cars",123.1,"£123m"],["Other chemicals",52.4,"£52m"]],405);
+hbars(document.getElementById("topM"),[["Vegetables & fruit",404.7,"£405m"],["Electrical goods",262,"£262m"],["Road vehicles (not cars)",158.9,"£159m"],["Organic chemicals",129.2,"£129m"],["Power generators",117.1,"£117m"]],405,"imp");
+
+/* ---------------- Sectors ---------------- */
+const SECT=[
+  {g:"energy",n:"Renewables and green hydrogen",w:"Strong solar and wind resources, with Benban near Aswan and the Gulf of Suez wind corridor. Green hydrogen and ammonia projects are clustered in the SCZone at Sokhna.",uk:"Offshore and onshore engineering, project finance and certification. British International Investment already backs renewable projects in Egypt.",loc:"Aswan · Gulf of Suez · Ain Sokhna"},
+  {g:"industry",n:"Export manufacturing",w:"SCZone contracted 117 projects worth $7.26bn in FY2025/26, with growth in metals, textiles, auto components, tyres and pharmaceuticals.",uk:"Advanced manufacturing, automation, quality standards and supply into African and Gulf customers.",loc:"Ain Sokhna · East Port Said · Qantara West"},
+  {g:"industry",n:"Logistics and ports",w:"Canal traffic is recovering and SCZone ports are expanding. Regional distribution centres are being added, including a $35m Agility logistics zone.",uk:"Port operations, freight forwarding, digital trade systems and marine services.",loc:"Port Said · Sokhna · Alexandria · Damietta"},
+  {g:"services",n:"ICT and business outsourcing",w:"A large, multilingual graduate workforce. The government is targeting $6bn of outsourcing exports in 2026.",uk:"Fintech, cyber security, edtech and nearshore delivery centres serving the UK and Europe.",loc:"Cairo · New Administrative Capital · Alexandria"},
+  {g:"services",n:"Healthcare and life sciences",w:"Pharmaceuticals are the UK's second largest goods export to Egypt at £306m. Universal health insurance is being rolled out by governorate.",uk:"Medicines, medical devices, hospital management, clinical training and digital health.",loc:"Cairo · Alexandria · new cities"},
+  {g:"agri",n:"Agrifood and water",w:"Vegetables and fruit are Egypt's largest goods export to the UK at £405m. Water scarcity is driving demand for desalination, irrigation and cold chains.",uk:"Agritech, food processing, cold-chain logistics and water treatment.",loc:"Nile Delta · Upper Egypt · Red Sea coast"},
+  {g:"services",n:"Education",w:"One of the largest student populations in the region, with UK universities operating branch campuses and partnerships.",uk:"Transnational education, vocational skills and English-language assessment.",loc:"New Administrative Capital · Cairo"},
+  {g:"services",n:"Tourism and real estate",w:"Coastal developments on the Mediterranean and Red Sea, led by the Ras El Hekma project.",uk:"Hospitality management, architecture and engineering, and sustainable building.",loc:"North Coast · Red Sea · Cairo"},
+  {g:"energy",n:"Oil, gas and petrochemicals",w:"Offshore gas in the Eastern Mediterranean and a role as an LNG and refining hub for the region.",uk:"Upstream services, decarbonisation, carbon capture and safety engineering.",loc:"Eastern Mediterranean · Damietta · Suez"}
+];
+const SGROUP={all:["All","الكل"],energy:["Energy","الطاقة"],industry:["Industry & logistics","الصناعة واللوجستيات"],services:["Services","الخدمات"],agri:["Agrifood","الأغذية والزراعة"]};
+let secG="all";
+function renderSecFilters(){ const F=document.getElementById("secFilter"); F.innerHTML=Object.entries(SGROUP).map(([k,v])=>`<button class="chip" type="button" data-g="${k}" aria-pressed="${k===secG}">${lang==="ar"?v[1]:v[0]}</button>`).join(""); F.querySelectorAll("button").forEach(b=>b.onclick=()=>{secG=b.dataset.g;renderSecFilters();renderSectors();}); }
+const ILL={energy:'<svg class="ill" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 96V46"/><path d="M50 46L50 6M50 46L16 66M50 46L84 66"/><circle cx="50" cy="46" r="4"/><path d="M36 96h28"/></svg>',industry:'<svg class="ill" viewBox="0 0 100 100" aria-hidden="true"><path d="M6 92h88"/><path d="M12 92V56l18 10V56l18 10V56l18 10V22h12v70"/><path d="M72 22c0-8 10-8 10-16"/><path d="M20 80h6M38 80h6M56 80h6"/></svg>',services:'<svg class="ill" viewBox="0 0 100 100" aria-hidden="true"><rect x="14" y="18" width="72" height="50" rx="3"/><path d="M6 82h88M40 68l-4 14M60 68l4 14"/><path d="M26 34h30M26 44h46M26 54h22"/></svg>',agri:'<svg class="ill" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 96V16"/><path d="M50 30c-10-2-16-10-16-18 10 2 16 10 16 18zM50 30c10-2 16-10 16-18-10 2-16 10-16 18zM50 52c-10-2-16-10-16-18 10 2 16 10 16 18zM50 52c10-2 16-10 16-18-10 2-16 10-16 18zM50 74c-10-2-16-10-16-18 10 2 16 10 16 18zM50 74c10-2 16-10 16-18-10 2-16 10-16 18z"/></svg>'};
+function renderSectors(){ const W=document.getElementById("sectorCards"); W.innerHTML=SECT.filter(s=>secG==="all"||s.g===secG).map((s,i)=>`<article class="ctile c${i%4}">${ILL[s.g]}<span class="tagc">${s.loc.split(" · ")[0]}</span><span class="grp">${SGROUP[s.g][lang==="ar"?1:0]}</span><h3>${s.n}</h3><p>${s.w}</p><p class="uk"><b>UK angle:</b> ${s.uk}</p><div class="bot"><button class="pillbtn" type="button" data-hub="1">${lang==="ar"?"اعرض على الخريطة":"See on the map"}</button><span class="loc">${s.loc}</span></div></article>`).join(""); W.querySelectorAll("[data-hub]").forEach(b=>b.onclick=()=>{ document.getElementById("map").scrollIntoView(); setView("hubs"); }); }
+
+/* ---------------- Toolkit ---------------- */
+const STEPS=[
+  ["Choose your investment regime and location","Decide between the inland regime, a public free zone, an investment zone or the SCZone, which offers its own one-stop shop, land and incentives. Investment Law No. 72 of 2017 sets the incentives."],
+  ["Choose a legal entity","Most foreign investors use a limited liability company or a joint stock company. A branch or representative office suits market testing."],
+  ["Reserve a trade name and register","Apply through GAFI's Investor Service Centre or its online portal. GAFI issues the commercial register extract once documents are approved."],
+  ["Obtain your tax card and register for VAT","Register with the Egyptian Tax Authority. VAT registration applies above the annual turnover threshold."],
+  ["Secure licences and the Golden License if eligible","Sector licences come from the relevant ministry. Strategic projects can apply for a Golden License, a single approval covering construction and operation."],
+  ["Open a bank account and deposit capital","Open a local account, deposit the paid-in capital and arrange foreign currency repatriation terms with your bank."],
+  ["Register staff and trade","Register with social insurance, and with the importers' or exporters' register if you will trade goods."]
+];
+let done=new Set(JSON.parse(recall("steps")||"[]"));
+function renderSteps(){
+  const O=document.getElementById("steps");
+  O.innerHTML=STEPS.map(([h,p],i)=>`<li class="${done.has(i)?"done":""}"><div><h3>${h}</h3><p>${p}</p></div><label for="st${i}"><input type="checkbox" id="st${i}" ${done.has(i)?"checked":""}> Done</label></li>`).join("");
+  O.querySelectorAll("input").forEach((c,i)=>c.onchange=()=>{ c.checked?done.add(i):done.delete(i); store("steps",JSON.stringify([...done])); renderSteps(); document.getElementById("st"+i).focus(); });
+  document.getElementById("prog").style.width=(done.size/STEPS.length*100)+"%";
+  document.getElementById("progTxt").textContent=`${done.size} of ${STEPS.length} steps complete`;
+}
+
+/* ---------------- Opportunities ---------------- */
+const OPP=[
+  ["Green hydrogen supply chain",4,"Electrolysers, EPC services and certification for export-oriented ammonia projects."],
+  ["Water and desalination",4,"Desalination plants, smart irrigation and leakage reduction for a water-scarce market."],
+  ["Pharma localisation",4,"Local manufacturing of medicines and devices for Egypt and COMESA markets."],
+  ["Cold chain and agri-logistics",3,"Post-harvest loss is high; refrigerated storage and transport for fresh-produce exports."],
+  ["Auto components and EV parts",3,"Feeder industries for assembly plants in Egypt and Morocco."],
+  ["Fintech and digital payments",3,"Payments, SME lending and cross-border remittance services."],
+  ["Higher and vocational education",3,"UK qualifications and skills programmes for a large, young workforce."],
+  ["Regional distribution hubs",4,"Warehousing in SCZone to serve East Africa and the Gulf under COMESA and GAFTA."]
+];
+function renderOpp(){ document.getElementById("oppGrid").innerHTML=OPP.map(([n,s,p])=>`<div><h3>${n}</h3><div class="meter" aria-label="Strength ${s} of 5">${[1,2,3,4,5].map(i=>`<span class="${i<=s?"on":""}"></span>`).join("")}</div><div class="ml">${["","Emerging","Emerging","Moderate","Strong","Very strong"][s]} case</div><p>${p}</p></div>`).join(""); }
+
+/* ---------------- News ---------------- */
+const NEWS=[
+  ["2026-11-10","policy","UK Trade Commissioner for Africa visits Egypt, with renewables, tourism and infrastructure on the agenda","Capital Ethiopia","https://capitalethiopia.com/?p=64219"],
+  ["2026-11-06","trade","Latest DBT factsheet: UK–Egypt trade rises 9.2% to £5.6bn","GOV.UK","https://assets.publishing.service.gov.uk/media/6ae9ea1d4bd624c77e5d6891/egypt-trade-and-investment-factsheet-2026-11-06.pdf"],
+  ["2026-10-26","infra","Suez Canal revenue up 23% to $4.67bn in FY2025/26 as shipping services return","Ahram Online","https://english.ahram.org.eg/News/580907.aspx"],
+  ["2026-10-13","economy","IMF projects Egypt's growth at 5.1% in 2026, slowing to 4.7% in 2027","Ahram Online","https://english.ahram.org.eg/News/578798.aspx"],
+  ["2026-09-08","infra","SCZone approaches 400 factories, with 212 operating and 176 under construction","ME Observer","https://meobserver.news/?p=189834"],
+  ["2026-08-27","infra","Suez Canal posts its highest daily traffic since January 2024","CapMad","https://www.capmad.com/post/suez-canal-traffic-rebounds-but-recovery-remains-hostage-to-red-sea-risk"],
+  ["2026-07-27","investment","Egypt leads Africa for FDI for a fourth year with $15.5bn in 2025","Egypt Independent","https://www.egyptindependent.com/?p=2830955"],
+  ["2026-07-21","investment","SCZone contracts 117 projects worth $7.26bn in FY2025/26","Ahram Online","https://english.ahram.org.eg/News/572953.aspx"],
+  ["2026-06-25","policy","UK Ambassador says ties gaining momentum ahead of a strategic partnership agreement","Ahram Online","https://english.ahram.org.eg/News/571610.aspx"],
+  ["2026-06-11","investment","British International Investment launches new Egypt strategy, with about $1.3bn committed since 2012","BII","https://www.bii.co.uk/en/news-insight/news/bii-launches-new-strategy-in-egypt-with-nearly-1-3-billion-committed-since-2012/"]
+];
+const NTYPE={all:["All","الكل"],investment:["Investment","استثمار"],infra:["Infrastructure","بنية تحتية"],trade:["Trade","تجارة"],economy:["Economy","اقتصاد"],policy:["Policy","سياسة"]};
+let newsT="all";
+function renderNewsFilters(){ const F=document.getElementById("newsFilter"); F.innerHTML=Object.entries(NTYPE).map(([k,v])=>`<button class="chip" type="button" data-n="${k}" aria-pressed="${k===newsT}">${lang==="ar"?v[1]:v[0]}</button>`).join(""); F.querySelectorAll("button").forEach(b=>b.onclick=()=>{newsT=b.dataset.n;renderNewsFilters();renderNews();}); }
+function renderNews(){ document.getElementById("newsList").innerHTML=NEWS.filter(n=>newsT==="all"||n[1]===newsT).map(([d,ty,h,s,u])=>{ const dt=new Date(d+"T12:00:00"); return `<li><time datetime="${d}">${dt.getDate()}<small>${dt.toLocaleDateString("en-GB",{month:"short",year:"numeric"})}</small></time><span class="t">${NTYPE[ty][lang==="ar"?1:0]}</span><a href="${u}" rel="noopener">${h}</a><span class="s">${s}</span></li>`; }).join(""); }
+
+/* ---------------- Nav highlight ---------------- */
+const links=[...document.querySelectorAll(".nav a")];
+if("IntersectionObserver" in window){ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-40% 0px -55% 0px"}); document.querySelectorAll("main section[id]").forEach(s=>io.observe(s)); }
+
+document.querySelectorAll("[data-bloc-go]").forEach(b=>b.addEventListener("click",()=>{ bloc=b.dataset.blocGo; document.getElementById("blocSel").value=bloc; setView("blocs"); document.getElementById("map").scrollIntoView(); }));
+document.getElementById("newsForm").addEventListener("submit",e=>{ e.preventDefault(); toast(lang==="ar"?"سيتم ربط الاشتراك عند الإطلاق، ولم يُرسل شيء":"Sign-up will be connected at launch. Nothing was sent."); });
+/* Mobile menu, sticky-header offset, responsive helpers */
+function isNarrow(){ return matchMedia("(max-width:980px)").matches; }
+const hdr=document.querySelector("header.site"), burger=document.getElementById("burger");
+function setHH(){ document.documentElement.style.setProperty("--hh", Math.round(hdr.getBoundingClientRect().bottom)+"px"); }
+function menu(open){ if(open) document.documentElement.style.setProperty("--hh", Math.round(hdr.getBoundingClientRect().bottom)+"px"); hdr.classList.toggle("open",open); burger.setAttribute("aria-expanded",open); document.body.style.overflow = open && matchMedia("(max-width:1180px)").matches ? "hidden" : ""; }
+burger.addEventListener("click",()=>menu(!hdr.classList.contains("open")));
+document.querySelectorAll("#siteNav a").forEach(a=>a.addEventListener("click",()=>menu(false)));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && hdr.classList.contains("open")){ menu(false); burger.focus(); } });
+document.addEventListener("click",e=>{ if(e.target.closest("[data-backmap]")) document.getElementById("mapStage").scrollIntoView({behavior:"smooth",block:"center"}); });
+let rT; window.addEventListener("resize",()=>{ clearTimeout(rT); rT=setTimeout(()=>{ setHH(); if(!matchMedia("(max-width:1180px)").matches) menu(false); document.querySelectorAll("#chartTrade,#chartSuez").forEach(el=>{ if(el._chart) barChart(el, el._chart[0], el._chart[1]); }); },150); });
+setHH();
+// Label table cells for stacked mobile tables
+document.querySelectorAll(".tablewrap.stack table").forEach(t=>{ const hs=[...t.querySelectorAll("thead th")].map(th=>th.textContent.trim()); t.querySelectorAll("tbody tr").forEach(tr=>[...tr.children].forEach((td,i)=>td.setAttribute("data-label",hs[i]||""))); });
+/* ---------------- Init ---------------- */
+renderSteps(); renderOpp(); renderSectors(); renderNews(); renderAgreements(); renderSecFilters(); renderNewsFilters(); renderRegions(); fillCountrySelect();
+buildMap(); renderPanel(selected);
+const b0=recall("brand"); if(b0) setBrand(b0);
+const l0=recall("lang"); if(l0==="ar") applyLang("ar");
+})();
+</script>
+</body>
+</html>
