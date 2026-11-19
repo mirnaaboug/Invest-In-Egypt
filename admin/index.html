@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Egypt Gateway Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f4f0;--white:#fff;--ink:#1c1c1c;--muted:#6d6a65;--line:#e3ded6;--accent:#c41e3a;--accent-dk:#9d1730;--gold:#b38b3a;--deep:#14213d;--orange:#d9781e;--olive:#8a7a2e;--good:#2e7d4f;--warn:#c0620f;
+  --serif:"Source Serif 4",Georgia,serif;--sans:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 14.5px/1.55 var(--sans)}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+header{background:var(--deep);color:#fff}
+header .in{max-width:1320px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px}
+.logo svg{width:32px;height:32px}
+.logo b{font:700 1rem var(--serif);letter-spacing:.06em;text-transform:uppercase;display:block;line-height:1}
+.logo small{font:700 .58rem var(--sans);letter-spacing:.22em;opacity:.7}
+.conn{margin-inline-start:auto;display:flex;align-items:center;gap:10px;font-size:.8rem}
+.conn .dot{width:9px;height:9px;border-radius:50%;background:#888}
+.conn.live .dot{background:#4ade80}.conn.sample .dot{background:#fbbf24}.conn.err .dot{background:#f87171}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;font:700 .72rem var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;text-decoration:none}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.red{background:var(--accent);border-color:var(--accent);color:#fff}.btn.red:hover{background:var(--accent-dk)}
+.btn.sm{padding:4px 10px;font-size:.64rem}
+.btn.ghost{border-color:rgba(255,255,255,.5);background:transparent;color:#fff}.btn.ghost:hover{background:#fff;color:var(--deep)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+nav.tabs{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.tabs .in{max-width:1320px;margin:0 auto;padding:0 16px;display:flex;gap:2px;overflow-x:auto}
+nav.tabs a{padding:13px 12px;font:700 .74rem var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;display:flex;gap:6px;align-items:center}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs .cnt{background:var(--accent);color:#fff;border-radius:999px;font-size:.6rem;padding:1px 7px;letter-spacing:0}
+main{max-width:1320px;margin:0 auto;padding:26px 24px 60px}
+.notice{background:#fff7e0;border:1px solid #f0dfaa;color:#6b5414;padding:12px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:.86rem}
+.notice.err{background:#fdecee;border-color:#f3c2ca;color:#8a1426}
+.notice .btn{margin-inline-start:auto}
+.ph{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.ph h1{font-size:1.7rem;text-transform:uppercase;letter-spacing:.01em}
+.ph p{color:var(--muted);margin:2px 0 0}
+.ph .act{margin-inline-start:auto;display:flex;gap:8px;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}
+.kpi{background:#fff;padding:16px 16px 14px;border-top:3px solid var(--line)}
+.kpi.hl{border-top-color:var(--accent)}.kpi.warn{border-top-color:var(--warn)}.kpi.ok{border-top-color:var(--good)}
+.kpi .v{font:600 1.75rem/1.1 var(--serif)}
+.kpi .l{font:700 .62rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.kpi .s{font-size:.76rem;color:var(--muted);margin-top:4px}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-bottom:16px}
+.card{background:#fff;padding:18px 20px;min-width:0}
+.card h2{font-size:1.05rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.card h2 .act{margin-inline-start:auto;display:flex;gap:6px}
+.todo{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.todo li{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--paper);font-size:.88rem}
+.todo li b{font:600 1.15rem var(--serif);min-width:30px}
+.todo li a{margin-inline-start:auto;font-weight:700;font-size:.75rem}
+.todo li.none{color:var(--muted)}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:170px 1fr 90px;gap:10px;align-items:center;font-size:.84rem}
+.bar .track{height:12px;background:var(--paper);position:relative}
+.bar .fill{position:absolute;inset-block:0;inset-inline-start:0;background:var(--accent)}
+.bar .fill.rep{background:var(--orange)}
+.bar .val{text-align:end}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:14px;font-size:.76rem;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;margin-inline-end:5px;vertical-align:-1px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+.tools input,.tools select{font:400 .86rem var(--sans);padding:7px 10px;border:1.5px solid var(--line);background:#fff;border-radius:4px}
+.tools .cnt{color:var(--muted);font-size:.8rem;margin-inline-start:auto}
+.tw{overflow-x:auto;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th,td{text-align:start;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 .62rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:#fbfaf8;position:sticky;top:0}
+td .sub{display:block;color:var(--muted);font-size:.76rem}
+tr:hover td{background:#fdfcfa}
+.st{display:inline-block;font:700 .6rem var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--paper);white-space:nowrap}
+.st.active,.st.trialing,.st.delivered,.st.succeeded,.st.published,.st.won,.st.admin{background:#e3f2e8;color:#1d5a37}
+.st.past_due,.st.on_hold,.st.failed,.st.new,.st.unpaid{background:#fdecee;color:#8a1426}
+.st.queued,.st.printing,.st.scheduled,.st.contacted,.st.editor{background:#fff4e0;color:#7a4b0b}
+.st.dispatched{background:#e6eefb;color:#1b3d7a}
+.st.canceled,.st.expired,.st.cancelled,.st.archived,.st.lost,.st.closed,.st.draft{background:#eee;color:#555}
+.empty{padding:28px;text-align:center;color:var(--muted);background:#fff}
+dialog{border:0;padding:0;max-width:520px;width:calc(100% - 32px);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(20,20,20,.5)}
+.dh{background:var(--accent);color:#fff;padding:13px 18px;display:flex;justify-content:space-between;align-items:center}
+.dh strong{font:600 1.05rem var(--serif);text-transform:uppercase}
+.dh button{background:none;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:999px;padding:4px 11px;font:700 .64rem var(--sans);text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+.db{padding:18px 20px;display:grid;gap:11px}
+.db label{display:grid;gap:4px;font:600 .78rem var(--sans)}
+.db input,.db select,.db textarea{font:400 .92rem var(--sans);padding:9px 11px;border:1.5px solid var(--line);border-radius:4px;width:100%}
+.db .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.db .fine{font-size:.78rem;color:var(--muted)}
+.db .msg{font-size:.82rem;color:#8a1426}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-weight:600;font-size:.85rem;opacity:0;transition:opacity .2s;pointer-events:none;z-index:60}
+.addr{font-size:.78rem;color:var(--muted);white-space:pre-line}
+.stamp{font-size:.74rem;color:var(--muted)}
+[hidden]{display:none!important}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}}
+@media (max-width:620px){.kpis{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:110px 1fr 70px}.db .two{grid-template-columns:1fr} main{padding:18px 14px 50px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="logo"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16.5" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M9 24 L18 9 L27 24 Z" fill="#c41e3a"/><path d="M5 27.5 H31" stroke="#fff" stroke-width="1.5"/></svg><div><b>Egypt Gateway</b><small>ADMIN CONSOLE</small></div></div>
+  <div class="conn" id="conn"><span class="dot"></span><span id="connTxt">Connecting…</span></div>
+  <button class="btn ghost" type="button" id="refreshBtn">Refresh</button><button class="btn ghost" type="button" id="outBtn" hidden>Sign out</button>
+</div></header>
+<nav class="tabs" aria-label="Sections"><div class="in">
+  <a href="#overview" data-tab="overview">Overview</a>
+  <a href="#subscribers" data-tab="subscribers">Subscribers</a>
+  <a href="#print" data-tab="print">Print queue <span class="cnt" id="cPrint" hidden></span></a>
+  <a href="#reports" data-tab="reports">Reports</a>
+  <a href="#users" data-tab="users">Users</a>
+  <a href="#enquiries" data-tab="enquiries">Enquiries <span class="cnt" id="cEnq" hidden></span></a>
+  <a href="#payments" data-tab="payments">Payments</a>
+  <a href="#leads" data-tab="leads">Leads</a>
+</div></nav>
+<main id="main">
+  <div class="notice" id="notice" hidden></div>
+  <section id="login" hidden><div class="card" style="max-width:420px;margin:40px auto"><h2>Admin sign-in</h2>
+    <form id="loginF" class="db" style="padding:0" novalidate>
+      <label>Email<input name="email" type="email" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <p class="msg" id="loginMsg"></p>
+      <button class="btn red" type="submit">Sign in</button>
+      <p class="fine">Use the account you created on the website. It needs the editor or admin role. <a href="../">Back to the website</a></p>
+    </form></div></section>
+  <section data-view="overview"></section>
+  <section data-view="subscribers" hidden></section>
+  <section data-view="print" hidden></section>
+  <section data-view="reports" hidden></section>
+  <section data-view="users" hidden></section>
+  <section data-view="enquiries" hidden></section>
+  <section data-view="payments" hidden></section>
+  <section data-view="leads" hidden></section>
+</main>
+<dialog id="dlg" aria-labelledby="dlgT"><div class="dh"><strong id="dlgT"></strong><button type="button" data-x>Close</button></div><form class="db" id="dlgF" novalidate></form></dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+window.GATEWAY_CONFIG = {
+  supabaseUrl: "https://sobptlqqazhcfooytqav.supabase.co",
+  supabaseKey: "sb_publishable_un1ijZ1P6eBdwfLI3C2gEg_hJBrBdCq"
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function(){
+"use strict";
+const PROJECT = "sobptlqqazhcfooytqav";
+const CFG = window.GATEWAY_CONFIG || {};
+const STRIPE_DASH = "https://dashboard.stripe.com/test";
+const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = (m, c="GBP") => { try{ return new Intl.NumberFormat("en-GB",{style:"currency",currency:c||"GBP",maximumFractionDigits: m % 100 ? 2 : 0}).format((m||0)/100); }catch(e){ return "£"+((m||0)/100); } };
+const gbp = v => new Intl.NumberFormat("en-GB",{style:"currency",currency:"GBP",maximumFractionDigits:0}).format(v||0);
+const d = v => v ? new Date(v).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}) : "—";
+const dt = v => v ? new Date(v).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}) : "—";
+const st = (s, label) => `<span class="st ${esc(s)}">${esc(label || String(s||"").replace(/_/g," "))}</span>`;
+const PER = { month:"/mo", quarter:"/qtr", year:"/yr" };
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const lit = v => (v === null || v === undefined || v === "") ? "null" : "'" + String(v).replace(/'/g, "''") + "'";
+const id = v => { if(!UUID.test(String(v))) throw new Error("Bad id"); return "'" + v + "'"; };
+function toast(m){ const t=$("#toast"); t.textContent=m; t.style.opacity=1; clearTimeout(toast.t); toast.t=setTimeout(()=>t.style.opacity=0,2600); }
+
+let sb = null, me = null, isAdmin = false, MODE = "connecting", D = null, lastAt = null;
+
+/* ---------- Connection ---------- */
+function setConn(mode, text){ MODE = mode; const c=$("#conn"); c.className = "conn " + mode; $("#connTxt").textContent = text; }
+function notice(html, kind){ const n=$("#notice"); if(!html){ n.hidden=true; return; } n.className = "notice" + (kind==="err" ? " err" : ""); n.innerHTML = html; n.hidden=false; }
+function explain(e){
+  const m = (e && (e.message || e.error_description)) || "";
+  if(/Admins and editors only|permission denied|row-level security|42501/i.test(m + (e && e.code || ""))) return "Your account doesn't have permission for that. Ask an admin to give you the right role.";
+  if(/Failed to fetch|NetworkError/i.test(m)) return "Can't reach the database. Check your internet connection and press Refresh.";
+  return m || "Something went wrong.";
+}
+async function load(){
+  if(!sb || !me) return;
+  $("#refreshBtn").disabled = true; setConn("connecting","Loading…");
+  try{
+    const { data, error } = await sb.rpc("admin_dashboard");
+    if(error) throw error;
+    D = data; lastAt = D && D.generated_at;
+    setConn("live", (isAdmin ? "Admin" : "Editor") + " · " + me.email + " · updated " + dt(lastAt));
+    const empty = !D.kpi.users && !D.subs.length;
+    notice(empty ? `No customers yet. The console fills in as people sign up and subscribe. <button class="btn sm" type="button" id="sampleBtn">Preview with sample data</button>` : "");
+    render();
+  }catch(e){
+    setConn("err","Not loaded");
+    notice(esc(explain(e)) + (D ? " Showing the last data loaded." : ""), "err");
+    if(!D) render();
+  }finally{ $("#refreshBtn").disabled = false; }
+}
+/* Runs a change through the database's own permissions, then reloads. */
+async function write(run, okMsg){
+  if(MODE === "sample"){ toast("Sample data: nothing was changed."); return false; }
+  const { error } = await run();
+  if(error){ throw new Error(explain(error)); }
+  toast(okMsg || "Saved."); await load(); return true;
+}
+const now = () => new Date().toISOString();
+
+/* ---------- Views ---------- */
+const views = {};
+function render(){ if(!D) D = blank(); for(const k in views) views[k]($(`[data-view="${k}"]`)); badges(); }
+function badges(){ const k=D.kpi; const p=$("#cPrint"), e=$("#cEnq"); const n = (k.to_print||0)+(k.on_hold||0); p.textContent=n; p.hidden=!n; e.textContent=k.enq_new; e.hidden=!k.enq_new; }
+function blank(){ return { kpi:{}, plans:[], subs:[], deliveries:[], reports:[], enquiries:[], users:[], funnel:[], daily:[], payments:[], webhooks:[], newsletter:[] }; }
+
+views.overview = el => {
+  const k = D.kpi; const conv = k.paywall7 ? Math.round(100*(k.paid7||0)/k.paywall7) : 0;
+  const todo = [];
+  if(k.on_hold) todo.push([k.on_hold, "printed deliveries need an address", "#print"]);
+  if(k.to_print) todo.push([k.to_print, "reports to print and post", "#print"]);
+  if(k.enq_new) todo.push([k.enq_new, "new institutional enquiries", "#enquiries"]);
+  if(k.past_due) todo.push([k.past_due, "subscribers with a failed payment", "#subscribers"]);
+  if(k.wh_errors) todo.push([k.wh_errors, "payment sync errors from Stripe", "#payments"]);
+  const due = (D.reports||[]).filter(r => r.status === "scheduled" && !r.pdf_path && r.publish_at && (new Date(r.publish_at) - Date.now()) < 14*864e5);
+  if(due.length) todo.push([due.length, "scheduled reports due within 14 days with no PDF yet", "#reports"]);
+  const plans = (D.plans||[]).filter(p => (p.prices||[]).length);
+  const maxLive = Math.max(1, ...plans.map(p=>p.live||0));
+  el.innerHTML = `
+  <div class="ph"><div><h1>Overview</h1><p>Subscriptions, revenue and fulfilment for the Egypt Gateway.</p></div></div>
+  <div class="kpis">
+    <div class="kpi hl"><div class="v num">${gbp(k.mrr)}</div><div class="l">Monthly recurring revenue</div><div class="s">Quarterly ÷ 3, yearly ÷ 12</div></div>
+    <div class="kpi ok"><div class="v num">${k.active||0}</div><div class="l">Active subscriptions</div><div class="s">${k.trialing||0} on trial · ${k.cancelling||0} cancelling</div></div>
+    <div class="kpi"><div class="v num">${k.users||0}</div><div class="l">Registered users</div><div class="s">+${k.users7||0} in the last 7 days</div></div>
+    <div class="kpi"><div class="v num">${money(k.revenue30)}</div><div class="l">Collected, 30 days</div><div class="s">Paid invoices</div></div>
+    <div class="kpi ${k.past_due?"warn":""}"><div class="v num">${k.past_due||0}</div><div class="l">Payment problems</div><div class="s">Past due subscriptions</div></div>
+    <div class="kpi"><div class="v num">${conv}%</div><div class="l">Paywall → purchase</div><div class="s">${k.paywall7||0} paywall views · ${k.paid7||0} purchases (7 days)</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>To do</h2><ul class="todo">${todo.length ? todo.map(([n,t,h])=>`<li><b class="num">${n}</b>${esc(t)}<a href="${h}">Open ›</a></li>`).join("") : `<li class="none">Nothing waiting. New print runs, enquiries and payment problems appear here.</li>`}</ul></div>
+    <div class="card"><h2>Subscribers by package</h2><div class="bars">${plans.map(p=>`<div class="bar"><span>${esc(p.name_en)}</span><span class="track"><span class="fill ${p.kind==="report"?"rep":""}" style="width:${(100*(p.live||0)/maxLive).toFixed(1)}%"></span></span><span class="val num">${p.live||0} · ${gbp(p.mrr)}</span></div>`).join("")}</div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Platform access</span><span><i style="background:var(--orange)"></i>Printed reports</span><span>Figures: subscribers · monthly revenue</span></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card chart"><h2>Last 30 days</h2>${lineChart(D.daily||[])}<div class="legend"><span><i style="background:var(--deep)"></i>Sign-ups</span><span><i style="background:var(--accent)"></i>Purchases</span></div></div>
+    <div class="card"><h2>Most-hit paywalls (30 days)</h2>${(D.funnel||[]).length ? `<div class="bars">${(()=>{ const mx=Math.max(1,...D.funnel.map(f=>f.paywall)); return D.funnel.map(f=>`<div class="bar"><span>${esc(f.module_key)}</span><span class="track"><span class="fill" style="width:${(100*f.paywall/mx).toFixed(1)}%;background:var(--deep)"></span></span><span class="val num">${f.paywall} · ${f.clicks} clicks</span></div>`).join(""); })()}</div><p class="stamp" style="margin-top:8px">Shows which locked sections make people look at plans. Use it to decide what to put in each package.</p>` : `<p class="stamp">No paywall views recorded yet. These are counted on the hosted site, not the preview link.</p>`}</div>
+  </div>`;
+};
+function lineChart(rows){
+  if(!rows.length) return `<p class="stamp">No data yet.</p>`;
+  const W=640,H=180,P=28; const mx=Math.max(1,...rows.map(r=>Math.max(r.signups,r.purchases)));
+  const x=i=>P+i*(W-P*2)/(rows.length-1||1), y=v=>H-P-(v/mx)*(H-P*2);
+  const path=k=>rows.map((r,i)=>(i?"L":"M")+x(i).toFixed(1)+","+y(r[k]).toFixed(1)).join("");
+  const ticks=[0,Math.ceil(mx/2),mx];
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily sign-ups and purchases, last 30 days">
+    ${ticks.map(t=>`<line x1="${P}" x2="${W-P}" y1="${y(t)}" y2="${y(t)}" stroke="#eee"/><text x="${P-6}" y="${y(t)+4}" font-size="10" text-anchor="end" fill="#888">${t}</text>`).join("")}
+    <path d="${path("signups")}" fill="none" stroke="#14213d" stroke-width="2"/><path d="${path("purchases")}" fill="none" stroke="#c41e3a" stroke-width="2"/>
+    <text x="${P}" y="${H-8}" font-size="10" fill="#888">${d(rows[0].day)}</text><text x="${W-P}" y="${H-8}" font-size="10" text-anchor="end" fill="#888">${d(rows[rows.length-1].day)}</text></svg>`;
+}
+
+let fSub = { q:"", status:"live", kind:"" };
+views.subscribers = el => {
+  const rows = (D.subs||[]).filter(s => (fSub.status==="live" ? ["active","trialing","past_due"].includes(s.status) : !fSub.status || s.status===fSub.status) && (!fSub.kind || s.kind===fSub.kind) && (!fSub.q || [s.email,s.full_name,s.organisation_name,s.plan_name].join(" ").toLowerCase().includes(fSub.q.toLowerCase())));
+  el.innerHTML = `<div class="ph"><div><h1>Subscribers</h1><p>Every subscription, newest first. Stripe-billed subscriptions are changed in Stripe; manual and complimentary ones here.</p></div><div class="act"><a class="btn" href="#users">Grant access</a></div></div>
+  <div class="tools"><input type="search" placeholder="Search name, email, organisation, package" value="${esc(fSub.q)}" data-f="q" aria-label="Search">
+    <select data-f="status" aria-label="Status"><option value="live" ${fSub.status==="live"?"selected":""}>Live (active, trial, past due)</option><option value="" ${!fSub.status?"selected":""}>All statuses</option>${["active","trialing","past_due","canceled","expired","incomplete"].map(s=>`<option ${fSub.status===s?"selected":""}>${s}</option>`).join("")}</select>
+    <select data-f="kind" aria-label="Type"><option value="">All packages</option><option value="access" ${fSub.kind==="access"?"selected":""}>Platform access</option><option value="report" ${fSub.kind==="report"?"selected":""}>Printed reports</option><option value="enterprise" ${fSub.kind==="enterprise"?"selected":""}>Institutional</option></select>
+    <span class="cnt">${rows.length} shown</span></div>
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>Subscriber</th><th>Package</th><th>Status</th><th>Renews / ends</th><th>Price</th><th>Since</th><th></th></tr></thead><tbody>${rows.map(s=>`<tr>
+    <td><b>${esc(s.full_name||s.email)}</b><span class="sub">${esc(s.email)}${s.organisation_name?" · "+esc(s.organisation_name):""}${s.country_code?" · "+esc(s.country_code):""}</span></td>
+    <td>${esc(s.plan_name)}<span class="sub">${esc(s.source)}</span></td>
+    <td>${st(s.status)}${s.cancel_at_period_end?`<span class="sub">Won't renew</span>`:""}</td>
+    <td class="num">${d(s.current_period_end)}</td>
+    <td class="num">${s.amount_minor!=null?money(s.amount_minor,s.currency)+(PER[s.billing_interval]||""):"—"}</td>
+    <td class="num">${d(s.created_at)}</td>
+    <td>${s.provider_subscription_id && /^sub_/.test(s.provider_subscription_id) ? `<a class="btn sm" href="${STRIPE_DASH}/subscriptions/${encodeURIComponent(s.provider_subscription_id)}" rel="noopener">Stripe ›</a>` : (["active","trialing"].includes(s.status) ? `<button class="btn sm" type="button" data-endsub="${esc(s.id)}">End access</button>` : "")}</td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No subscriptions match.</div>`}`;
+};
+
+let fPrint = "open";
+views.print = el => {
+  const all = D.deliveries||[];
+  const rows = all.filter(x => fPrint==="open" ? ["on_hold","queued","printing"].includes(x.status) : !fPrint || x.status===fPrint);
+  const queued = all.filter(x=>x.status==="queued");
+  el.innerHTML = `<div class="ph"><div><h1>Print queue</h1><p>One row per subscriber per edition. Publishing a report fills this list automatically.</p></div>
+    <div class="act"><button class="btn" type="button" id="copyLabels" ${queued.length?"":"disabled"}>Copy ${queued.length} address labels</button><button class="btn red" type="button" id="allPrinting" ${queued.length?"":"disabled"}>Mark ${queued.length} queued as printing</button></div></div>
+  <div class="tools"><select data-pf aria-label="Show"><option value="open" ${fPrint==="open"?"selected":""}>To do (on hold, queued, printing)</option><option value="" ${!fPrint?"selected":""}>All</option>${["on_hold","queued","printing","dispatched","delivered","returned","cancelled"].map(s=>`<option ${fPrint===s?"selected":""}>${s}</option>`).join("")}</select><span class="cnt">${rows.length} shown</span></div>
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>Edition</th><th>Recipient</th><th>Address</th><th>Copies</th><th>Status</th><th>Tracking</th><th></th></tr></thead><tbody>${rows.map(x=>{ const a=x.address_snapshot||{}; return `<tr>
+    <td><b>${esc(x.report)}</b><span class="sub">${esc(x.period_label)}</span></td>
+    <td>${esc(x.full_name||"")}<span class="sub">${esc(x.email||"")}</span></td>
+    <td class="addr">${a.line1 ? esc([a.recipient_name,a.organisation,a.line1,a.line2,[a.city,a.postcode].filter(Boolean).join(" "),a.country_code].filter(Boolean).join("\n")) : `<span class="st on_hold">No address</span>`}</td>
+    <td class="num">${x.copies}</td><td>${st(x.status)}${x.dispatched_at?`<span class="sub">Posted ${d(x.dispatched_at)}</span>`:""}</td>
+    <td>${x.tracking_url?`<a href="${esc(x.tracking_url)}" rel="noopener">${esc(x.carrier||"")} ${esc(x.tracking_number||"")}</a>`:esc([x.carrier,x.tracking_number].filter(Boolean).join(" "))}</td>
+    <td><button class="btn sm" type="button" data-deliv="${esc(x.id)}">Update</button></td></tr>`; }).join("")}</tbody></table></div>` : `<div class="empty">Nothing to print. When you publish an edition, one row appears here for each subscriber to that report.</div>`}`;
+};
+
+views.reports = el => {
+  const rows = D.reports||[];
+  el.innerHTML = `<div class="ph"><div><h1>Reports</h1><p>Upload each PDF to the <b>reports</b> bucket in Supabase Storage as <code>month/…</code>, <code>quarter/…</code> or <code>year/…</code>, enter its path here, then publish. Publishing queues the print run.</p></div>
+    <div class="act"><a class="btn" href="https://supabase.com/dashboard/project/${PROJECT}/storage/buckets/reports" rel="noopener">Open storage ›</a><button class="btn red" type="button" id="newReport">New edition</button></div></div>
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>Edition</th><th>Frequency</th><th>Status</th><th>Date</th><th>PDF</th><th>Subscribers</th><th>Printed / downloads</th><th></th></tr></thead><tbody>${rows.map(r=>`<tr>
+    <td><b>${esc(r.title_en)}</b><span class="sub">${esc(r.period_label)}${r.page_count?" · "+r.page_count+" pages":""}</span></td>
+    <td>${esc(r.frequency)}</td><td>${st(r.status)}</td>
+    <td class="num">${r.status==="published"?d(r.published_at):d(r.publish_at)}</td>
+    <td>${r.pdf_path?`<code>${esc(r.pdf_path)}</code>`:`<span class="st on_hold">Missing</span>`}</td>
+    <td class="num">${r.eligible}</td><td class="num">${r.deliveries} / ${r.downloads}</td>
+    <td style="white-space:nowrap"><button class="btn sm" type="button" data-rpdf="${esc(r.id)}">PDF path</button> ${r.status!=="published"?`<button class="btn sm red" type="button" data-rpub="${esc(r.id)}" ${r.pdf_path?"":"disabled"} title="${r.pdf_path?"":"Add the PDF path first"}">Publish</button>`:""}</td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No editions yet.</div>`}
+  <p class="stamp" style="margin-top:10px">Scheduled editions publish themselves at their date, but only once a PDF path is set.</p>`;
+};
+
+let fUser = "";
+views.users = el => {
+  const rows = (D.users||[]).filter(u => !fUser || [u.email,u.full_name,u.organisation_name].join(" ").toLowerCase().includes(fUser.toLowerCase()));
+  el.innerHTML = `<div class="ph"><div><h1>Users</h1><p>Everyone with an account. Give complimentary access (press, partners, government teams) or make someone an editor or admin.</p></div></div>
+  <div class="tools"><input type="search" placeholder="Search name, email, organisation" value="${esc(fUser)}" data-uf aria-label="Search users"><span class="cnt">${rows.length} shown</span></div>
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>User</th><th>Type</th><th>Packages</th><th>Role</th><th>Joined</th><th></th></tr></thead><tbody>${rows.map(u=>`<tr>
+    <td><b>${esc(u.full_name||"—")}</b><span class="sub">${esc(u.email)}${u.organisation_name?" · "+esc(u.organisation_name):""}${u.country_code?" · "+esc(u.country_code):""}</span></td>
+    <td>${esc(String(u.audience||"").replace(/_/g," "))}${u.marketing_opt_in?`<span class="sub">Newsletter</span>`:""}</td>
+    <td>${esc(u.plans||"Free")}</td><td>${st(u.role)}</td><td class="num">${d(u.created_at)}</td>
+    <td style="white-space:nowrap"><button class="btn sm" type="button" data-grant="${esc(u.id)}">Grant access</button> <button class="btn sm" type="button" data-role="${esc(u.id)}">Role</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No users yet.</div>`}`;
+};
+
+views.enquiries = el => {
+  const rows = D.enquiries||[];
+  el.innerHTML = `<div class="ph"><div><h1>Enquiries</h1><p>Institutional requests from the "Talk to us" form.</p></div></div>
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>From</th><th>Seats</th><th>Message</th><th>Received</th><th>Status</th></tr></thead><tbody>${rows.map(q=>`<tr>
+    <td><b>${esc(q.name)}</b><span class="sub"><a href="mailto:${esc(q.email)}">${esc(q.email)}</a>${q.organisation?" · "+esc(q.organisation):""}</span></td>
+    <td class="num">${q.seats??"—"}</td><td style="max-width:420px">${esc(q.message||"")}</td><td class="num">${dt(q.created_at)}</td>
+    <td><select data-enq="${esc(q.id)}" aria-label="Status">${["new","contacted","won","lost","closed"].map(s=>`<option ${q.status===s?"selected":""}>${s}</option>`).join("")}</select></td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No enquiries yet.</div>`}`;
+};
+
+views.payments = el => {
+  const rows = D.payments||[]; const wh = D.webhooks||[];
+  el.innerHTML = `<div class="ph"><div><h1>Payments</h1><p>Invoices synced from Stripe. Refunds and card changes are made in Stripe.</p></div><div class="act"><a class="btn" href="${STRIPE_DASH}/payments" rel="noopener">Stripe payments ›</a></div></div>
+  ${wh.length ? `<div class="card" style="margin-bottom:14px;border-top:3px solid var(--accent)"><h2>Sync errors</h2><div class="tw"><table><thead><tr><th>Event</th><th>Error</th><th>When</th></tr></thead><tbody>${wh.map(w=>`<tr><td><code>${esc(w.type)}</code><span class="sub">${esc(w.id)}</span></td><td>${esc(w.error)}</td><td class="num">${dt(w.received_at)}</td></tr>`).join("")}</tbody></table></div><p class="stamp">Stripe retries failed events automatically for up to 3 days.</p></div>` : ""}
+  ${rows.length ? `<div class="tw"><table><thead><tr><th>Date</th><th>Customer</th><th>Amount</th><th>Status</th><th>Invoice</th></tr></thead><tbody>${rows.map(p=>`<tr>
+    <td class="num">${d(p.paid_at||p.created_at)}</td><td>${esc(p.email||"—")}</td><td class="num">${money(p.amount_minor,p.currency)}</td>
+    <td>${st(p.status)}${p.failure_reason?`<span class="sub">${esc(p.failure_reason)}</span>`:""}</td>
+    <td>${p.hosted_invoice_url?`<a href="${esc(p.hosted_invoice_url)}" rel="noopener">${esc(p.invoice_number||"View")}</a>`:esc(p.invoice_number||"")}</td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No payments yet. They appear once Stripe sends its first paid invoice.</div>`}`;
+};
+
+views.leads = el => {
+  const nl = D.newsletter||[];
+  el.innerHTML = `<div class="ph"><div><h1>Leads</h1><p>People who asked for the monthly data-update email.</p></div><div class="act"><button class="btn red" type="button" id="copyNl" ${nl.length?"":"disabled"}>Copy ${nl.length} emails</button></div></div>
+  ${nl.length ? `<div class="tw"><table><thead><tr><th>#</th><th>Email</th></tr></thead><tbody>${nl.map((e,i)=>`<tr><td class="num">${i+1}</td><td>${esc(e)}</td></tr>`).join("")}</tbody></table></div>` : `<div class="empty">No newsletter sign-ups yet.</div>`}`;
+};
+
+/* ---------- Dialog forms ---------- */
+function form(title, html, onSubmit){
+  const dlg=$("#dlg"), f=$("#dlgF"); $("#dlgT").textContent=title; f.innerHTML = html + `<p class="msg" id="fMsg"></p><button class="btn red" type="submit">Save</button>`;
+  f.onsubmit = async e => { e.preventDefault(); const btn=f.querySelector("[type=submit]"); btn.disabled=true; try{ const ok = await onSubmit(f); if(ok!==false) dlg.close(); }catch(err){ $("#fMsg").textContent = err.message; } finally{ btn.disabled=false; } };
+  dlg.showModal(); const first=f.querySelector("input,select,textarea"); if(first) first.focus();
+}
+$("#dlg").addEventListener("click", e => { if(e.target.id==="dlg" || e.target.closest("[data-x]")) $("#dlg").close(); });
+
+const find = (arr, v) => (arr||[]).find(x => x.id === v);
+document.addEventListener("click", async e => {
+  const t = e.target;
+  if(t.closest("#refreshBtn")){ if(MODE==="sample"){ MODE="connecting"; } load(); return; }
+  if(t.closest("#outBtn")){ await sb.auth.signOut(); return; }
+  if(t.closest("#sampleBtn")){ if(!me) me = { id:"sample", email:"sample" }; D = sample(); setConn("sample","Sample data · nothing is saved"); notice(`You're looking at made-up sample data. <button class="btn sm" type="button" id="liveBtn">Back to live data</button>`); render(); return; }
+  if(t.closest("#liveBtn")){ D = null; load(); return; }
+  const b = t.closest("[data-deliv]");
+  if(b){ const x = find(D.deliveries, b.dataset.deliv); if(!x) return;
+    form("Update delivery", `<p class="fine">${esc(x.report)} · ${esc(x.period_label)} → ${esc(x.full_name||x.email||"")}</p>
+      <label>Status<select name="status">${["queued","printing","dispatched","delivered","returned","cancelled","on_hold"].map(s=>`<option ${x.status===s?"selected":""}>${s}</option>`).join("")}</select></label>
+      <div class="two"><label>Carrier<input name="carrier" value="${esc(x.carrier||"")}" placeholder="Royal Mail, Aramex…"></label><label>Tracking number<input name="tracking_number" value="${esc(x.tracking_number||"")}"></label></div>
+      <label>Tracking link<input name="tracking_url" type="url" value="${esc(x.tracking_url||"")}" placeholder="https://"></label>
+      <p class="fine">The subscriber sees the status and tracking in their account.</p>`,
+      f => { if(f.tracking_url.value && !/^https:\/\//.test(f.tracking_url.value)) throw new Error("Tracking link must start with https://");
+        const s = f.status.value; if(!["queued","printing","dispatched","delivered","returned","cancelled","on_hold"].includes(s)) throw new Error("Bad status");
+        const row = { status:s, carrier:f.carrier.value.trim()||null, tracking_number:f.tracking_number.value.trim()||null, tracking_url:f.tracking_url.value.trim()||null };
+        if(["printing","dispatched","delivered"].includes(s) && ["queued","on_hold"].includes(x.status)) row.printed_at = now();
+        if(["dispatched","delivered"].includes(s) && !x.dispatched_at) row.dispatched_at = now();
+        if(s === "delivered" && !x.delivered_at) row.delivered_at = now();
+        return write(() => sb.from("print_deliveries").update(row).eq("id", x.id), "Delivery updated."); }); return; }
+  if(t.closest("#allPrinting")){ const n=(D.deliveries||[]).filter(x=>x.status==="queued").length;
+    form("Start print run", `<p>Mark all <b>${n}</b> queued deliveries as printing?</p><p class="fine">You can then update each one to dispatched with its tracking number.</p>`,
+      () => write(() => sb.from("print_deliveries").update({ status:"printing", printed_at: now() }).eq("status","queued"), `${n} deliveries marked as printing.`)); return; }
+  if(t.closest("#copyLabels")){ const txt=(D.deliveries||[]).filter(x=>x.status==="queued").map(x=>{ const a=x.address_snapshot||{}; return [a.recipient_name,a.organisation,a.line1,a.line2,[a.city,a.postcode].filter(Boolean).join(" "),a.country_code].filter(Boolean).join("\n") + `\n[${x.report} · ${x.period_label} · ${x.copies} cop${x.copies>1?"ies":"y"}]`; }).join("\n\n");
+    try{ await navigator.clipboard.writeText(txt); toast("Address labels copied."); }catch(err){ toast("Copy was blocked by the browser."); } return; }
+  const rp = t.closest("[data-rpdf]");
+  if(rp){ const r=find(D.reports, rp.dataset.rpdf); if(!r) return;
+    form("PDF for " + r.period_label, `<label>Path in the reports bucket<input name="p" value="${esc(r.pdf_path||`${r.frequency}/${r.slug}.pdf`)}" required></label><p class="fine">Must start with <code>${esc(r.frequency)}/</code> so only ${esc(r.frequency)}ly subscribers (and Full Gateway) can download it. Upload the file in Supabase Storage first.</p>`,
+      f => { const p=f.p.value.trim(); if(!p.startsWith(r.frequency+"/") || !/\.pdf$/i.test(p) || /\.\./.test(p)) throw new Error(`Use a path like ${r.frequency}/${r.slug}.pdf`);
+        return write(() => sb.from("reports").update({ pdf_path:p }).eq("id", r.id), "PDF path saved."); }); return; }
+  const pb = t.closest("[data-rpub]");
+  if(pb){ const r=find(D.reports, pb.dataset.rpub); if(!r) return;
+    form("Publish " + r.period_label, `<p>Publish <b>${esc(r.title_en)} — ${esc(r.period_label)}</b> now?</p><p class="fine">Subscribers can download it straight away, and ${r.eligible} print deliver${r.eligible===1?"y is":"ies are"} added to the print queue. You can't undo the print run from here.</p>`,
+      () => write(() => sb.from("reports").update({ status:"published" }).eq("id", r.id).not("pdf_path","is",null), "Published. Print run queued.")); return; }
+  if(t.closest("#newReport")){
+    form("New edition", `<div class="two"><label>Frequency<select name="freq"><option value="month">Monthly</option><option value="quarter">Quarterly</option><option value="year">Yearly</option></select></label><label>Pages<input name="pages" type="number" min="1" max="999"></label></div>
+      <label>Title<select name="title"><option>Egypt Trade Monitor</option><option>Egypt Gateway Quarterly Outlook</option><option>Egypt Gateway Yearbook</option></select></label>
+      <label>Edition label<input name="label" placeholder="January 2027, Q1 2027, 2027 Yearbook" required></label>
+      <label>Publish on<input name="when" type="date" required></label>
+      <label>Short summary<textarea name="sum" rows="2"></textarea></label>
+      <p class="fine">Saved as scheduled. It publishes itself on that date once a PDF path is set.</p>`,
+      f => { const freq=f.freq.value; if(!["month","quarter","year"].includes(freq)) throw new Error("Bad frequency"); const label=f.label.value.trim(); const when=f.when.value;
+        if(!label || !/^\d{4}-\d{2}-\d{2}$/.test(when)) throw new Error("Add an edition label and a date.");
+        const slug = (freq + "-" + label).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,60);
+        const pages = parseInt(f.pages.value,10);
+        return write(() => sb.from("reports").insert({ slug, frequency:freq, title_en:f.title.value, summary_en:f.sum.value.trim()||null, period_label:label, page_count:Number.isFinite(pages)?pages:null, status:"scheduled", publish_at: when + "T09:00:00Z", created_by: me.id }), "Edition scheduled."); }); return; }
+  const g = t.closest("[data-grant]");
+  if(g){ const u=find(D.users, g.dataset.grant); if(!u) return; const plans=(D.plans||[]).filter(p=>p.slug!=="explorer");
+    const def = new Date(Date.now()+365*864e5).toISOString().slice(0,10);
+    form("Grant access", `<p class="fine">${esc(u.full_name||"")} · ${esc(u.email)}</p>
+      <label>Package<select name="plan">${plans.map(p=>`<option value="${esc(p.id)}">${esc(p.name_en)}</option>`).join("")}</select></label>
+      <div class="two"><label>Access until<input name="until" type="date" value="${def}" required></label><label>Reason<select name="src"><option value="complimentary">Complimentary</option><option value="invoice">Paid by invoice</option><option value="manual">Other</option></select></label></div>
+      <label>Note<input name="note" placeholder="e.g. Embassy trade team, press pass"></label>
+      <p class="fine">No payment is taken. For printed-report packages the user needs a postal address in their account.</p>`,
+      f => { const until=f.until.value; if(!/^\d{4}-\d{2}-\d{2}$/.test(until)) throw new Error("Choose a date."); if(!["complimentary","invoice","manual"].includes(f.src.value)) throw new Error("Bad reason");
+        if(!isAdmin) throw new Error("Only admins can grant access.");
+        return write(() => sb.from("subscriptions").insert({ user_id:u.id, plan_id:f.plan.value, status:"active", current_period_start: now(), current_period_end: until + "T23:59:00Z", source:f.src.value, provider:"manual", notes:f.note.value.trim()||null }), "Access granted."); }); return; }
+  const ro = t.closest("[data-role]");
+  if(ro){ const u=find(D.users, ro.dataset.role); if(!u) return;
+    form("Role for " + (u.full_name||u.email), `<label>Role<select name="role"><option value="member" ${u.role==="member"?"selected":""}>Member: normal subscriber</option><option value="editor" ${u.role==="editor"?"selected":""}>Editor: sees everything, uploads reports</option><option value="admin" ${u.role==="admin"?"selected":""}>Admin: full control</option></select></label><p class="fine">Editors and admins can see every module and report without a subscription.</p>`,
+      f => { const r=f.role.value; if(!["member","editor","admin"].includes(r)) throw new Error("Bad role"); if(!isAdmin) throw new Error("Only admins can change roles."); if(u.id === me.id && r !== "admin") throw new Error("You can't remove your own admin role here."); return write(() => sb.from("profiles").update({ role:r }).eq("id", u.id), "Role updated."); }); return; }
+  const es = t.closest("[data-endsub]");
+  if(es){ const s=find(D.subs, es.dataset.endsub); if(!s) return;
+    form("End access", `<p>End <b>${esc(s.plan_name)}</b> for ${esc(s.full_name||s.email)} now?</p><p class="fine">They lose access immediately. This is for manual and complimentary access only.</p>`,
+      () => { if(!isAdmin) throw new Error("Only admins can end access."); const t=now(); return write(() => sb.from("subscriptions").update({ status:"canceled", canceled_at:t, current_period_end:t, ended_at:t }).eq("id", s.id).eq("provider","manual"), "Access ended."); }); return; }
+  if(t.closest("#copyNl")){ try{ await navigator.clipboard.writeText((D.newsletter||[]).join("\n")); toast("Emails copied."); }catch(err){ toast("Copy was blocked by the browser."); } return; }
+});
+document.addEventListener("change", e => {
+  const t=e.target;
+  if(t.matches("[data-enq]")){ const v=t.value; if(!["new","contacted","won","lost","closed"].includes(v)) return; write(() => sb.from("enquiries").update({ status:v }).eq("id", t.dataset.enq), "Enquiry updated.").catch(err => toast(err.message)); }
+  if(t.matches("[data-f]")){ fSub[t.dataset.f]=t.value; views.subscribers($('[data-view="subscribers"]')); }
+  if(t.matches("[data-pf]")){ fPrint=t.value; views.print($('[data-view="print"]')); }
+});
+document.addEventListener("input", e => {
+  const t=e.target;
+  if(t.matches("[data-f=q]")){ fSub.q=t.value; const pos=t.selectionStart; views.subscribers($('[data-view="subscribers"]')); const n=$('[data-f=q]'); n.focus(); n.setSelectionRange(pos,pos); }
+  if(t.matches("[data-uf]")){ fUser=t.value; const pos=t.selectionStart; views.users($('[data-view="users"]')); const n=$('[data-uf]'); n.focus(); n.setSelectionRange(pos,pos); }
+});
+
+/* ---------- Routing ---------- */
+const TABS = ["overview","subscribers","print","reports","users","enquiries","payments","leads"];
+function route(){ const h=(location.hash||"").slice(1); const tab = TABS.includes(h) ? h : "overview";
+  $$("[data-view]").forEach(s=>s.hidden = !me || s.dataset.view!==tab); $("#login").hidden = !!me; $("nav.tabs").hidden = !me;
+  $$("[data-tab]").forEach(a=>{ if(a.dataset.tab===tab) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); }); }
+window.addEventListener("hashchange", route);
+
+/* ---------- Sample data (preview only) ---------- */
+function sample(){
+  const now=Date.now(), day=864e5, iso=t=>new Date(t).toISOString();
+  const people=[["Ann Smith","ann@acme-exports.co.uk","Acme Exports","uk_exporter","GB"],["Omar Hassan","omar@deltafoods.eg","Delta Foods","egyptian_business","EG"],["Claire Dunn","c.dunn@northfund.com","North Fund","uk_investor","GB"],["Youssef Adel","y.adel@cairo-chamber.org","Cairo Chamber","policymaker","EG"],["Priya Shah","priya@greenvolt.uk","GreenVolt","uk_investor","GB"],["Sara Mahmoud","sara@nilelogistics.com","Nile Logistics","egyptian_business","EG"],["Tom Reid","tom.reid@ft-analyst.com","","media","GB"],["Laila Fawzy","laila@redsea-ports.eg","Red Sea Ports","egyptian_business","EG"]];
+  const pl=[["full-gateway","Full Gateway","access","month",9900],["trade-access","Trade Access","access","year",39000],["market-intelligence","Market Intelligence","access","month",5900],["quarterly-outlook","Quarterly Outlook","report","quarter",14900],["monthly-monitor","Monthly Trade Monitor","report","month",4900],["annual-yearbook","Annual Yearbook","report","year",34900]];
+  const subs=people.slice(0,7).map((p,i)=>{ const q=pl[i%pl.length]; return { id:"00000000-0000-4000-8000-00000000000"+i, status:i===4?"past_due":i===2?"trialing":"active", created_at:iso(now-(i*9+3)*day), current_period_end:iso(now+(20+i*7)*day), cancel_at_period_end:i===5, source:"checkout", provider_subscription_id:"sub_sample"+i, plan:q[0], plan_name:q[1], kind:q[2], billing_interval:q[3], amount_minor:q[4], currency:"GBP", email:p[1], full_name:p[0], organisation_name:p[2], country_code:p[4] }; });
+  const addr=(p,c)=>({recipient_name:p[0],organisation:p[2],line1:c==="EG"?"12 Nile Corniche":"10 Victoria Street",city:c==="EG"?"Cairo":"London",postcode:c==="EG"?"11511":"SW1H 0NB",country_code:c});
+  return { kpi:{ users:42, users7:9, active:6, trialing:1, past_due:1, cancelling:1, mrr:612.42, paywall7:318, clicks7:57, checkout7:14, paid7:6, newsletter:27, to_print:3, on_hold:1, enq_new:2, wh_errors:0, revenue30:68900 },
+    plans:[{id:"50000000-0000-4000-8000-000000000001",slug:"trade-access",name_en:"Trade Access",kind:"access",live:9,mrr:298.5,prices:[1]},{id:"50000000-0000-4000-8000-000000000002",slug:"market-intelligence",name_en:"Market Intelligence",kind:"access",live:6,mrr:354,prices:[1]},{id:"50000000-0000-4000-8000-000000000003",slug:"full-gateway",name_en:"Full Gateway",kind:"access",live:4,mrr:396,prices:[1]},{id:"50000000-0000-4000-8000-000000000004",slug:"monthly-monitor",name_en:"Monthly Trade Monitor",kind:"report",live:5,mrr:245,prices:[1]},{id:"50000000-0000-4000-8000-000000000005",slug:"quarterly-outlook",name_en:"Quarterly Outlook",kind:"report",live:7,mrr:347.67,prices:[1]},{id:"50000000-0000-4000-8000-000000000006",slug:"annual-yearbook",name_en:"Annual Yearbook",kind:"report",live:3,mrr:87.25,prices:[1]}],
+    subs,
+    deliveries:[0,1,3,5].map((i,j)=>({ id:"10000000-0000-4000-8000-00000000000"+j, status:["queued","queued","on_hold","dispatched"][j], copies:1, carrier:j===3?"Royal Mail":null, tracking_number:j===3?"RM123456789GB":null, created_at:iso(now-2*day), dispatched_at:j===3?iso(now-day):null, address_snapshot:j===2?null:addr(people[i],people[i][4]), report:"Egypt Gateway Quarterly Outlook", period_label:"Q4 2026", full_name:people[i][0], email:people[i][1] })).concat([{ id:"10000000-0000-4000-8000-000000000009", status:"queued", copies:2, address_snapshot:addr(people[5],"EG"), report:"Egypt Gateway Yearbook", period_label:"2026 Yearbook", full_name:people[5][0], email:people[5][1], created_at:iso(now-day) }]),
+    reports:[{id:"20000000-0000-4000-8000-000000000001",slug:"outlook-2026-q4",frequency:"quarter",title_en:"Egypt Gateway Quarterly Outlook",period_label:"Q4 2026",status:"published",published_at:iso(now-2*day),pdf_path:"quarter/outlook-2026-q4.pdf",page_count:40,eligible:7,deliveries:7,downloads:23},{id:"20000000-0000-4000-8000-000000000002",slug:"monitor-2026-12",frequency:"month",title_en:"Egypt Trade Monitor",period_label:"December 2026",status:"scheduled",publish_at:iso(now+10*day),pdf_path:null,page_count:12,eligible:5,deliveries:0,downloads:0}],
+    enquiries:[{id:"30000000-0000-4000-8000-000000000001",name:"Helen Brooks",email:"h.brooks@trade.gov.example",organisation:"UK trade team, Cairo",seats:15,message:"Access for the trade and investment team plus printed yearbooks for two offices.",status:"new",created_at:iso(now-day)},{id:"30000000-0000-4000-8000-000000000002",name:"Karim Nabil",email:"karim@chamber.example",organisation:"British Egyptian business chamber",seats:40,message:"Member-wide access, invoiced annually.",status:"new",created_at:iso(now-3*day)}],
+    users:people.map((p,i)=>({ id:"40000000-0000-4000-8000-00000000000"+i, email:p[1], full_name:p[0], organisation_name:p[2], audience:p[3], country_code:p[4], role:i===0?"admin":"member", marketing_opt_in:i%2===0, created_at:iso(now-(i*5+1)*day), plans:subs[i]?subs[i].plan_name:null })),
+    funnel:[["map",120,24],["sectors",71,12],["agreements",54,9],["toolkit",33,6],["news",22,3],["opportunities",18,3]].map(([m,p,c])=>({module_key:m,paywall:p,clicks:c})),
+    daily:Array.from({length:30},(_,i)=>({ day:iso(now-(29-i)*day).slice(0,10), signups:Math.round(1+Math.abs(Math.sin(i/3))*3), purchases:i%4===0?1:0, paywall:Math.round(8+Math.abs(Math.cos(i/4))*10) })),
+    payments:subs.slice(0,6).map((s,i)=>({ id:"p"+i, amount_minor:s.amount_minor, currency:"GBP", status:i===4?"failed":"succeeded", invoice_number:"EGG-00"+(12+i), hosted_invoice_url:null, failure_reason:i===4?"Card declined":null, paid_at:i===4?null:iso(now-(i*4+1)*day), created_at:iso(now-(i*4+1)*day), email:s.email })),
+    webhooks:[], newsletter:people.filter((_,i)=>i%2===0).map(p=>p[1]), generated_at:iso(now) };
+}
+
+/* ---------- Boot ---------- */
+async function onSession(session){
+  me = session?.user || null; isAdmin = false;
+  if(me){
+    const { data: prof } = await sb.from("profiles").select("role").eq("id", me.id).maybeSingle();
+    if(!prof || !["admin","editor"].includes(prof.role)){
+      notice(`Signed in as ${esc(me.email)}, but this account isn't an admin or editor. <button class="btn sm" type="button" id="outBtn2">Sign out</button>`, "err");
+      $("#outBtn2").onclick = () => sb.auth.signOut(); me = null; route(); setConn("err","No admin access"); return;
+    }
+    isAdmin = prof.role === "admin";
+  }
+  $("#outBtn").hidden = !me; route();
+  if(me){ load(); } else { D = null; setConn("err","Signed out"); notice(""); }
+}
+$("#loginF").addEventListener("submit", async e => {
+  e.preventDefault(); const f=e.target; $("#loginMsg").textContent = "";
+  const { error } = await sb.auth.signInWithPassword({ email:f.email.value.trim(), password:f.password.value });
+  if(error) $("#loginMsg").textContent = error.message;
+});
+route();
+(async () => {
+  try{
+    if(!window.supabase) throw new Error("The Supabase library didn't load. Check your connection and reload.");
+    if(!CFG.supabaseUrl || !CFG.supabaseKey) throw new Error("Missing backend settings in GATEWAY_CONFIG.");
+    sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, { auth:{ persistSession:true, flowType:"pkce", storageKey:"etg-admin-auth" } });
+    sb.auth.onAuthStateChange((_evt, session) => { setTimeout(() => onSession(session), 0); });
+    const { data: { session } } = await sb.auth.getSession(); await onSession(session);
+  }catch(e){ setConn("err","Not connected"); notice(esc(e.message) + ` <button class="btn sm" type="button" id="sampleBtn">Preview with sample data</button>`, "err"); $("#login").hidden = true; }
+})();
+})();
+</script>
+</body>
+</html>
