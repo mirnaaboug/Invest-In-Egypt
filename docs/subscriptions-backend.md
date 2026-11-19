@@ -30,25 +30,26 @@ Built 19 Nov 2026. Supabase project **Egypt Trade Gateway** (`sobptlqqazhcfooytq
 
 To change a price: create the new price in Stripe, then update `plan_prices.amount_minor` and `provider_price_id`.
 
-## Steps only you can do (about 15 minutes)
+## Setup status (19 Nov 2026)
 
-These need secret keys, so I haven't handled them.
+Done:
+- Website and admin page are live on GitHub Pages.
+- Supabase login addresses (Site URL and redirect URLs) are set.
+- The `SITE_URL` secret is set.
+- The Stripe webhook endpoint exists (test mode) and sends the 9 events the backend uses.
+- The Stripe customer portal is set up as the default (test mode).
 
-1. **Add the Stripe keys to Supabase.** In Stripe (test mode), go to Developers → API keys and copy the secret key. In Supabase, go to Edge Functions → Secrets and add:
-   - `STRIPE_SECRET_KEY` = the `sk_test_…` key
-   - `SITE_URL` = `https://mirnaaboug.github.io/Invest-In-Egypt/` (change it if you move to your own domain)
-2. **Create the Stripe webhook.** In Stripe, go to Developers → Webhooks → Add endpoint.
-   - URL: `https://sobptlqqazhcfooytqav.supabase.co/functions/v1/stripe-webhook`
-   - Events: `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.paid`, `invoice.payment_failed`, `charge.refunded`
-   - Copy the signing secret (`whsec_…`) into the Supabase secret `STRIPE_WEBHOOK_SECRET`.
-3. **Turn on the Stripe customer portal.** In Stripe, go to Settings → Billing → Customer portal and save. This lets subscribers update their card, download invoices and cancel.
-4. **Set up Supabase Auth URLs.** Go to Authentication → URL configuration. Set the Site URL to `https://mirnaaboug.github.io/Invest-In-Egypt/` and add `https://mirnaaboug.github.io/Invest-In-Egypt/` and `https://mirnaaboug.github.io/Invest-In-Egypt/admin/` as redirect URLs. For real users, also add your own email sender under Authentication → Emails → SMTP, because Supabase's built-in sender is rate-limited.
-5. **Make yourself admin.** Create an account on the site (Sign in → Create account), then run this in the Supabase SQL editor:
+Still to do:
+1. **Add the two Stripe secrets** in Supabase → Edge Functions → Secrets (https://supabase.com/dashboard/project/sobptlqqazhcfooytqav/functions/secrets):
+   - `STRIPE_SECRET_KEY`: from https://dashboard.stripe.com/test/apikeys (Secret key, starts `sk_test_`).
+   - `STRIPE_WEBHOOK_SECRET`: from https://dashboard.stripe.com/test/webhooks → the Egypt Gateway endpoint → Signing secret (starts `whsec_`).
+   Until both are set, checkout shows "Online payments aren't switched on yet".
+2. **Make yourself admin.** Create an account on the site, then run this in the Supabase SQL editor:
    `update public.profiles set role = 'admin' where email = 'you@example.com';`
    Use `role = 'editor'` for content staff who upload reports.
-6. **Turn on GitHub Pages.** In this repo, go to Settings → Pages → Deploy from a branch → `main` / root. The site is then at https://mirnaaboug.github.io/Invest-In-Egypt/ and the admin page at https://mirnaaboug.github.io/Invest-In-Egypt/admin/. The claude.ai preview link always runs in demo mode; the GitHub Pages site connects to Supabase automatically.
+3. **For real users,** add your own email sender under Supabase → Authentication → Emails → SMTP. Supabase's built-in sender is rate-limited.
 
-Test with Stripe's test card 4242 4242 4242 4242, any future expiry date and any CVC.
+Test purchases use Stripe's test card 4242 4242 4242 4242, any future expiry date and any CVC.
 
 ## Admin page
 
