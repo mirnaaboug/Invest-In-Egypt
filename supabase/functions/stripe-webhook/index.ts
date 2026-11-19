@@ -9,7 +9,8 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import Stripe from "npm:stripe@17";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY")!, { httpClient: Stripe.createFetchHttpClient() });
+// Created on first use so a missing key returns a clear status instead of crashing the function.
+let stripe: Stripe;
 const crypto = Stripe.createSubtleCryptoProvider();
 const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
   auth: { persistSession: false },
@@ -114,11 +115,14 @@ async function upsertInvoice(inv: Any, status: "succeeded" | "failed") {
 }
 
 Deno.serve(async (req) => {
+  const key = Deno.env.get("STRIPE_SECRET_KEY"), whsec = Deno.env.get("STRIPE_WEBHOOK_SECRET");
+  if (!key || !whsec) return new Response("Stripe keys not configured", { status: 503 }); // Stripe retries later
+  stripe ??= new Stripe(key, { httpClient: Stripe.createFetchHttpClient() });
   const signature = req.headers.get("Stripe-Signature");
   const body = await req.text();
   let event: Stripe.Event;
   try {
-    event = await stripe.webhooks.constructEventAsync(body, signature!, Deno.env.get("STRIPE_WEBHOOK_SECRET")!, undefined, crypto);
+    event = await stripe.webhooks.constructEventAsync(body, signature!, whsec, undefined, crypto);
   } catch (e) {
     console.error("Bad signature", e);
     return new Response("Invalid signature", { status: 400 });
