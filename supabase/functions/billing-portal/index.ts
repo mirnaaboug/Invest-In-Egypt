@@ -13,13 +13,21 @@ const cors = {
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
 
-const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY")!, { httpClient: Stripe.createFetchHttpClient() });
+// Created on first use so a missing key returns a clear message instead of crashing the function.
+let _stripe: Stripe | null = null;
+function stripeClient(): Stripe | null {
+  const key = Deno.env.get("STRIPE_SECRET_KEY");
+  if (!key) return null;
+  return (_stripe ??= new Stripe(key, { httpClient: Stripe.createFetchHttpClient() }));
+}
 const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
   auth: { persistSession: false },
 });
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
+  const stripe = stripeClient();
+  if (!stripe) return json({ error: "Online payments aren't switched on yet. Please try again later." }, 503);
   try {
     const token = (req.headers.get("Authorization") || "").replace("Bearer ", "");
     const { data: { user } } = await admin.auth.getUser(token);
